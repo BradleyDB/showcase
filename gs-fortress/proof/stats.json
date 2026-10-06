@@ -151,7 +151,7 @@
         {
           "label": "Defect reports recorded as acknowledged",
           "value": 0,
-          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]{4}-' || true"
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]{4}-'"
         },
         {
           "label": "Resolved defects that had a report on file",
