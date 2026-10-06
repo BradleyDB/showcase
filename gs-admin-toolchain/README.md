@@ -45,14 +45,14 @@ flowchart TD
   step2["2. gs-fortress: the weekly check spots the new version"]
   step3["3. gs-fortress: mechanical diff, then one AI assessment"]
   step4["4. gs-fortress: audit report, change plan and kickoff prompts"]
-  step5{{"5. I decide: adopt or defer"}}
+  step5{{"5. Human decides: adopt or defer"}}
   deferred["Deferred: recorded in the ledger, nothing built"]
-  step6{{"6. I post the kickoff to the plugin repo as a work item"}}
+  step6{{"6. Human posts the kickoff to the plugin repo as a work item"}}
   featureRequest(["A feature request (kickoffs from handoff-plan)"])
   step7["7. Builder session makes the change"]
   step8["8. dev-utils: hands the build over with a token"]
   step9["9. Tester session verifies that exact build"]
-  step10{{"10. I merge the PR, then the release PR"}}
+  step10{{"10. Human merges the PR, then the release PR, or has a session do it"}}
   step11["11. dev-utils: tags the release, only after the merge"]
   step12["12. gs-fortress: close-out records the PR and tag in the ledger"]
 
@@ -99,7 +99,8 @@ canary skill, and a separate tester session loads that exact tree, proves the to
 matches, and returns VERIFIED or REOPENED. A fix is never verified by the session that
 wrote it.
 
-**Build to release to close-out.** I merge the PR to `dev`, then a release PR to `main`
+**Build to release to close-out.** The PR to `dev` is merged (by me, or by a session on my
+say-so), then a release PR to `main`
 that strips everything dev-only in one commit. The tag goes on only after that merge.
 `/dev-loop`'s release step requires it, and since 2026-09-29 the plugin repo's release
 checklist runs `dev-utils release-finish`, which refuses to tag until GitHub reports the

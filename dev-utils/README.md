@@ -34,8 +34,8 @@ of both loops, so the skills that run the AI sessions keep the judgment half.
   `--force`. The only override is a WONTFIX or DEFERRED ruling, which stays on the record.
 - **The release ceremony as code.** Re-decide stale deferrals, run the gates, bump the
   version, strip dev-only files as the only commit beyond `dev`, run the validation, open a
-  pull request, and stop. A human merges. Tagging is refused until GitHub reports the PR as
-  merged.
+  pull request, and stop. A person merges it, or has a session merge it; the tool never
+  does. Tagging is refused until GitHub reports the PR as merged.
 - **Two loops, one tool.** The single-machine loop keeps its bus in one markdown file. The
   multi-user loop keeps it in GitHub Issues and proves provenance by commit ancestry. A verb
   run against the wrong loop is refused with a pointer to the right one.
@@ -70,29 +70,47 @@ from it can cause a write outside the repo or a second shell command.
 ## How it works
 
 ```mermaid
-flowchart LR
-  tester[Tester session finds a bug] -->|log| bus[("Bus: findings log")]
-  bus --> builder[Builder session fixes it]
-  builder -->|flip to FIXED, naming a judge| rules{"Rule check"}
-  rules -->|refused, exit 2| builder
-  rules -->|passes| handoff["handoff: mint a token"]
-  handoff -->|bus + canary, one commit| verify[Tester verifies that exact build]
-  verify -->|VERIFIED| bus
-  verify -->|reopened, counted| bus
-  bus --> release["release: gates, strip, open PR"]
-  release --> merge{{"Human merges the PR"}}
-  merge --> tag["release-finish: tag"]
+flowchart TD
+  logFinding["1. Tester session logs a finding"]
+  setRound{{"2. Human sets the round: which findings to fix, in what order"}}
+  fix["3. Builder session fixes it and marks it FIXED, naming how the fix will be judged"]
+  rules["4. dev-utils checks the rules"]
+  handoff["5. dev-utils hands the build to the tester with a token"]
+  verify["6. Tester session verifies that exact build"]
+  steer{{"Human steps in when needed: sends a fix back, defers a finding, rules it WONTFIX, or changes its severity"}}
+  release["7. dev-utils release: runs the gates and opens the PR"]
+  merge{{"8. Human merges the PR, or has a session merge it"}}
+  tag["9. dev-utils tags the release, only after the merge"]
+
+  logFinding --> setRound --> fix --> rules
+  rules -->|"rule broken: refused"| fix
+  rules -->|passes| handoff --> verify
+  verify -->|"sent back"| fix
+  verify -.-> steer
+  steer -.->|"send back"| fix
+  verify -->|"verified"| release --> merge --> tag
+
+  classDef session fill:#dcfce7,stroke:#15803d,color:#111;
+  classDef devutils fill:#ede9fe,stroke:#6d28d9,color:#111;
   classDef human fill:#fde68a,stroke:#b45309,color:#111;
-  class merge human;
+  class logFinding,fix,verify session;
+  class rules,handoff,release,tag devutils;
+  class setRound,steer,merge human;
 ```
 
-A tester session logs a finding. The builder fixes it and flips it to FIXED, and that flip is
-where the rules fire: name a defect class and you must name a judge. A finding reopened twice
-must carry a `Redesign:` line before it can be FIXED again. The handoff then mints a token
-into the bus and the build in one commit. The tester confirms the build it loaded carries
-that token, re-runs the repro, and flips the finding to VERIFIED or back to OPEN. The release
-refuses while anything is unresolved. It then cuts the branch, opens the PR, and waits for a
-person.
+Colours: green is an AI session, purple is dev-utils, yellow is a person deciding. The
+dotted lines are where a person steps in when a round needs it, not on every finding.
+
+A tester session logs a finding (1). I choose which findings a round fixes and in what
+order (2). The builder fixes one and flips it to FIXED (3), and that flip is where the rules
+fire (4): name a defect class and you must name a judge, and a finding reopened twice must
+carry a `Redesign:` line before it can be FIXED again. The handoff then mints a token into
+the bus and the build in one commit (5). The tester confirms the build it loaded carries
+that token, re-runs the repro, and flips the finding to VERIFIED or sends it back (6). I
+step in when a round needs it: sending a fix back, deferring a finding, ruling it WONTFIX,
+or re-declaring its severity, each as a dated line on the bus. The release refuses while
+anything is unresolved, then cuts the branch and opens the PR (7). It waits for a person
+to merge, or to have a session merge (8), and only then tags (9).
 
 What the CLI owns, from its help screen (abridged):
 
