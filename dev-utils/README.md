@@ -1,71 +1,32 @@
-# dev-utils: the mechanical half of an AI build loop
+# dev-utils
 
-> Part of [the gs-admin toolchain](../gs-admin-toolchain/README.md). It keeps the books for the
-> builder/tester loops that the superfriends skills define, so the AI sessions spend their
-> effort on judgment.
-> Private repository · shipped (v0.5.1) · measured 2026-10-05 at `origin/main` (c2ebd66)
+**AI builder and tester sessions check each other's work. dev-utils keeps their books, so the models spend their effort on judgment instead of bookkeeping.**
 
-## The problem
+<table><tr>
+<td align="center" width="25%"><h2>240</h2>test cases over 5,199 lines of tests</td>
+<td align="center" width="25%"><h2>31</h2>findings through the loop, 28 verified</td>
+<td align="center" width="25%"><h2>26</h2>fixes that named an independent judge of their correctness</td>
+<td align="center" width="25%"><h2>6</h2>releases from 30 merged pull requests, each merge a person's call</td>
+</tr></table>
 
-I build tools with two AI sessions working against each other: a builder that writes fixes and
-a tester that tries to break them. They coordinate through a shared log of findings (the
-"bus"), and someone has to keep its books: which findings are open, which fix was verified
-against which build, and whether a release is allowed. Left to the AI sessions, that
-bookkeeping costs model tokens on work that needs no thought. It also fails in ways that are
-hard to see: a mis-edited log, a verification run against the wrong build, a release that
-skipped a gate. The model is worth paying for when it decides whether a fix is right, and it
-is wasted on splicing a markdown file.
+> [!IMPORTANT]
+> **Judgment stays with the model; mechanics go to code.** It's the same boundary as "AI
+> proposes, rules execute" in an agent deployment.
 
-## What I built
+Part of the [gs-admin toolchain](../gs-admin-toolchain/README.md): the mechanics of its
+build loop. Private repository · shipped (v0.5.1) · measured 2026-10-05.
 
-A single Python CLI (standard library only, no credentials) that does the deterministic half
-of both loops, so the skills that run the AI sessions keep the judgment half.
+## In 30 seconds
 
-- **15 verbs, one per mechanical step.** Logging a finding, flipping its status with a dated
-  note, handing a build to the tester, linting the log, archiving, and the release ceremony.
-  Each verb takes the judgment as an argument (`--note`, `--judge`, `--why`) and does the
-  edit, so a session decides and the tool records.
-- **Provenance tokens.** A handoff mints a token (`hb-<date>-<nn>`) into the bus and into a
-  canary file inside the build, in one commit. The tester checks that the token in the build
-  it loaded matches the token on the bus before it tests anything.
-- **Rules that refuse rather than warn.** A fix that names a defect class must name an
-  independent judge, and a finding reopened twice must name the design it replaces. A flip
-  that breaks either rule exits with code 2 and leaves the log unchanged. There is no
-  `--force`. The only override is a WONTFIX or DEFERRED ruling, which stays on the record.
-- **The release ceremony as code.** Re-decide stale deferrals, run the gates, bump the
-  version, strip dev-only files as the only commit beyond `dev`, run the validation, open a
-  pull request, and stop. A person merges it, or has a session merge it; the tool never
-  does. Tagging is refused until GitHub reports the PR as merged.
-- **Two loops, one tool.** The single-machine loop keeps its bus in one markdown file. The
-  multi-user loop keeps it in GitHub Issues and proves provenance by commit ancestry. A verb
-  run against the wrong loop is refused with a pointer to the right one.
-- **A drift alarm on its own spec.** The tests pin a hash of the skill files that define
-  the formats it parses. When a skill changes, the pins go red and are re-pinned
-  deliberately, in a commit that names the upstream change.
-
-## The framework
-
-**Judgment stays with the model; mechanics go to code.** It is the same boundary as "AI
-proposes, rules execute" in an agent deployment. The skills stay the source of truth for
-fixing findings, verifying repros, code review and WONTFIX rulings. The CLI parses and emits
-exactly the formats the skills define, and the skill-pin tests enforce that. Even the release
-keeps the line: the gate *asks* whether `/code-review` ran on `dev` and refuses to continue
-without a yes. It never reviews anything itself.
-
-**Refuse, don't warn; an override is a ruling on the record.** Every gate fails with exit 2
-and an unchanged log, naming the flag or ruling that would satisfy it. Deferring a finding
-takes a "why not now" and a reopen trigger, and the release ceremony reopens every deferral
-whose version has passed, so nothing is deferred for good by forgetting.
-
-**Provenance comes from what the loop writes, never from prose.** The token mint reads only
-the lines the loop itself writes (the "under test" line, verification notes, the canary) and
-the handoff commits. A finding can quote any token in its text without moving the sequence.
-The rule took two redesigns and several tunings to get right, each one a finding on the bus.
-
-**Humans hold the irreversible steps.** The tool shells out to an already-authenticated `git`
-and `gh`, stores no tokens and prompts for none. It never merges, and it never force-pushes
-`dev`. The log is treated as untrusted repo content: a test suite checks that nothing parsed
-from it can cause a write outside the repo or a second shell command.
+- **The problem.** Two AI sessions work against each other: a builder writes fixes, a
+  tester tries to break them. Someone has to keep the shared log of findings (the "bus"):
+  what's open, which build was verified, whether a release may ship. Done by the models,
+  that's paid-for thinking spent on splicing a markdown file, and it fails quietly: a
+  mis-edited log, a test run against the wrong build, a skipped gate.
+- **What I built.** A standard-library Python CLI with one verb per mechanical step. The
+  session decides; the tool records, and refuses anything that breaks the loop's rules.
+- **The proof.** 31 findings through the loop, a token on every handoff, and a release
+  ceremony that stops at the pull request.
 
 ## How it works
 
@@ -98,19 +59,66 @@ flowchart TD
   class setRound,steer,merge human;
 ```
 
-Colours: green is an AI session, purple is dev-utils, yellow is a person deciding. The
-dotted lines are where a person steps in when a round needs it, not on every finding.
+Green is an AI session, purple is dev-utils, yellow is a person. Dotted lines are where a
+person steps in when a round needs it, not on every finding.
+
+<details>
+<summary><b>The loop, step by step</b></summary>
 
 A tester session logs a finding (1). I choose which findings a round fixes and in what
 order (2). The builder fixes one and flips it to FIXED (3), and that flip is where the rules
 fire (4): name a defect class and you must name a judge, and a finding reopened twice must
-carry a `Redesign:` line before it can be FIXED again. The handoff then mints a token into
-the bus and the build in one commit (5). The tester confirms the build it loaded carries
-that token, re-runs the repro, and flips the finding to VERIFIED or sends it back (6). I
-step in when a round needs it: sending a fix back, deferring a finding, ruling it WONTFIX,
-or re-declaring its severity, each as a dated line on the bus. The release refuses while
-anything is unresolved, then cuts the branch and opens the PR (7). It waits for a person
-to merge, or to have a session merge (8), and only then tags (9).
+carry a `Redesign:` line before it can be FIXED again. The handoff mints a token into the
+bus and the build in one commit (5). The tester confirms the build it loaded carries that
+token, re-runs the repro, and flips the finding to VERIFIED or sends it back (6). I step in
+when a round needs it, and each intervention is a dated line on the bus. The release
+refuses while anything is unresolved, then cuts the branch and opens the PR (7). It waits
+for a person to merge, or to have a session merge (8), and only then tags (9).
+
+</details>
+
+<details>
+<summary><b>What I built, piece by piece</b></summary>
+
+- **15 verbs, one per mechanical step**: logging, flipping a status with a dated note,
+  handoff, lint, archive, the release ceremony. Each takes the judgment as an argument
+  (`--note`, `--judge`, `--why`) and does the edit.
+- **Provenance tokens.** A handoff mints a token (`hb-<date>-<nn>`) into the bus and a
+  canary file in the build, in one commit. The tester checks they match before testing.
+- **Rules that refuse rather than warn.** A rule-breaking flip exits with code 2 and leaves
+  the log unchanged. There is no `--force`; the only override is a WONTFIX or DEFERRED
+  ruling, which stays on the record.
+- **The release ceremony as code.** Re-decide stale deferrals, run the gates, bump the
+  version, strip dev-only files as the only commit beyond `dev`, validate, open the PR, and
+  stop. A person merges it, or has a session merge it; the tool never does. Tagging is
+  refused until GitHub reports the merge.
+- **Two loops, one tool.** The single-machine loop keeps its bus in a markdown file; the
+  multi-user loop uses GitHub Issues and proves provenance by commit ancestry.
+- **A drift alarm on its own spec.** Tests pin a hash of the skill files that define the
+  formats it parses. A skill change turns them red until deliberately re-pinned.
+
+</details>
+
+<details>
+<summary><b>The four design rules</b></summary>
+
+- **Judgment stays with the model.** The skills own fixes, verdicts, code review and
+  WONTFIX rulings. The CLI emits exactly the formats they define, and the pin tests
+  enforce it. Even the release *asks* whether `/code-review` ran; it never reviews.
+- **Refuse, don't warn; an override is a ruling on the record.** Deferring takes a "why not
+  now" and a reopen trigger, and each release reopens deferrals whose version has passed.
+- **Provenance comes from what the loop writes, never from prose.** The token mint reads
+  only loop-written lines and the handoff commits. Getting this right took two redesigns,
+  each one a finding on the bus.
+- **Humans hold the irreversible steps.** The tool uses the already-authenticated `git` and
+  `gh`, stores no credentials, never merges and never force-pushes `dev`. Bus text is
+  treated as untrusted: a test suite checks nothing parsed from it can write outside the
+  repo or run a second shell command.
+
+</details>
+
+<details>
+<summary><b>Excerpts: the help screen, a deferral, and a fix the rules demanded</b></summary>
 
 What the CLI owns, from its help screen (abridged):
 
@@ -133,8 +141,8 @@ Mechanics for the /dev-loop and /team-loop workflows.
   migrate          migrate a dev-loop repo to team-loop
 ```
 
-A deferral as the bus records it. The tester found the bug; deferring it was the owner's
-call, and the release ceremony forced the call to be made again (abridged):
+A deferral as the bus records it. Deferring was the owner's call, and the release ceremony
+forced the call to be made again (abridged):
 
 ```
 ## F-029 — DEFERRED (past 0.5.1)
@@ -151,8 +159,7 @@ Defer: 2026-10-04 (user) - past 0.5.1. Why not now: 0.5.1 exists to ship F-030,
   which is refusing correct handoffs in another repo today.
 ```
 
-And the fix the release shipped, with the judge and the redesign the rules demanded
-(abridged):
+The fix that release shipped, with the judge and the redesign the rules demanded (abridged):
 
 ```
 ## F-030 — VERIFIED
@@ -168,10 +175,30 @@ Verified: 2026-10-04 (tester) — re-verification round, pass bar stated before
           measuring; differential against the previous build
 ```
 
+</details>
+
+## What this shows
+
+| The job | Where dev-utils does it | Evidence |
+|---|---|---|
+| **Decision log** | Every status change, severity call and deferral is a dated line with its reason; a deferral carries a reopen trigger | 31 findings; F-029 |
+| **Architecture principles** | The judgment/mechanics split, enforced by frozen formats and pin tests; refusals instead of warnings | 13 re-pin commits; exit-2 gates, no `--force` |
+| **Dependency map** | The CLI depends on the skill text, and the pin tests turn that dependency into an alarm | each re-pin names the upstream change |
+| **Change control** | Re-decide deferrals, gate, one strip commit, PR, a person's merge, tag only after merge | 6 tags, 30 merged PRs |
+| **Agent evaluation** | A separate tester session verifies each fix against a token-proven build; a fix needs an independent judge | 28 verified, 26 `Judge:` lines |
+| **Agent escalation** | Refusals name the ruling needed, the release stops at the PR, the review gate asks | F-029's deferrals were the owner's |
+
 ## Proof
 
-Measured 2026-10-05 at `origin/main` (c2ebd66). Commands run from the folder holding the
-clone; the full table is in [proof/stats.md](proof/stats.md).
+| Commits | Release tags | Merged PRs | Findings (verified) | Source lines | Test lines | Test cases |
+|---:|---:|---:|---:|---:|---:|---:|
+| 237 | 6 | 30 | 31 (28) | 5,351 | 5,199 | 240 |
+
+<details>
+<summary><b>Every number with the command that reproduces it</b></summary>
+
+Measured 2026-10-05 at `origin/main` (c2ebd66), run from the folder holding the clone. The
+full table is in [proof/stats.md](proof/stats.md).
 
 | Measure | Value | How to check |
 |---|---|---|
@@ -186,37 +213,25 @@ clone; the full table is in [proof/stats.md](proof/stats.md).
 | Commits | 237 over 12 active days, 2026-07-22 to 2026-10-04 | `git -C dev-utils rev-list --count c2ebd66` |
 | CI workflows | 0, by choice: the suite runs locally as the release's validation step | `git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows \| wc -l` |
 
-Line counts are physical lines, blanks and comments included. It is solo work: no merged PR
-is from anyone else. The suite is fully offline: the GitHub side is tested against a fake
-`gh` that answers from canned JSON.
+Line counts are physical lines, blanks and comments included. No merged PR is from anyone
+else. The suite is fully offline: the GitHub side is tested against a fake `gh`.
 
-## What this shows
+</details>
 
-| Role duty | Where this work does it | Evidence |
-|---|---|---|
-| Decision log | The bus: every status change, severity declaration and deferral is a dated line with its reason; a deferral carries a reopen trigger | 31 findings; F-029 above |
-| Architecture principles | Judgment/mechanics split, enforced by frozen formats and the skill-pin tests; refusals instead of warnings | 13 re-pin commits; exit-2 gates, no `--force` |
-| Dependency map | The CLI depends on the skill text; the pin tests turn that dependency into an alarm, and fixes name the consumers they touch | each re-pin commit names the upstream change |
-| Change control | Release ceremony: re-decide deferrals, gate, single strip commit, PR, human merge, tag only after merged | 6 tags, 30 merged PRs |
-| Agent evaluation | A tester session verifies each fix against a minted token; a fix needs a judge independent of the fixer | 28 verified findings, 26 `Judge:` lines |
-| Agent escalation | The tool stops and hands the call to a person: refusals name the ruling needed, the release stops at the PR, the review gate asks | F-029's two deferrals were the owner's, not the tool's |
+## Trade-offs
 
-Trade-offs: the multi-user half is tested only against the fake `gh`. There is no CI by
-choice: this is a one-maintainer private repo, the suite runs locally as a required step
-of every release, and its skill-pin tests read a second private repo that CI would need
-access to. The
-CLI-backed versions of the loop skills are still under evaluation; the hand-run skills remain
-the default.
+- **No CI, by choice.** One maintainer, a private repo, and a suite that runs locally as a
+  required step of every release. Its skill-pin tests also read a second private repo
+  that CI would need access to.
+- **The multi-user half** is tested only against the fake `gh`.
+- **Still under evaluation:** the CLI-backed versions of the loop skills are opt-in; the
+  hand-run skills remain the default.
 
 ## What's private and why
 
-- **Private:** dev-utils and the skills it serves (superfriends). They are personal
-  infrastructure: the bus records machine paths and dated working notes from other private
-  repos, and the tests read a local checkout of the skills.
-- **Public and checkable:** the companion tool this loop is used on,
-  [gs-superadmin](https://github.com/BradleyDB/gs-admin-cli-docs). The system page,
-  [the gs-admin toolchain](../gs-admin-toolchain/README.md), shows where dev-utils sits
-  among the other repos.
-- **Numbers:** every figure above comes with the command that reproduces it. Readers can't
-  rerun commands against a private repo, so I'm happy to run any of them live in a
-  walkthrough.
+dev-utils and the skills it serves are personal infrastructure: the bus holds machine paths
+and working notes from other private repos, and the tests read a local checkout of the
+skills. The public tool this loop builds is
+[gs-superadmin](https://github.com/BradleyDB/gs-admin-cli-docs), and the
+[system page](../gs-admin-toolchain/README.md) shows where dev-utils fits. I'm happy to
+rerun any number here live in a walkthrough.

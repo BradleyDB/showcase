@@ -169,7 +169,7 @@
           "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>String(e.upstreamResponse||'').startsWith('2026-07-30')&&e.resolvedOn==='1.0.8').length)\""
         },
         {
-          "label": "Bus findings reopened by a tester at least once",
+          "label": "Bus findings reopened at least once (by a tester or the owner)",
           "value": 8,
           "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' | sort -u | wc -l"
         },

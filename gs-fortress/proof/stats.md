@@ -35,7 +35,7 @@ Measured 2026-10-05 at `origin/main` (ff5ff42).
 | Resolved defects that had a report on file | 2 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| node -e "const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>e.report&&e.status==='resolved').length)"` |
 | Tracked defects carrying the 2026-07-30 vendor reply | 5 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"upstreamResponse": "2026-07-30'` |
 | Of those, resolved in 1.0.8 | 4 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| node -e "const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>String(e.upstreamResponse\|\|'').startsWith('2026-07-30')&&e.resolvedOn==='1.0.8').length)"` |
-| Bus findings reopened by a tester at least once | 8 | `git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md \| awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' \| sort -u \| wc -l` |
+| Bus findings reopened at least once (by a tester or the owner) | 8 | `git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md \| awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' \| sort -u \| wc -l` |
 | Test suites (*.test.mjs) | 6 | `git -C gs-fortress ls-tree -r --name-only ff5ff42 plugins/gs-fortress/test \| grep -cE '\.test\.mjs$'` |
 | Watcher invariants restated to every agent | 8 | `git -C gs-fortress show ff5ff42:plugins/gs-fortress/skills/gs-admin-cli-watch/SKILL.md \| sed -n '/^## Invariants/,/^## Stage 0/p' \| grep -cE '^[0-9]+\. '` |
 | dev-loop findings on this repo's own bus | 25 | `git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md \| grep -oE '^## F-[0-9]+' \| sort -u \| wc -l` |

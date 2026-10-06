@@ -71,7 +71,7 @@
   },
   {
     "repo": "gs-fortress",
-    "label": "Bus findings reopened by a tester at least once",
+    "label": "Bus findings reopened at least once (by a tester or the owner)",
     "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' | sort -u | wc -l"
   },
   {

@@ -1,43 +1,30 @@
-# gs-admin toolchain: keeping an AI admin co-pilot correct as its vendor CLI changes
+# gs-admin toolchain
 
-> 4 repositories · 1 public, 3 private · measured 2026-10-05 at each repo's `origin/main`
+**An AI agent can now change a live SaaS tenant. This system keeps that agent safe and correct while the vendor's tools change underneath it.**
 
-## The problem
+<table><tr>
+<td align="center" width="25%"><h2>4 repos</h2>designed to work together</td>
+<td align="center" width="25%"><h2>5</h2>vendor releases audited, each with a recorded human decision</td>
+<td align="center" width="25%"><h2>84</h2>fixes verified by a different AI session than the one that wrote them</td>
+<td align="center" width="25%"><h2>5 days</h2>from audit to shipped release (CLI 1.0.10)</td>
+</tr></table>
 
-An AI agent can now write to a production SaaS configuration. Gainsight ships an Admin CLI
-and MCP server (`@gainsight/gs-admin-cli`), and an agent with access to it can edit rules,
-journeys and scorecards in a live tenant. That raises two risks. The first sits in front
-of the admin: a write nobody approved, or one nobody can trace later. The second sits
-underneath: the vendor ships a new CLI release, and the agent's tooling now quietly
-encodes behavior that's no longer true.
+> [!IMPORTANT]
+> **Machines propose, a person decides.** AI sessions audit, build and test. A person
+> decides at three points: whether to adopt a release, what gets built, and what ships.
 
-Fixing the first risk takes a guarded product. Fixing the second takes a process:
-someone has to notice each release, measure what it changes, decide whether to adopt
-it, carry the decision into code with tests, and record that it happened. I built that
-process as four repositories with clear boundaries. Language models do the judgment
-work in it, and a person makes every decision.
+## In 30 seconds
 
-## The system at a glance
+- **The risk.** An agent with the vendor's admin CLI can edit rules, journeys and scorecards
+  in production. Two things can go wrong: a write nobody approved, and a vendor release that
+  quietly changes what the agent's tools do.
+- **The system.** A public plugin with an approval gate on every write, plus three private
+  repos that audit every vendor release, build each change through an AI builder/tester loop,
+  and record every decision.
+- **The proof.** One real release traced end to end below, through public PRs and tags.
+  Every number on this page has the command that reproduces it.
 
-| Repo | Role (from its own docs) | Owns | Never does | Page |
-|---|---|---|---|---|
-| **gs-admin-cli-docs** (public), product: the **gs-superadmin** plugin | A wiki and knowledge base generated from the CLI's own manifests, plus a Claude Code plugin that runs a tenant workspace: guarded writes, a change journal, dependency and email reports | the catalog, the plugin, its dev-loop bus | never blocks a write; the guard *asks*. Never hardcodes command lists; new behavior derives from the catalog | [public repo](https://github.com/BradleyDB/gs-admin-cli-docs) |
-| **gs-fortress** (private) | Watches each upstream CLI release, audits what it changes, keeps the permanent adopt/defer ledger and the upstream known-issues tracker | audit reports, change plans, build kickoffs, `state.json`, close-out | "upgrading anything, or writing to the explorer/docs repo"; never fills in the decision | [case study](../gs-fortress/README.md) |
-| **superfriends** (private plugin, repo gs-admin-superfriends) | The process layer: `/dev-loop` builder/tester loop, `handoff-plan` (frozen contracts, session ledgers), `introspect`, `branch-sweep`, and the multi-machine `/team-loop` | the loop rules and the plan shapes the other repos follow | never merges; "merging is the user's call, always" | private, cited by name |
-| **dev-utils** (private) | A stdlib-only Python CLI for the mechanical half of the loops: bus parsing and splicing, handoff tokens, lint, the release ceremony | the mechanics only; the formats stay frozen where the skills define them | "Tooling never merges"; stores no credentials | [case study](../dev-utils/README.md) |
-
-dev-utils is marked "under evaluation" in its own README: `/dev-loop` stays the canonical
-procedure, and the `-utils` skill variants that drive the CLI are being proved in real use.
-The gs-superadmin repo already commits its bus hand-offs through it (see the worked
-example), and since 2026-09-29 its release checklist tags through it too.
-
-## The interlock
-
-One unit of work, an upstream CLI release, moves through all four repos in order, top to
-bottom. Each step's colour says which repo does it, and the yellow steps are where I
-decide. The builder and tester sessions (steps 7 and 9) work in the plugin repo under
-the superfriends `/dev-loop` rules. A feature request skips the audit and joins at step
-6, with kickoff prompts written by the superfriends `handoff-plan` skill.
+## How a vendor release flows through the system
 
 ```mermaid
 flowchart TD
@@ -76,165 +63,167 @@ flowchart TD
   class step1,featureRequest outside;
 ```
 
-Colours: blue is gs-fortress, green is the plugin repo (gs-admin-cli-docs), purple is
-dev-utils, yellow is a person deciding.
+Blue is gs-fortress, green is the plugin repo, purple is dev-utils, yellow is a person deciding.
 
-**Release to audit.** A weekly scheduled run asks one deterministic question: is there a
-new version? Most weeks the answer is no and the run stays silent. When there is one, a
-script installs it into a scratch folder, diffs its command catalog against the version
-the plugin pins, and reads the plugin's measured read surface (`data/reader-shapes.json`,
-a versioned contract the public repo publishes for exactly this audit). Only then does a
-single high-tier agent assess the delta against an impact checklist. It writes a report,
-a change plan with stable IDs (CP-1…CP-n) and a kickoffs file of copy-paste prompts.
+<details>
+<summary><b>How each hand-off works</b></summary>
 
-**Audit to decision.** The ledger records `decision: pending`. The watcher refuses to
-write the decision, and so does the close-out script. Items the audit marks *ungated*
-(advice that's already wrong for users on the new CLI) ship without waiting. Items marked
-*gated* wait for my adopt or defer.
+- **Release → audit.** A weekly run asks one deterministic question: is there a new
+  version? If so, a script installs it in a scratch folder and diffs its command catalog
+  against the version the plugin pins. It also checks the plugin's measured read surface
+  (`data/reader-shapes.json`, a versioned contract the public repo publishes for this
+  audit). Only then does one AI assessment run against an impact checklist. It writes a
+  report, a change plan (CP-1…CP-n) and copy-paste kickoff prompts.
+- **Audit → decision.** The ledger records `decision: pending`; neither the watcher nor the close-out script writes the
+  decision. Items already wrong for users of the new CLI ship ungated. The rest wait for
+  adopt or defer.
+- **Decision → build.** The kickoff is posted to the plugin repo's bus as a work item.
+  Under the superfriends `/dev-loop` rules, a builder session fixes it on a branch.
+  dev-utils mints a handoff token into the bus and the build, and a separate tester
+  session proves it loaded that exact build before judging it. A fix is never verified by
+  the session that wrote it.
+- **Build → release → close-out.** The PR to `dev` is merged (by me, or by a session on my
+  say-so), then a release PR to `main` strips everything dev-only in one commit. The tag
+  goes on only after that merge; `dev-utils release-finish` refuses to tag earlier. Then
+  gs-fortress's `close-out.mjs` reads the merged PR and the tag through `gh` and writes the
+  ledger lines itself. Nobody types the execution record.
 
-**Decision to build.** I read the kickoffs, then paste its emission into the plugin repo's
-dev-loop bus as a finding. From there, the superfriends `/dev-loop` rules run the build:
-a builder session fixes on a branch, dev-utils mints a handoff token into the bus and a
-canary skill, and a separate tester session loads that exact tree, proves the token
-matches, and returns VERIFIED or REOPENED. A fix is never verified by the session that
-wrote it.
+</details>
 
-**Build to release to close-out.** The PR to `dev` is merged (by me, or by a session on my
-say-so), then a release PR to `main`
-that strips everything dev-only in one commit. The tag goes on only after that merge.
-`/dev-loop`'s release step requires it, and since 2026-09-29 the plugin repo's release
-checklist runs `dev-utils release-finish`, which refuses to tag until GitHub reports the
-PR merged. Then gs-fortress's `close-out.mjs` reads the merged PR
-and the tag through `gh`. It writes the ledger lines itself and refuses evidence that
-doesn't match the session map. Nobody types the execution record.
+## The four repos
 
-## Design principles that span the repos
+| Repo | Its job | What it never does |
+|---|---|---|
+| **[gs-admin-cli-docs](https://github.com/BradleyDB/gs-admin-cli-docs)** (public), the gs-superadmin plugin | An AI admin workspace for a live tenant: guarded writes, a change journal, dependency reports, plus a knowledge base generated from the CLI's own manifests | Block a write (the guard *asks*), or hardcode command lists |
+| **[gs-fortress](../gs-fortress/README.md)** | Audits every vendor CLI release and keeps the adopt/defer ledger and the upstream-defect tracker | Upgrade anything, write to the plugin repo, or fill in a decision |
+| **superfriends** (private skills) | The process: the `/dev-loop` builder/tester loop, `handoff-plan` with frozen contracts and session ledgers | Merge. "Merging is the user's call, always" |
+| **[dev-utils](../dev-utils/README.md)** | The loop's bookkeeping as a tested CLI: bus edits, handoff tokens, the release ceremony. Still marked *under evaluation*: the hand-run skills remain the default | Merge, or store credentials |
+
+## Worked example: CLI 1.0.10, from vendor release to shipped fix
+
+```mermaid
+timeline
+  title CLI 1.0.10: vendor release to shipped fix
+  Sep 17 : Vendor ships 1.0.10
+  Sep 21-22 : Audit recommends adopt : Audit fixes its own mistake : Human decides to adopt
+  Sep 26 : Built and tested : One fix sent back, then verified : PR 27 merged, v0.43.0 released
+  Oct 4 : Watch fix ships : Close-out complete
+```
+
+> [!TIP]
+> **The system caught its own mistake.** The first audit read a stale copy of the plugin repo.
+> It was caught the next day, and the fix went past the report: the watcher now fetches
+> the repo straight from GitHub, so a stale copy can't feed an audit again.
+
+I chose this release because it passes every stage and every human gate, its close-out is
+recorded, and it's the first adoption whose PRs are public:
+[PR #27](https://github.com/BradleyDB/gs-admin-cli-docs/pull/27) (6 commits, 39 files),
+[PR #30](https://github.com/BradleyDB/gs-admin-cli-docs/pull/30) and the
+[v0.43.0 release](https://github.com/BradleyDB/gs-admin-cli-docs/releases/tag/v0.43.0).
+
+<details>
+<summary><b>Every step, with its commit or PR</b></summary>
+
+| Date | Stage | Repo | Evidence |
+|---|---|---|---|
+| 2026-09-21 | Audit: auth-only release, catalog delta empty, recommend adopt; change plan CP-1…CP-9 | gs-fortress | commit `b109854` (private) |
+| 2026-09-22 | Self-correction: re-walked against the live repo; one prior claim retracted | gs-fortress | commit `3b74d82` (private) |
+| 2026-09-22 | **Human** decision: adopt | gs-fortress | commit `006ac91` (private) |
+| 2026-09-26 | **Human** posts the finding (F-462) to the bus | gs-admin-cli-docs | [`fb8f9ab`](https://github.com/BradleyDB/gs-admin-cli-docs/commit/fb8f9ab) |
+| 2026-09-26 | Handoff committed by `dev-utils handoff` (token `hb-20260926-01`) | gs-admin-cli-docs + dev-utils | [`75e3fd8`](https://github.com/BradleyDB/gs-admin-cli-docs/commit/75e3fd8) |
+| 2026-09-26 | Tester reopens F-462; re-fixed with roles swapped, then verified | gs-admin-cli-docs | [`128340e`](https://github.com/BradleyDB/gs-admin-cli-docs/commit/128340e) |
+| 2026-09-26 | **Human** merge: CP-1…CP-7, +645/−135 | gs-admin-cli-docs | [PR #27](https://github.com/BradleyDB/gs-admin-cli-docs/pull/27) |
+| 2026-09-26 | Release-gate review fixes | gs-admin-cli-docs | [PR #29](https://github.com/BradleyDB/gs-admin-cli-docs/pull/29) |
+| 2026-09-26 | **Human** release: gs-superadmin 0.43.0 | gs-admin-cli-docs | [PR #30](https://github.com/BradleyDB/gs-admin-cli-docs/pull/30), [tag](https://github.com/BradleyDB/gs-admin-cli-docs/releases/tag/v0.43.0) |
+| 2026-09-26 | Close-out: sessions E1, V1, E2 | gs-fortress | commit `235d2d9` (private) |
+| 2026-10-04 | CP-8: the watch fetches the plugin repo itself | gs-fortress | PR #13, v0.6.0 (private) |
+| 2026-10-04 | Close-out: session F1; 4 of 5 sessions shipped, the vendor memo stays with me | gs-fortress | commit `197e9b3` (private) |
+
+The close-out lines, written by `close-out.mjs`, not typed (abridged):
+
+```text
+2026-09-26 · E1 · CP-2, CP-3, CP-4, CP-5 · PR #27 (merge 6acd1e4) · released v0.43.0
+2026-09-26 · V1 · CP-6                   · PR #27 (merge 6acd1e4) · released v0.43.0
+2026-09-26 · E2 · CP-1, CP-7             · PR #27 (merge 6acd1e4) · released v0.43.0
+2026-10-04 · F1 · CP-8                   · gs-fortress PR #13 (merge 78e2f1b) · released v0.6.0
+```
+
+Each row is reproduced by a command in [proof/trace.md](proof/trace.md).
+
+</details>
+
+## What this demonstrates
+
+| The job | Where this system does it | Evidence |
+|---|---|---|
+| **Decision log** | An adopt/defer ledger that keeps recommendation, decision and execution apart; dated verdicts on every finding | 5 decisions; 91 findings |
+| **Architecture principles** | Six principles, each enforced by a script, hook or test, not a guideline | see below |
+| **Dependency map** | A versioned contract of what the plugin reads from each CLI command, checked on every release; `deps-report` answers "what breaks if I change this field" | public contract + test |
+| **Change control** | Gated vs ungated work, PRs only, a one-commit release strip, tags only after merge, a journal of every tenant write | PR #27 → #30 → v0.43.0 |
+| **Agent evaluation** | A separate AI tester judges every fix against a token-proven build; a fix must name an independent judge; two reopens force a redesign | 84 of 91 findings verified |
+| **Agent escalation** | Agents stop and a person acts at: tenant writes, adopt/defer, kickoffs, merges, frozen-contract changes | the yellow steps above |
+
+<details>
+<summary><b>The six principles, repo by repo</b></summary>
 
 | Principle | gs-admin-cli-docs | gs-fortress | superfriends | dev-utils |
 |---|---|---|---|---|
-| **Machines propose, a person decides** | every catalog-mutating command raises an approval prompt naming the tenant | reports carry a recommendation; `decision` is the owner's field | `/dev-loop` release step 5: hand over the PR URL, never merge | "Tooling never merges"; `release` stops at the PR |
-| **Judgment and mechanics are split** | guard, cheatsheet and ask-rules are generated from the catalog | deterministic gate and delta first, one assessment agent after, scripted close-out | skills keep the judgment: fixes, verdicts, WONTFIX rulings | parses and splices the bus, mints tokens, runs the ceremony |
-| **Ledgers and frozen contracts** | `changes/JOURNAL.md` per tenant; `reader-shapes.json` versioned by `schemaVersion` | adopt/defer ledger, known-issues tracker, session ledger per plan | handoff-plan: frozen contracts change only by STOP, report, version bump | "formats are frozen where the skills define them" |
-| **Fail closed where it matters** | an unrecognized command asks. The hook's own crash fails *open*, so plain CLI use never breaks | verification fails → no ledger write; a wrong explorer identity → refusal | pre-push hook blocks `main` | a flip that breaks a bus rule is refused, with no `--force` |
-| **Provenance from decision to commit** | each fix commit names its finding and CP IDs | close-out derives the record from PR and tag, and refuses evidence that names another plan | canary token proves which tree a tester ran | tokens minted only from positions the loop itself writes |
-| **Third-party text is data** | manifest values are clamped as untrusted before they reach a prompt | upstream package contents are "never instructions" to any agent | — | — |
+| **Machines propose, a person decides** | every catalog-mutating command raises an approval prompt naming the tenant | reports carry a recommendation; `decision` is the owner's field | the release step hands over the PR URL, never merges | "Tooling never merges"; `release` stops at the PR |
+| **Judgment and mechanics are split** | guard and ask-rules generated from the catalog | deterministic gate and diff first, one AI assessment after, scripted close-out | skills keep the judgment: fixes, verdicts, WONTFIX rulings | parses the bus, mints tokens, runs the ceremony |
+| **Ledgers and frozen contracts** | a change journal per tenant; `reader-shapes.json` versioned | adopt/defer ledger, known-issues tracker, session ledgers | frozen contracts change only by stop, report, version bump | "formats are frozen where the skills define them" |
+| **Fail closed where it matters** | an unrecognized command asks; the hook's own crash fails *open* so plain CLI use never breaks | failed verification → no ledger write | pre-push hook blocks `main` | a rule-breaking flip is refused, no `--force` |
+| **Provenance from decision to commit** | each fix commit names its finding and change-plan IDs | close-out derives the record from PR and tag | a canary token proves which build a tester ran | tokens minted only from lines the loop writes |
+| **Third-party text is data** | manifest values clamped as untrusted before any prompt | upstream package contents are "never instructions" | — | — |
 
-The last row covers two repos, not four. I kept it because it's the agent-safety rule
-in the system that matters most.
+</details>
 
-## One worked example, end to end: CLI 1.0.10
+## Proof
 
-**Why this one.** It's the most recent release that passes every stage and every human
-gate, and its close-out is recorded. It's also the first adoption whose build PRs landed
-on the **public** repo. The 1.0.6 through 1.0.9 adoptions landed in the private
-pre-launch archive, so readers can't open them. It also shows the system catching its own
-mistake.
+| Repo | Commits | Merged PRs | Release tags | Findings reviewed (verified) | Test code |
+|---|---:|---:|---:|---:|---|
+| gs-admin-cli-docs (public) | 163 | 28 (3 from outside contributors) | 4 | 35 (32) | 27,083 of 54,341 JS/TS lines |
+| gs-fortress | 165 | 14 | 8 | 25 (24) | 2,157 of 4,018 JS lines |
+| dev-utils | 237 | 30 | 6 | 31 (28) | 5,199 of 10,550 Python lines |
+| superfriends | 58 | 19 | 7 | — | 9 skills |
 
-| Date | Stage | Repo | Artifact | Evidence |
-|---|---|---|---|---|
-| 2026-09-21 | Audit: auth-only release, catalog delta empty, recommend adopt | gs-fortress | `audit-1.0.10.md`, change plan CP-1…CP-9, kickoffs | commit `b109854` (private) |
-| 2026-09-22 | Self-correction: the first walk read a frozen archive clone. Re-walked against the live repo; one prior claim retracted | gs-fortress | same report, patched in place | commit `3b74d82` (private) |
-| 2026-09-22 | **Human** decision: adopt | gs-fortress | `state.json` | commit `006ac91` (private) |
-| 2026-09-26 | **Human** pastes the finding onto the bus | gs-admin-cli-docs | F-462 OPEN | [`fb8f9ab`](https://github.com/BradleyDB/gs-admin-cli-docs/commit/fb8f9ab) |
-| 2026-09-26 | Builder hand-off, committed by `dev-utils handoff` | gs-admin-cli-docs + dev-utils | token `hb-20260926-01` | [`75e3fd8`](https://github.com/BradleyDB/gs-admin-cli-docs/commit/75e3fd8) |
-| 2026-09-26 | Tester verdict: F-462 **reopened**, re-fixed by role inversion, then verified by the builder | gs-admin-cli-docs | bus verdict | [`128340e`](https://github.com/BradleyDB/gs-admin-cli-docs/commit/128340e) |
-| 2026-09-26 | **Human** merge: CP-1…CP-7, 6 commits, 39 files, +645/−135 | gs-admin-cli-docs | PR #27, merge `6acd1e4` | [PR #27](https://github.com/BradleyDB/gs-admin-cli-docs/pull/27) |
-| 2026-09-26 | Release-gate review fixes | gs-admin-cli-docs | PR #29, merge `9f1c606` | [PR #29](https://github.com/BradleyDB/gs-admin-cli-docs/pull/29) |
-| 2026-09-26 | **Human** release: gs-superadmin 0.43.0 | gs-admin-cli-docs | PR #30, tag `v0.43.0` | [PR #30](https://github.com/BradleyDB/gs-admin-cli-docs/pull/30), [release](https://github.com/BradleyDB/gs-admin-cli-docs/releases/tag/v0.43.0) |
-| 2026-09-26 | Close-out: sessions E1, V1, E2 | gs-fortress | derived ledger lines | commit `235d2d9` (private) |
-| 2026-10-04 | CP-8: the watch now fetches the plugin repo itself and never reads a local clone | gs-fortress | PR #13, release v0.6.0 | private |
-| 2026-10-04 | Close-out: session F1. 4 of 5 sessions shipped; the upstream memo stays with me | gs-fortress | `state.json` execution | commit `197e9b3` (private) |
+Plus the plugin's private pre-launch history: 1,311 commits, 154 merged PRs, 23 tags, 446
+findings (434 verified).
 
-Each PR and commit row is reproduced by a command in [proof/trace.md](proof/trace.md).
-The ledger lines below were written by `close-out.mjs`, not typed (abridged, from
-`build-kickoffs-1.0.10.md`):
+<details>
+<summary><b>How the repos reference each other, and the decision log in numbers</b></summary>
 
-```text
-- 2026-09-26 · E1 · CP-2, CP-3, CP-4, CP-5 · `adopt-cli-1-0-10` → PR #27 (merge 6acd1e4) · released v0.43.0 (efef1a5)
-- 2026-09-26 · V1 · CP-6 · `adopt-cli-1-0-10` → PR #27 (merge 6acd1e4) · released v0.43.0 (efef1a5)
-- 2026-09-26 · E2 · CP-1, CP-7 · `adopt-cli-1-0-10` → PR #27 (merge 6acd1e4) · released v0.43.0 (efef1a5)
-- 2026-10-04 · F1 · CP-8 · `explorer-private-fetch` → PR BradleyDB/gs-fortress#13 (merge 78e2f1b) · released v0.6.0 (ff5ff42)
-```
+Tracked files in one repo that name another: gs-fortress → gs-admin-cli-docs **27**,
+gs-admin-cli-docs → gs-fortress **14**, dev-utils → superfriends **6**, superfriends →
+dev-utils **6**, dev-utils → gs-admin-cli-docs **8**. gs-fortress cites the superfriends
+skills by name in 5 files, and the plugin repo names dev-utils in 8 files on `dev`.
 
-The self-correction matters most. The first audit walked the wrong copy of the plugin
-repo: a clone frozen at an older release. The mistake was caught the next day, and the
-fix went past the report. CP-8 changed the watcher so the plugin repo's identity is one fact in one script, and the audit fetches
-that repo's `dev` commit directly. A misnamed clone can no longer feed an audit.
+| Decision log (gs-fortress) | Value |
+|---|---|
+| Vendor releases audited | 5 |
+| Adopt decisions recorded | 5 |
+| Upstream defects tracked | 20, of which 7 resolved upstream |
+| Vendor-ready defect reports sent | 8, none acknowledged yet |
+| Vendor replies on record | 1 (2026-07-30, to the first design memo) |
 
-## Proof across the system
+Every number above, with the command that reproduces it at the exact commit measured:
+[proof/stats.md](proof/stats.md), [proof/stats-archive.md](proof/stats-archive.md),
+[proof/trace.md](proof/trace.md).
 
-| Repo | Commits on `main` | Span | Merged PRs | Release tags | Dev-loop findings (verified) | Tests |
-|---|---|---|---|---|---|---|
-| gs-admin-cli-docs (public) | 163 | 2026-09-09 → 2026-09-28 | 28 (3 from outside contributors) | 4, latest v0.43.3 | 35 (32), on `dev` | 73 files; 27,083 of 54,341 JS/TS lines are tests |
-| its private pre-launch archive | 1,311 | 2026-06-27 → 2026-09-08 | 154 | 23 | 446 (434), on `dev` | 73 files |
-| gs-fortress | 165 | 2026-07-27 → 2026-10-04 | 14 | 8, latest v0.6.0 | 25 (24) | 10 files; 2,157 of 4,018 JS lines are tests |
-| superfriends | 58 | 2026-06-27 → 2026-09-29 | 19 | 7 | (no bus of its own) | 1 file; 9 skills |
-| dev-utils | 237 | 2026-07-22 → 2026-10-04 | 30 | 6, latest v0.5.1 | 31 (28) | 20 files; 5,199 of 10,550 Python lines are tests |
+</details>
 
-**The interlock, measured** (tracked files in one repo that name another, at `origin/main`):
-gs-fortress → gs-admin-cli-docs **27**, gs-admin-cli-docs → gs-fortress **14** (among
-them the read-surface contract and its emitter), dev-utils → superfriends **6**, superfriends →
-dev-utils **6**, dev-utils → gs-admin-cli-docs **8** (its README, its bus and four tests
-shaped on the plugin repo's layout).
-gs-fortress names the superfriends repo in 0 files. It names the skills instead: 5 files
-cite `/dev-loop` or `handoff-plan` (`git -C gs-fortress grep -l -i -e /dev-loop -e
-handoff-plan ff5ff42 -- . | wc -l`). The plugin repo's release strips `dev/`, so its
-dev-utils references live on `dev`: 8 files (`git -C gs-admin-cli-docs grep -l -i dev-utils
-0543ff0 -- . | wc -l`).
+## Trade-offs
 
-**The decision log, measured** (gs-fortress `origin/main`):
-
-| Measure | Value | Reproduce with |
-|---|---|---|
-| Audit reports | 5 | `git -C gs-fortress ls-tree --name-only ff5ff42 ledger/reports/ \| grep -c 'audit-'` |
-| Adopt decisions recorded | 5 | `git -C gs-fortress show ff5ff42:ledger/state.json \| grep -c '"decision": "adopt"'` |
-| Upstream known issues tracked | 20 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -oE '"id": *"KI-[0-9]+"' \| sort -u \| wc -l` |
-| … since resolved upstream | 7 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -c '"status": "resolved"'` |
-| Vendor-ready reports sent | 8 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"sent": "[0-9]'` |
-| Reports with a vendor acknowledgement stamped | 0 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"acknowledged": "[0-9]'` |
-
-One vendor reply is on record, dated 2026-07-30, answering the first memo.
-
-Full tables with a reproduce command beside every number: [proof/stats.md](proof/stats.md)
-(four repos, the cross-reference matrix and the decision-log counts above),
-[proof/stats-archive.md](proof/stats-archive.md) (the pre-launch archive) and
-[proof/trace.md](proof/trace.md). Every command names the exact commit it measured.
-`collect-proof.mjs verify` re-runs every command in each stats file.
-
-## Why the system is the point
-
-Platform engineering and governance for an AI-operated admin surface is the job of a
-CS-ops systems architect or an agentic success lead. This system already does that job
-on a small scale.
-
-| Role duty | Facet | Where the system does it | Evidence |
-|---|---|---|---|
-| Decision log | D, governance | the adopt/defer ledger with recommendation, decision and execution kept apart; per-finding bus entries with dated verdicts | 5 decisions; 25 + 31 + 35 bus findings across three repos |
-| Architecture principles | D | the six principles above, each enforced by a script, hook or test rather than a guideline | close-out refusals; the single-source tripwire test; bus rules 4/5 |
-| Dependency map | D | `reader-shapes.json` maps what the plugin reads from each CLI command; the audit checks every release against it. Inside a tenant, `deps-report` maps what breaks if a field changes | the contract's emitter and test are public; impact-checklist item 11 reads it at audit time |
-| Change control | D | ungated vs gated items, PRs to `dev` only, a one-commit release strip, tags only after a merge, a journal of every approved tenant write | PR #27 → #30 → `v0.43.0` above |
-| Agent evaluation | A, AI-agent design | a separate tester session judges every fix, with a token proving which build it ran; a fix must name a judge independent of its author; a finding reopened twice forces a redesign | F-462 reopened, then verified; 32 of 35 findings verified on the public bus |
-| Agent escalation | A | the agent stops and a human acts at: tenant writes (approval prompt), adopt/defer, pasting kickoffs, every merge, a frozen-contract change, failed verification before a ledger write | the three yellow steps (5, 6, 10) in the diagram; the **Human** rows in the worked example |
-
-Known trade-offs:
-- **CI only where others contribute.** The public plugin repo runs 3 CI workflows on
-  pull requests, and GitHub rulesets on its `main` and `dev` branches require the checks
-  to pass and block force-pushes. The three private repos have one maintainer, so by
-  choice their tests and gates run locally, as a required step of every release, rather
-  than in CI. CI there would add setup (one suite reads a second private repo) and
-  notification noise for little gain.
-- **Branch guards are local.** Server-enforced branch protection on private repos needs a
-  paid GitHub plan, so `main` in each private repo is guarded by a local pre-push hook,
-  not by GitHub. On the public repo, where rulesets are free, GitHub enforces it.
+- **CI only where others contribute.** The public repo runs 3 CI workflows, with GitHub
+  rulesets on `main` and `dev`. The private repos have one maintainer, so their tests and
+  gates run locally as a required release step, by choice.
+- **Branch guards are local** on the private repos: server-enforced protection needs a paid
+  GitHub plan there. On the public repo, GitHub enforces it.
 - **A decision is a commit,** not a signed approval.
 
 ## What's private and why
 
-- **Private:** gs-fortress, the superfriends plugin's repo (gs-admin-superfriends),
-  dev-utils, and the plugin's pre-launch history (gs-admin-cli-docs-private-archive). They
-  are personal infrastructure. They hold machine paths, schedules and session state, and
-  gs-fortress keeps vendor-ready bug reports that may carry tenant identifiers.
-- **Public and checkable:** [gs-admin-cli-docs](https://github.com/BradleyDB/gs-admin-cli-docs),
-  including every PR, commit and release in the worked example.
-- **Private numbers** come with the exact command that produced them. I'm happy to re-run
-  any of them in a live walkthrough.
+gs-fortress, superfriends, dev-utils and the plugin's pre-launch history are private. They
+are personal infrastructure holding machine paths, schedules and session state, and
+gs-fortress keeps vendor bug reports that may carry tenant identifiers. The plugin itself is
+[public](https://github.com/BradleyDB/gs-admin-cli-docs), including every PR in the worked
+example. I'm happy to rerun any private number live in a walkthrough.
