@@ -38,3 +38,7 @@ Every figure sits beside the command that produced it, pinned to the exact commi
 measured, in each page's `proof/` folder. [FACTS.md](FACTS.md) lists the key claims in one
 place, with their evidence. For the public repo you can rerun the commands yourself; for
 the private ones, I'm happy to rerun any of them live in a walkthrough.
+
+---
+
+© 2026 Bradley Bazhaw. All rights reserved; see [LICENSE](LICENSE). You are welcome to read and link to these pages.
