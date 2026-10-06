@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 682" width="880" height="682" role="img" aria-label="gs-fortress flow. 1 a weekly check of the vendor's releases asks: new version? If not, it stops quietly and writes nothing; if the check fails, a loud alert fires after 3 failures in a row. If yes: 2 a mechanical diff of the new version; 3 one AI assessment against the impact checklist; 4 mechanical checks on the assessment, and if any fails it stops and records nothing. If they pass, the ledger records decision pending, and a person decides adopt or defer. On adopt, 5 the plugin repo builds it with builder and tester sessions, and 6 a close-out script records what shipped back in the ledger." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>gs-fortress flow. 1 a weekly check of the vendor's releases asks: new version? If not, it stops quietly and writes nothing; if the check fails, a loud alert fires after 3 failures in a row. If yes: 2 a mechanical diff of the new version; 3 one AI assessment against the impact checklist; 4 mechanical checks on the assessment, and if any fails it stops and records nothing. If they pass, the ledger records decision pending, and a person decides adopt or defer. On adopt, 5 the plugin repo builds it with builder and tester sessions, and 6 a close-out script records what shipped back in the ledger.</title>
+  <rect width="880" height="682" rx="14" fill="#ffffff"/>
+  <text x="30" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="start">What happens when the vendor ships</text>
+  <text x="850" y="30" font-size="13" font-weight="400" fill="#57606a" text-anchor="end">gs-fortress</text>
+  <path d="M445 114 L445 136" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,136 440,127 450,127" fill="#8c959f"/>
+  <path d="M345 161 L206 161" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="206,161 215,156 215,166" fill="#8c959f"/>
+  <path d="M545 161 L660 161" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="660,161 651,166 651,156" fill="#8c959f"/>
+  <path d="M445 186 L445 208" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,208 440,199 450,199" fill="#8c959f"/>
+  <path d="M445 258 L445 280" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,280 440,271 450,271" fill="#8c959f"/>
+  <path d="M445 330 L445 352" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,352 440,343 450,343" fill="#8c959f"/>
+  <path d="M272 377 L206 377" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="206,377 215,372 215,382" fill="#8c959f"/>
+  <path d="M445 402 L445 424" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,424 440,415 450,415" fill="#8c959f"/>
+  <path d="M605 449 L660 449" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="660,449 651,454 651,444" fill="#8c959f"/>
+  <path d="M755 474 L755 479.5 Q755 485 749.5 485 L450.5 485 Q445 485 445 490.5 L445 496" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,496 440,487 450,487" fill="#8c959f"/>
+  <path d="M445 546 L445 568" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="445,568 440,559 450,559" fill="#8c959f"/>
+  <path d="M285 609 L263 609 Q255 609 255 601 L255 457 Q255 449 263 449 L285 449" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="285,449 276,454 276,444" fill="#8c959f"/>
+  <rect x="285" y="64" width="320" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="94" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Weekly check of the vendor's releases</text>
+  <circle cx="285" cy="89" r="12" fill="#2563eb"/>
+  <text x="285" y="93.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <rect x="345" y="136" width="200" height="50" rx="25" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="166" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">New version?</text>
+  <rect x="30" y="136" width="176" height="50" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="118" y="157.5" font-size="13.5" font-weight="600" fill="#57606a" text-anchor="middle">Stop quietly:</text>
+  <text x="118" y="174.5" font-size="13.5" font-weight="400" fill="#57606a" text-anchor="middle">nothing written</text>
+  <rect x="660" y="136" width="190" height="50" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="755" y="157.5" font-size="13.5" font-weight="600" fill="#57606a" text-anchor="middle">Loud alert after</text>
+  <text x="755" y="174.5" font-size="13.5" font-weight="400" fill="#57606a" text-anchor="middle">3 failed checks</text>
+  <rect x="285" y="208" width="320" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="238" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Mechanical diff of the new version</text>
+  <circle cx="285" cy="233" r="12" fill="#2563eb"/>
+  <text x="285" y="237.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <rect x="285" y="280" width="320" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="301.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">One AI assessment against</text>
+  <text x="445" y="318.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">the impact checklist</text>
+  <circle cx="285" cy="305" r="12" fill="#2563eb"/>
+  <text x="285" y="309.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+  <rect x="285" y="352" width="320" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="373.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Mechanical checks</text>
+  <text x="445" y="390.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">on the assessment</text>
+  <circle cx="285" cy="377" r="12" fill="#2563eb"/>
+  <text x="285" y="381.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+  <rect x="30" y="352" width="176" height="50" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="118" y="373.5" font-size="13.5" font-weight="600" fill="#57606a" text-anchor="middle">Stop: nothing</text>
+  <text x="118" y="390.5" font-size="13.5" font-weight="400" fill="#57606a" text-anchor="middle">recorded</text>
+  <rect x="285" y="424" width="320" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="454" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Ledger: decision pending</text>
+  <rect x="660" y="424" width="190" height="50" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="755" y="454" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Adopt or defer?</text>
+  <rect x="285" y="496" width="320" height="50" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="445" y="517.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Plugin repo builds it:</text>
+  <text x="445" y="534.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">builder and tester sessions</text>
+  <circle cx="285" cy="521" r="12" fill="#16a34a"/>
+  <text x="285" y="525.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+  <rect x="285" y="568" width="320" height="50" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="445" y="589.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Close-out script records</text>
+  <text x="445" y="606.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">what shipped</text>
+  <circle cx="285" cy="593" r="12" fill="#2563eb"/>
+  <text x="285" y="597.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">6</text>
+  <rect x="260.9" y="151" width="29.2" height="20" rx="10" fill="#ffffff"/><text x="275.5" y="165" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">no</text>
+  <rect x="554.9" y="151" width="95.19999999999999" height="20" rx="10" fill="#ffffff"/><text x="602.5" y="165" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">check failed</text>
+  <rect x="427.1" y="187" width="35.8" height="20" rx="10" fill="#ffffff"/><text x="445" y="201" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">yes</text>
+  <rect x="214.5" y="367" width="49" height="20" rx="10" fill="#ffffff"/><text x="239" y="381" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">fails</text>
+  <rect x="410.6" y="403" width="68.8" height="20" rx="10" fill="#ffffff"/><text x="445" y="417" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">all pass</text>
+  <rect x="575.5" y="475" width="49" height="20" rx="10" fill="#ffffff"/><text x="600" y="489" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">adopt</text>
+  <rect x="387.5" y="547" width="115" height="20" rx="10" fill="#ffffff"/><text x="445" y="561" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">merged PR + tag</text>
+  <rect x="30" y="649" width="14" height="14" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="51" y="660.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">gs-fortress</text>
+  <rect x="150.9" y="649" width="14" height="14" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="171.9" y="660.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">plugin repo</text>
+  <rect x="271.8" y="649" width="14" height="14" rx="4" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="292.8" y="660.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">a person</text>
+  <rect x="372" y="649" width="14" height="14" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <text x="393" y="660.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">exit</text>
+</svg>

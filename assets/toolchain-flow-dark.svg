@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 932" width="880" height="932" role="img" aria-label="Flow of one vendor CLI release through the gs-admin toolchain in 12 numbered steps. Machines: 1 the vendor publishes a release; 2 gs-fortress's weekly check spots it; 3 a mechanical diff, then one AI assessment; 4 an audit report, change plan and kickoff prompts. A person: 5 adopt or defer (a deferral is recorded, nothing built); 6 posts the kickoff to the plugin repo as a work item (a feature request can enter here too). Machines: 7 a builder session makes the change; 8 dev-utils hands the build over with a token; 9 a tester session verifies that exact build, or sends it back to step 7. A person: 10 merges the PR and the release PR, or has a session do it. Machines: 11 dev-utils tags the release only after the merge; 12 gs-fortress's close-out records the PR and tag in the ledger." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Flow of one vendor CLI release through the gs-admin toolchain in 12 numbered steps. Machines: 1 the vendor publishes a release; 2 gs-fortress's weekly check spots it; 3 a mechanical diff, then one AI assessment; 4 an audit report, change plan and kickoff prompts. A person: 5 adopt or defer (a deferral is recorded, nothing built); 6 posts the kickoff to the plugin repo as a work item (a feature request can enter here too). Machines: 7 a builder session makes the change; 8 dev-utils hands the build over with a token; 9 a tester session verifies that exact build, or sends it back to step 7. A person: 10 merges the PR and the release PR, or has a session do it. Machines: 11 dev-utils tags the release only after the merge; 12 gs-fortress's close-out records the PR and tag in the ledger.</title>
+  <rect width="880" height="932" rx="14" fill="#0d1117"/>
+  <text x="30" y="30" font-size="17" font-weight="700" fill="#e6edf3" text-anchor="start">How one vendor release moves through four repos</text>
+  <text x="850" y="30" font-size="13" font-weight="400" fill="#9198a1" text-anchor="end">gs-admin toolchain</text>
+  <text x="80" y="66" font-size="11" font-weight="700" fill="#9198a1" text-anchor="start" letter-spacing="1.5">MACHINES PROPOSE</text>
+  <text x="530" y="66" font-size="11" font-weight="700" fill="#9198a1" text-anchor="start" letter-spacing="1.5">A PERSON DECIDES</text>
+  <path d="M270 142 L270 158" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,158 265,149 275,149" fill="#6e7681"/>
+  <path d="M270 208 L270 224" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,224 265,215 275,215" fill="#6e7681"/>
+  <path d="M270 274 L270 290" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,290 265,281 275,281" fill="#6e7681"/>
+  <path d="M270 340 L270 344 Q270 348 274 348 L676 348 Q680 348 680 352 L680 356" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="680,356 675,347 685,347" fill="#6e7681"/>
+  <path d="M530 381 L278 381 Q270 381 270 389 L270 422" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,422 265,413 275,413" fill="#6e7681"/>
+  <path d="M680 406 L680 422" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="680,422 675,413 685,413" fill="#6e7681"/>
+  <path d="M680 472 L680 476 Q680 480 676 480 L274 480 Q270 480 270 484 L270 488" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,488 265,479 275,479" fill="#6e7681"/>
+  <path d="M530 513 L460 513" fill="none" stroke="#6e7681" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="460,513 469,508 469,518" fill="#6e7681"/>
+  <path d="M270 538 L270 554" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,554 265,545 275,545" fill="#6e7681"/>
+  <path d="M270 604 L270 620" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,620 265,611 275,611" fill="#6e7681"/>
+  <path d="M80 661 L52 661 Q44 661 44 653 L44 537 Q44 529 52 529 L80 529" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="80,529 71,534 71,524" fill="#6e7681"/>
+  <path d="M270 670 L270 674 Q270 678 274 678 L676 678 Q680 678 680 682 L680 686" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="680,686 675,677 685,677" fill="#6e7681"/>
+  <path d="M680 736 L680 740 Q680 744 676 744 L274 744 Q270 744 270 748 L270 752" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,752 265,743 275,743" fill="#6e7681"/>
+  <path d="M270 802 L270 818" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="270,818 265,809 275,809" fill="#6e7681"/>
+  <rect x="80" y="92" width="380" height="50" rx="10" fill="#161b22" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="270" y="122" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">The vendor publishes a new CLI release</text>
+  <circle cx="80" cy="117" r="12" fill="#6e7681"/>
+  <text x="80" y="121.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">1</text>
+  <rect x="80" y="158" width="380" height="50" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="270" y="188" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">gs-fortress: the weekly check spots it</text>
+  <circle cx="80" cy="183" r="12" fill="#60a5fa"/>
+  <text x="80" y="187.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">2</text>
+  <rect x="80" y="224" width="380" height="50" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="270" y="245.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">gs-fortress: mechanical diff,</text>
+  <text x="270" y="262.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">then one AI assessment</text>
+  <circle cx="80" cy="249" r="12" fill="#60a5fa"/>
+  <text x="80" y="253.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">3</text>
+  <rect x="80" y="290" width="380" height="50" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="270" y="311.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">gs-fortress: audit report, change plan</text>
+  <text x="270" y="328.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">and kickoff prompts</text>
+  <circle cx="80" cy="315" r="12" fill="#60a5fa"/>
+  <text x="80" y="319.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">4</text>
+  <rect x="530" y="356" width="300" height="50" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="680" y="386" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Adopt or defer?</text>
+  <circle cx="530" cy="381" r="12" fill="#fbbf24"/>
+  <text x="530" y="385.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">5</text>
+  <rect x="80" y="422" width="380" height="50" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="270" y="443.5" font-size="13.5" font-weight="600" fill="#9198a1" text-anchor="middle">Deferred: recorded in the ledger,</text>
+  <text x="270" y="460.5" font-size="13.5" font-weight="400" fill="#9198a1" text-anchor="middle">nothing built</text>
+  <rect x="530" y="422" width="300" height="50" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="680" y="443.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Posts the kickoff to the plugin</text>
+  <text x="680" y="460.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">repo as a work item</text>
+  <circle cx="530" cy="447" r="12" fill="#fbbf24"/>
+  <text x="530" y="451.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">6</text>
+  <rect x="530" y="488" width="300" height="50" rx="25" fill="#161b22" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="680" y="509.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Or: a feature request</text>
+  <text x="680" y="526.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">kickoffs from handoff-plan</text>
+  <rect x="80" y="488" width="380" height="50" rx="10" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="270" y="518" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Builder session makes the change</text>
+  <circle cx="80" cy="513" r="12" fill="#4ade80"/>
+  <text x="80" y="517.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">7</text>
+  <rect x="80" y="554" width="380" height="50" rx="10" fill="#1e1338" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="270" y="575.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">dev-utils hands the build over</text>
+  <text x="270" y="592.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">with a provenance token</text>
+  <circle cx="80" cy="579" r="12" fill="#a78bfa"/>
+  <text x="80" y="583.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">8</text>
+  <rect x="80" y="620" width="380" height="50" rx="10" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="270" y="650" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Tester session verifies that exact build</text>
+  <circle cx="80" cy="645" r="12" fill="#4ade80"/>
+  <text x="80" y="649.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">9</text>
+  <rect x="530" y="686" width="300" height="50" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="680" y="707.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Merges the PR, then the release</text>
+  <text x="680" y="724.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">(or has a session do it)</text>
+  <circle cx="530" cy="711" r="12" fill="#fbbf24"/>
+  <text x="530" y="715.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">10</text>
+  <rect x="80" y="752" width="380" height="50" rx="10" fill="#1e1338" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="270" y="773.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">dev-utils tags the release,</text>
+  <text x="270" y="790.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">only after the merge</text>
+  <circle cx="80" cy="777" r="12" fill="#a78bfa"/>
+  <text x="80" y="781.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">11</text>
+  <rect x="80" y="818" width="380" height="50" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="270" y="839.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">gs-fortress: close-out records</text>
+  <text x="270" y="856.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">the PR and tag in the ledger</text>
+  <circle cx="80" cy="843" r="12" fill="#60a5fa"/>
+  <text x="80" y="847.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">12</text>
+  <rect x="375.5" y="371" width="49" height="20" rx="10" fill="#0d1117"/><text x="400" y="385" font-size="12" font-weight="600" fill="#9198a1" text-anchor="middle">defer</text>
+  <rect x="655.5" y="404" width="49" height="20" rx="10" fill="#0d1117"/><text x="680" y="418" font-size="12" font-weight="600" fill="#9198a1" text-anchor="middle">adopt</text>
+  <rect x="6.299999999999997" y="585" width="75.4" height="20" rx="10" fill="#0d1117"/><text x="44" y="599" font-size="12" font-weight="600" fill="#9198a1" text-anchor="middle">sent back</text>
+  <rect x="440.6" y="668" width="68.8" height="20" rx="10" fill="#0d1117"/><text x="475" y="682" font-size="12" font-weight="600" fill="#9198a1" text-anchor="middle">verified</text>
+  <rect x="30" y="899" width="14" height="14" rx="4" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="51" y="910.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">gs-fortress</text>
+  <rect x="150.9" y="899" width="14" height="14" rx="4" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="171.9" y="910.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">plugin repo sessions</text>
+  <rect x="333.9" y="899" width="14" height="14" rx="4" fill="#1e1338" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="354.9" y="910.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">dev-utils</text>
+  <rect x="441" y="899" width="14" height="14" rx="4" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="462" y="910.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">a person</text>
+  <rect x="541.2" y="899" width="14" height="14" rx="4" fill="#161b22" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="562.2" y="910.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">outside input</text>
+  <rect x="675.9000000000001" y="899" width="14" height="14" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <text x="696.9000000000001" y="910.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">exit</text>
+</svg>

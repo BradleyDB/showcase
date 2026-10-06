@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 410" width="880" height="410" role="img" aria-label="Timeline of CLI 1.0.10. Sep 17: the vendor ships. Sep 21: the audit maps the impact and recommends adopting. Sep 22: the audit catches its own error and re-runs, and a person decides to adopt. Sep 26: AI sessions build and test it, a tester sends a fix back, and a person approves release v0.43.0. Oct 4: the root cause of the Sep 22 error is fixed. 9 days from vendor release to a safely shipped fix, with 2 errors caught before release." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Timeline of CLI 1.0.10. Sep 17: the vendor ships. Sep 21: the audit maps the impact and recommends adopting. Sep 22: the audit catches its own error and re-runs, and a person decides to adopt. Sep 26: AI sessions build and test it, a tester sends a fix back, and a person approves release v0.43.0. Oct 4: the root cause of the Sep 22 error is fixed. 9 days from vendor release to a safely shipped fix, with 2 errors caught before release.</title>
+  <rect width="880" height="410" rx="14" fill="#0d1117"/>
+  <text x="30" y="30" font-size="17" font-weight="700" fill="#e6edf3" text-anchor="start">One vendor release, end to end</text>
+  <text x="850" y="30" font-size="13" font-weight="400" fill="#9198a1" text-anchor="end">CLI 1.0.10 · gs-admin toolchain</text>
+  <text x="30" y="62" font-size="12" font-weight="700" fill="#60a5fa" text-anchor="start" letter-spacing="1.5">DETECT</text>
+  <rect x="30" y="70" width="325" height="4" rx="2" fill="#60a5fa"/>
+  <text x="360" y="62" font-size="12" font-weight="700" fill="#fbbf24" text-anchor="start" letter-spacing="1.5">DECIDE</text>
+  <rect x="360" y="70" width="160" height="4" rx="2" fill="#fbbf24"/>
+  <text x="525" y="62" font-size="12" font-weight="700" fill="#4ade80" text-anchor="start" letter-spacing="1.5">DELIVER</text>
+  <rect x="525" y="70" width="160" height="4" rx="2" fill="#4ade80"/>
+  <text x="690" y="62" font-size="12" font-weight="700" fill="#a78bfa" text-anchor="start" letter-spacing="1.5">LEARN</text>
+  <rect x="690" y="70" width="160" height="4" rx="2" fill="#a78bfa"/>
+  <text x="30" y="96" font-size="11" font-weight="700" fill="#9198a1" text-anchor="start" letter-spacing="1.5">MACHINES PROPOSE</text>
+  <text x="30" y="268" font-size="11" font-weight="700" fill="#9198a1" text-anchor="start" letter-spacing="1.5">A PERSON DECIDES</text>
+  <line x1="30" y1="226" x2="854" y2="226" stroke="#6e7681" stroke-width="2"/>
+  <polygon points="862,226 852,220 852,232" fill="#6e7681"/>
+  <line x1="110" y1="182" x2="110" y2="214" stroke="#6e7681" stroke-width="1.5"/>
+  <line x1="275" y1="182" x2="275" y2="214" stroke="#6e7681" stroke-width="1.5"/>
+  <line x1="440" y1="182" x2="440" y2="214" stroke="#6e7681" stroke-width="1.5"/>
+  <line x1="605" y1="182" x2="605" y2="214" stroke="#6e7681" stroke-width="1.5"/>
+  <line x1="770" y1="182" x2="770" y2="214" stroke="#6e7681" stroke-width="1.5"/>
+  <line x1="440" y1="238" x2="440" y2="276" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="605" y1="238" x2="605" y2="276" stroke="#fbbf24" stroke-width="1.5"/>
+  <rect x="76" y="214" width="68" height="24" rx="12" fill="#0d1117" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="110" y="231" font-size="12.5" font-weight="700" fill="#e6edf3" text-anchor="middle">Sep 17</text>
+  <rect x="241" y="214" width="68" height="24" rx="12" fill="#0d1117" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="275" y="231" font-size="12.5" font-weight="700" fill="#e6edf3" text-anchor="middle">Sep 21</text>
+  <rect x="406" y="214" width="68" height="24" rx="12" fill="#0d1117" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="440" y="231" font-size="12.5" font-weight="700" fill="#e6edf3" text-anchor="middle">Sep 22</text>
+  <rect x="571" y="214" width="68" height="24" rx="12" fill="#0d1117" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="605" y="231" font-size="12.5" font-weight="700" fill="#e6edf3" text-anchor="middle">Sep 26</text>
+  <rect x="736" y="214" width="68" height="24" rx="12" fill="#0d1117" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="770" y="231" font-size="12.5" font-weight="700" fill="#e6edf3" text-anchor="middle">Oct 4</text>
+  <rect x="30" y="106" width="160" height="76" rx="10" fill="#161b22" stroke="#6e7681" stroke-width="1.5"/>
+  <text x="110" y="140" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Vendor ships</text>
+  <text x="110" y="158" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">CLI 1.0.10</text>
+  <rect x="195" y="106" width="160" height="76" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="275" y="140" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Audit maps the impact,</text>
+  <text x="275" y="158" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">recommends adopting</text>
+  <rect x="360" y="106" width="160" height="76" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="440" y="140" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Audit catches its</text>
+  <text x="440" y="158" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">own error, re-runs</text>
+  <rect x="458" y="96" width="68" height="20" rx="10" fill="#fb7185"/>
+  <text x="492" y="110" font-size="11" font-weight="700" fill="#1a0509" text-anchor="middle" letter-spacing="1.2">CAUGHT</text>
+  <rect x="525" y="106" width="160" height="76" rx="10" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="605" y="140" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">AI builds and tests it;</text>
+  <text x="605" y="158" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">tester sends a fix back</text>
+  <rect x="623" y="96" width="68" height="20" rx="10" fill="#fb7185"/>
+  <text x="657" y="110" font-size="11" font-weight="700" fill="#1a0509" text-anchor="middle" letter-spacing="1.2">CAUGHT</text>
+  <rect x="690" y="106" width="160" height="76" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="770" y="140" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Root cause of the</text>
+  <text x="770" y="158" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">Sep 22 error fixed</text>
+  <rect x="360" y="276" width="160" height="58" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="440" y="310" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Decides: adopt</text>
+  <rect x="525" y="276" width="160" height="58" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="605" y="301" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Approves the release</text>
+  <text x="605" y="319" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">v0.43.0</text>
+  <path d="M110 358 V366 H605 V358" fill="none" stroke="#e6edf3" stroke-width="1.5"/>
+  <text x="357.5" y="390" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">9 days from vendor release to a safely shipped fix</text>
+  <text x="770" y="370" font-size="15" font-weight="700" fill="#fb7185" text-anchor="middle">2 errors caught</text>
+  <text x="770" y="390" font-size="13.5" font-weight="400" fill="#fb7185" text-anchor="middle">before release</text>
+</svg>

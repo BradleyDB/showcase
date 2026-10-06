@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 782" width="880" height="782" role="img" aria-label="dev-utils loop in 9 numbered steps. 1 a tester session logs a finding. 2 a person sets the round: which findings, in what order. 3 a builder session fixes it, naming how the fix will be judged. 4 dev-utils checks the rules, and refuses a rule-breaking fix back to step 3. 5 dev-utils hands the build to the tester with a token. 6 the tester session verifies that exact build, or sends it back to step 3; a person steps in when needed to send a fix back, defer it or rule it WONTFIX. 7 the dev-utils release runs the gates and opens the PR. 8 a person merges the PR, or has a session merge it. 9 dev-utils tags the release, only after the merge." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>dev-utils loop in 9 numbered steps. 1 a tester session logs a finding. 2 a person sets the round: which findings, in what order. 3 a builder session fixes it, naming how the fix will be judged. 4 dev-utils checks the rules, and refuses a rule-breaking fix back to step 3. 5 dev-utils hands the build to the tester with a token. 6 the tester session verifies that exact build, or sends it back to step 3; a person steps in when needed to send a fix back, defer it or rule it WONTFIX. 7 the dev-utils release runs the gates and opens the PR. 8 a person merges the PR, or has a session merge it. 9 dev-utils tags the release, only after the merge.</title>
+  <rect width="880" height="782" rx="14" fill="#ffffff"/>
+  <text x="30" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="start">How a fix gets from finding to release</text>
+  <text x="850" y="30" font-size="13" font-weight="400" fill="#57606a" text-anchor="end">dev-utils</text>
+  <text x="270" y="66" font-size="11" font-weight="700" fill="#57606a" text-anchor="start" letter-spacing="1.5">MACHINES PROPOSE</text>
+  <text x="630" y="66" font-size="11" font-weight="700" fill="#57606a" text-anchor="start" letter-spacing="1.5">A PERSON DECIDES</text>
+  <path d="M440 142 L440 147.5 Q440 153 445.5 153 L739.5 153 Q745 153 745 158.5 L745 164" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="745,164 740,155 750,155" fill="#8c959f"/>
+  <path d="M745 214 L745 219.5 Q745 225 739.5 225 L445.5 225 Q440 225 440 230.5 L440 236" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="440,236 435,227 445,227" fill="#8c959f"/>
+  <path d="M440 286 L440 308" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="440,308 435,299 445,299" fill="#8c959f"/>
+  <path d="M270 349 L243 349 Q235 349 235 341 L235 285 Q235 277 243 277 L270 277" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="270,277 261,282 261,272" fill="#8c959f"/>
+  <path d="M440 358 L440 380" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="440,380 435,371 445,371" fill="#8c959f"/>
+  <path d="M440 430 L440 452" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="440,452 435,443 445,443" fill="#8c959f"/>
+  <path d="M270 493 L173 493 Q165 493 165 485 L165 253 Q165 245 173 245 L270 245" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="270,245 261,250 261,240" fill="#8c959f"/>
+  <path d="M610 477 L630 477" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="630,477 621,482 621,472" fill="#d97706"/>
+  <path d="M745 452 L745 269 Q745 261 737 261 L610 261" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="610,261 619,256 619,266" fill="#d97706"/>
+  <path d="M440 502 L440 524" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="440,524 435,515 445,515" fill="#8c959f"/>
+  <path d="M440 574 L440 579.5 Q440 585 445.5 585 L739.5 585 Q745 585 745 590.5 L745 596" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="745,596 740,587 750,587" fill="#8c959f"/>
+  <path d="M745 646 L745 651.5 Q745 657 739.5 657 L445.5 657 Q440 657 440 662.5 L440 668" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="440,668 435,659 445,659" fill="#8c959f"/>
+  <rect x="270" y="92" width="340" height="50" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="440" y="122" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Tester session logs a finding</text>
+  <circle cx="270" cy="117" r="12" fill="#16a34a"/>
+  <text x="270" y="121.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <rect x="630" y="164" width="230" height="50" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="745" y="185.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Sets the round: which</text>
+  <text x="745" y="202.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">findings, in what order</text>
+  <circle cx="630" cy="189" r="12" fill="#d97706"/>
+  <text x="630" y="193.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <rect x="270" y="236" width="340" height="50" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="440" y="257.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Builder session fixes it, naming</text>
+  <text x="440" y="274.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">how the fix will be judged</text>
+  <circle cx="270" cy="261" r="12" fill="#16a34a"/>
+  <text x="270" y="265.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+  <rect x="270" y="308" width="340" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="440" y="338" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">dev-utils checks the rules</text>
+  <circle cx="270" cy="333" r="12" fill="#7c3aed"/>
+  <text x="270" y="337.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+  <rect x="270" y="380" width="340" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="440" y="401.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">dev-utils hands the build</text>
+  <text x="440" y="418.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">to the tester with a token</text>
+  <circle cx="270" cy="405" r="12" fill="#7c3aed"/>
+  <text x="270" y="409.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+  <rect x="270" y="452" width="340" height="50" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="440" y="473.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Tester session verifies</text>
+  <text x="440" y="490.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">that exact build</text>
+  <circle cx="270" cy="477" r="12" fill="#16a34a"/>
+  <text x="270" y="481.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">6</text>
+  <rect x="630" y="452" width="230" height="50" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="745" y="473.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Steps in when needed:</text>
+  <text x="745" y="490.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">send back, defer, WONTFIX</text>
+  <rect x="270" y="524" width="340" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="440" y="545.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">dev-utils release: runs</text>
+  <text x="440" y="562.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">the gates, opens the PR</text>
+  <circle cx="270" cy="549" r="12" fill="#7c3aed"/>
+  <text x="270" y="553.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">7</text>
+  <rect x="630" y="596" width="230" height="50" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="745" y="617.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Merges the PR, or has</text>
+  <text x="745" y="634.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">a session merge it</text>
+  <circle cx="630" cy="621" r="12" fill="#d97706"/>
+  <text x="630" y="625.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">8</text>
+  <rect x="270" y="668" width="340" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="440" y="689.5" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">dev-utils tags the release,</text>
+  <text x="440" y="706.5" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">only after the merge</text>
+  <circle cx="270" cy="693" r="12" fill="#7c3aed"/>
+  <text x="270" y="697.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">9</text>
+  <rect x="203.9" y="303" width="62.199999999999996" height="20" rx="10" fill="#ffffff"/><text x="235" y="317" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">refused</text>
+  <rect x="412.2" y="359" width="55.599999999999994" height="20" rx="10" fill="#ffffff"/><text x="440" y="373" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">passes</text>
+  <rect x="127.3" y="359" width="75.4" height="20" rx="10" fill="#ffffff"/><text x="165" y="373" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">sent back</text>
+  <rect x="707.3" y="346.5" width="75.4" height="20" rx="10" fill="#ffffff"/><text x="745" y="360.5" font-size="12" font-weight="600" fill="#d97706" text-anchor="middle">send back</text>
+  <rect x="405.6" y="503" width="68.8" height="20" rx="10" fill="#ffffff"/><text x="440" y="517" font-size="12" font-weight="600" fill="#57606a" text-anchor="middle">verified</text>
+  <rect x="30" y="749" width="14" height="14" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="51" y="760.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">AI session</text>
+  <rect x="144" y="749" width="14" height="14" rx="4" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="165" y="760.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">dev-utils</text>
+  <rect x="251.1" y="749" width="14" height="14" rx="4" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="272.1" y="760.5" font-size="12.5" font-weight="400" fill="#57606a" text-anchor="start">a person</text>
+</svg>

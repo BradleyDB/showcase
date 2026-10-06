@@ -30,37 +30,10 @@ build loop. Private repository · shipped (v0.5.1) · measured 2026-10-05.
 
 ## How it works
 
-```mermaid
-flowchart TD
-  logFinding["1. Tester session logs a finding"]
-  setRound{{"2. Human sets the round: which findings to fix, in what order"}}
-  fix["3. Builder session fixes it and marks it FIXED, naming how the fix will be judged"]
-  rules["4. dev-utils checks the rules"]
-  handoff["5. dev-utils hands the build to the tester with a token"]
-  verify["6. Tester session verifies that exact build"]
-  steer{{"Human steps in when needed: sends a fix back, defers a finding, rules it WONTFIX, or changes its severity"}}
-  release["7. dev-utils release: runs the gates and opens the PR"]
-  merge{{"8. Human merges the PR, or has a session merge it"}}
-  tag["9. dev-utils tags the release, only after the merge"]
-
-  logFinding --> setRound --> fix --> rules
-  rules -->|"rule broken: refused"| fix
-  rules -->|passes| handoff --> verify
-  verify -->|"sent back"| fix
-  verify -.-> steer
-  steer -.->|"send back"| fix
-  verify -->|"verified"| release --> merge --> tag
-
-  classDef session fill:#dcfce7,stroke:#15803d,color:#111;
-  classDef devutils fill:#ede9fe,stroke:#6d28d9,color:#111;
-  classDef human fill:#fde68a,stroke:#b45309,color:#111;
-  class logFinding,fix,verify session;
-  class rules,handoff,release,tag devutils;
-  class setRound,steer,merge human;
-```
-
-Green is an AI session, purple is dev-utils, yellow is a person. Dotted lines are where a
-person steps in when a round needs it, not on every finding.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/devutils-loop-dark.svg">
+  <img alt="dev-utils loop in 9 numbered steps. 1 a tester session logs a finding. 2 a person sets the round: which findings, in what order. 3 a builder session fixes it, naming how the fix will be judged. 4 dev-utils checks the rules, and refuses a rule-breaking fix back to step 3. 5 dev-utils hands the build to the tester with a token. 6 the tester session verifies that exact build, or sends it back to step 3; a person steps in when needed to send a fix back, defer it or rule it WONTFIX. 7 the dev-utils release runs the gates and opens the PR. 8 a person merges the PR, or has a session merge it. 9 dev-utils tags the release, only after the merge." src="../assets/devutils-loop-light.svg">
+</picture>
 
 <details>
 <summary><b>The loop, step by step</b></summary>

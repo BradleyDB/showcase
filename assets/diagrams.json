@@ -1,0 +1,158 @@
+{
+  "_comment": "Source for every diagram in this showcase. Regenerate the SVGs with the repo-showcase skill: node <skill>/scripts/render-diagrams.mjs assets/diagrams.json. Never hand-edit the SVGs.",
+  "diagrams": [
+    {
+      "id": "toolchain-flow",
+      "type": "flow",
+      "title": "How one vendor release moves through four repos",
+      "subtitle": "gs-admin toolchain",
+      "aria": "Flow of one vendor CLI release through the gs-admin toolchain in 12 numbered steps. Machines: 1 the vendor publishes a release; 2 gs-fortress's weekly check spots it; 3 a mechanical diff, then one AI assessment; 4 an audit report, change plan and kickoff prompts. A person: 5 adopt or defer (a deferral is recorded, nothing built); 6 posts the kickoff to the plugin repo as a work item (a feature request can enter here too). Machines: 7 a builder session makes the change; 8 dev-utils hands the build over with a token; 9 a tester session verifies that exact build, or sends it back to step 7. A person: 10 merges the PR and the release PR, or has a session do it. Machines: 11 dev-utils tags the release only after the merge; 12 gs-fortress's close-out records the PR and tag in the ledger.",
+      "rowHeight": 66,
+      "columns": [
+        { "x": 270, "w": 380, "header": "MACHINES PROPOSE" },
+        { "x": 680, "w": 300, "header": "A PERSON DECIDES" }
+      ],
+      "nodes": [
+        { "id": "s1", "col": 0, "row": 0, "color": "grey", "num": 1, "lines": ["The vendor publishes a new CLI release"] },
+        { "id": "s2", "col": 0, "row": 1, "color": "blue", "num": 2, "lines": ["gs-fortress: the weekly check spots it"] },
+        { "id": "s3", "col": 0, "row": 2, "color": "blue", "num": 3, "lines": ["gs-fortress: mechanical diff,", "then one AI assessment"] },
+        { "id": "s4", "col": 0, "row": 3, "color": "blue", "num": 4, "lines": ["gs-fortress: audit report, change plan", "and kickoff prompts"] },
+        { "id": "s5", "col": 1, "row": 4, "color": "amber", "num": 5, "lines": ["Adopt or defer?"] },
+        { "id": "deferred", "col": 0, "row": 5, "color": "stop", "lines": ["Deferred: recorded in the ledger,", "nothing built"] },
+        { "id": "s6", "col": 1, "row": 5, "color": "amber", "num": 6, "lines": ["Posts the kickoff to the plugin", "repo as a work item"] },
+        { "id": "fr", "col": 1, "row": 6, "color": "grey", "shape": "pill", "lines": ["Or: a feature request", "kickoffs from handoff-plan"] },
+        { "id": "s7", "col": 0, "row": 6, "color": "green", "num": 7, "lines": ["Builder session makes the change"] },
+        { "id": "s8", "col": 0, "row": 7, "color": "purple", "num": 8, "lines": ["dev-utils hands the build over", "with a provenance token"] },
+        { "id": "s9", "col": 0, "row": 8, "color": "green", "num": 9, "lines": ["Tester session verifies that exact build"] },
+        { "id": "s10", "col": 1, "row": 9, "color": "amber", "num": 10, "lines": ["Merges the PR, then the release", "(or has a session do it)"] },
+        { "id": "s11", "col": 0, "row": 10, "color": "purple", "num": 11, "lines": ["dev-utils tags the release,", "only after the merge"] },
+        { "id": "s12", "col": 0, "row": 11, "color": "blue", "num": 12, "lines": ["gs-fortress: close-out records", "the PR and tag in the ledger"] }
+      ],
+      "edges": [
+        { "from": "s1", "to": "s2" },
+        { "from": "s2", "to": "s3" },
+        { "from": "s3", "to": "s4" },
+        { "from": "s4", "to": "s5" },
+        { "from": "s5", "to": "deferred", "route": "sideDown", "label": "defer" },
+        { "from": "s5", "to": "s6", "label": "adopt" },
+        { "from": "s6", "to": "s7" },
+        { "from": "fr", "to": "s7", "route": "side", "dashed": true },
+        { "from": "s7", "to": "s8" },
+        { "from": "s8", "to": "s9" },
+        { "from": "s9", "to": "s7", "route": "loop", "x": 44, "label": "sent back" },
+        { "from": "s9", "to": "s10", "label": "verified" },
+        { "from": "s10", "to": "s11" },
+        { "from": "s11", "to": "s12" }
+      ],
+      "legend": { "blue": "gs-fortress", "green": "plugin repo sessions", "purple": "dev-utils", "amber": "a person", "grey": "outside input", "stop": "exit" }
+    },
+    {
+      "id": "worked-example",
+      "type": "timeline",
+      "title": "One vendor release, end to end",
+      "subtitle": "CLI 1.0.10 · gs-admin toolchain",
+      "aria": "Timeline of CLI 1.0.10. Sep 17: the vendor ships. Sep 21: the audit maps the impact and recommends adopting. Sep 22: the audit catches its own error and re-runs, and a person decides to adopt. Sep 26: AI sessions build and test it, a tester sends a fix back, and a person approves release v0.43.0. Oct 4: the root cause of the Sep 22 error is fixed. 9 days from vendor release to a safely shipped fix, with 2 errors caught before release.",
+      "dates": ["Sep 17", "Sep 21", "Sep 22", "Sep 26", "Oct 4"],
+      "upperLabel": "MACHINES PROPOSE",
+      "lowerLabel": "A PERSON DECIDES",
+      "phases": [
+        { "name": "Detect", "from": 0, "to": 1, "color": "blue" },
+        { "name": "Decide", "from": 2, "to": 2, "color": "amber" },
+        { "name": "Deliver", "from": 3, "to": 3, "color": "green" },
+        { "name": "Learn", "from": 4, "to": 4, "color": "purple" }
+      ],
+      "upper": [
+        { "col": 0, "color": "grey", "lines": ["Vendor ships", "CLI 1.0.10"] },
+        { "col": 1, "color": "blue", "lines": ["Audit maps the impact,", "recommends adopting"] },
+        { "col": 2, "color": "blue", "lines": ["Audit catches its", "own error, re-runs"], "badge": "caught" },
+        { "col": 3, "color": "green", "lines": ["AI builds and tests it;", "tester sends a fix back"], "badge": "caught" },
+        { "col": 4, "color": "blue", "lines": ["Root cause of the", "Sep 22 error fixed"] }
+      ],
+      "lower": [
+        { "col": 2, "color": "amber", "lines": ["Decides: adopt"] },
+        { "col": 3, "color": "amber", "lines": ["Approves the release", "v0.43.0"] }
+      ],
+      "bracket": { "from": 0, "to": 3, "text": "9 days from vendor release to a safely shipped fix" },
+      "stat": { "col": 4, "lines": ["2 errors caught", "before release"] }
+    },
+    {
+      "id": "fortress-flow",
+      "type": "flow",
+      "title": "What happens when the vendor ships",
+      "subtitle": "gs-fortress",
+      "aria": "gs-fortress flow. 1 a weekly check of the vendor's releases asks: new version? If not, it stops quietly and writes nothing; if the check fails, a loud alert fires after 3 failures in a row. If yes: 2 a mechanical diff of the new version; 3 one AI assessment against the impact checklist; 4 mechanical checks on the assessment, and if any fails it stops and records nothing. If they pass, the ledger records decision pending, and a person decides adopt or defer. On adopt, 5 the plugin repo builds it with builder and tester sessions, and 6 a close-out script records what shipped back in the ledger.",
+      "columns": [
+        { "x": 118, "w": 176 },
+        { "x": 445, "w": 320 },
+        { "x": 755, "w": 190 }
+      ],
+      "nodes": [
+        { "id": "weekly", "col": 1, "row": 0, "color": "blue", "num": 1, "lines": ["Weekly check of the vendor's releases"] },
+        { "id": "q", "col": 1, "row": 1, "color": "blue", "shape": "pill", "w": 200, "lines": ["New version?"] },
+        { "id": "quiet", "col": 0, "row": 1, "color": "stop", "lines": ["Stop quietly:", "nothing written"] },
+        { "id": "fail", "col": 2, "row": 1, "color": "stop", "lines": ["Loud alert after", "3 failed checks"] },
+        { "id": "diff", "col": 1, "row": 2, "color": "blue", "num": 2, "lines": ["Mechanical diff of the new version"] },
+        { "id": "ai", "col": 1, "row": 3, "color": "blue", "num": 3, "lines": ["One AI assessment against", "the impact checklist"] },
+        { "id": "checks", "col": 1, "row": 4, "color": "blue", "num": 4, "lines": ["Mechanical checks", "on the assessment"] },
+        { "id": "unsound", "col": 0, "row": 4, "color": "stop", "lines": ["Stop: nothing", "recorded"] },
+        { "id": "ledger", "col": 1, "row": 5, "color": "blue", "lines": ["Ledger: decision pending"] },
+        { "id": "decide", "col": 2, "row": 5, "color": "amber", "lines": ["Adopt or defer?"] },
+        { "id": "build", "col": 1, "row": 6, "color": "green", "num": 5, "lines": ["Plugin repo builds it:", "builder and tester sessions"] },
+        { "id": "closeout", "col": 1, "row": 7, "color": "blue", "num": 6, "lines": ["Close-out script records", "what shipped"] }
+      ],
+      "edges": [
+        { "from": "weekly", "to": "q" },
+        { "from": "q", "to": "quiet", "route": "side", "label": "no" },
+        { "from": "q", "to": "fail", "route": "side", "label": "check failed" },
+        { "from": "q", "to": "diff", "label": "yes" },
+        { "from": "diff", "to": "ai" },
+        { "from": "ai", "to": "checks" },
+        { "from": "checks", "to": "unsound", "route": "side", "label": "fails" },
+        { "from": "checks", "to": "ledger", "label": "all pass" },
+        { "from": "ledger", "to": "decide", "route": "side" },
+        { "from": "decide", "to": "build", "label": "adopt" },
+        { "from": "build", "to": "closeout", "label": "merged PR + tag" },
+        { "from": "closeout", "to": "ledger", "route": "loop", "x": 255, "fromDy": 16, "toDy": 0 }
+      ],
+      "legend": { "blue": "gs-fortress", "green": "plugin repo", "amber": "a person", "stop": "exit" }
+    },
+    {
+      "id": "devutils-loop",
+      "type": "flow",
+      "title": "How a fix gets from finding to release",
+      "subtitle": "dev-utils",
+      "aria": "dev-utils loop in 9 numbered steps. 1 a tester session logs a finding. 2 a person sets the round: which findings, in what order. 3 a builder session fixes it, naming how the fix will be judged. 4 dev-utils checks the rules, and refuses a rule-breaking fix back to step 3. 5 dev-utils hands the build to the tester with a token. 6 the tester session verifies that exact build, or sends it back to step 3; a person steps in when needed to send a fix back, defer it or rule it WONTFIX. 7 the dev-utils release runs the gates and opens the PR. 8 a person merges the PR, or has a session merge it. 9 dev-utils tags the release, only after the merge.",
+      "columns": [
+        { "x": 440, "w": 340, "header": "MACHINES PROPOSE" },
+        { "x": 745, "w": 230, "header": "A PERSON DECIDES" }
+      ],
+      "nodes": [
+        { "id": "log", "col": 0, "row": 0, "color": "green", "num": 1, "lines": ["Tester session logs a finding"] },
+        { "id": "round", "col": 1, "row": 1, "color": "amber", "num": 2, "lines": ["Sets the round: which", "findings, in what order"] },
+        { "id": "fix", "col": 0, "row": 2, "color": "green", "num": 3, "lines": ["Builder session fixes it, naming", "how the fix will be judged"] },
+        { "id": "rules", "col": 0, "row": 3, "color": "purple", "num": 4, "lines": ["dev-utils checks the rules"] },
+        { "id": "handoff", "col": 0, "row": 4, "color": "purple", "num": 5, "lines": ["dev-utils hands the build", "to the tester with a token"] },
+        { "id": "verify", "col": 0, "row": 5, "color": "green", "num": 6, "lines": ["Tester session verifies", "that exact build"] },
+        { "id": "steer", "col": 1, "row": 5, "color": "amber", "lines": ["Steps in when needed:", "send back, defer, WONTFIX"] },
+        { "id": "release", "col": 0, "row": 6, "color": "purple", "num": 7, "lines": ["dev-utils release: runs", "the gates, opens the PR"] },
+        { "id": "merge", "col": 1, "row": 7, "color": "amber", "num": 8, "lines": ["Merges the PR, or has", "a session merge it"] },
+        { "id": "tag", "col": 0, "row": 8, "color": "purple", "num": 9, "lines": ["dev-utils tags the release,", "only after the merge"] }
+      ],
+      "edges": [
+        { "from": "log", "to": "round" },
+        { "from": "round", "to": "fix" },
+        { "from": "fix", "to": "rules" },
+        { "from": "rules", "to": "fix", "route": "loop", "x": 235, "toDy": 16, "label": "refused" },
+        { "from": "rules", "to": "handoff", "label": "passes" },
+        { "from": "handoff", "to": "verify" },
+        { "from": "verify", "to": "fix", "route": "loop", "x": 165, "toDy": -16, "label": "sent back" },
+        { "from": "verify", "to": "steer", "route": "side", "dashed": true, "color": "amber" },
+        { "from": "steer", "to": "fix", "route": "up", "dashed": true, "color": "amber", "label": "send back" },
+        { "from": "verify", "to": "release", "label": "verified" },
+        { "from": "release", "to": "merge" },
+        { "from": "merge", "to": "tag" }
+      ],
+      "legend": { "green": "AI session", "purple": "dev-utils", "amber": "a person" }
+    }
+  ]
+}

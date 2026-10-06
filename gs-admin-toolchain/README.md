@@ -26,44 +26,10 @@
 
 ## How a vendor release flows through the system
 
-```mermaid
-flowchart TD
-  step1(["1. The vendor publishes a new CLI release"])
-  step2["2. gs-fortress: the weekly check spots the new version"]
-  step3["3. gs-fortress: mechanical diff, then one AI assessment"]
-  step4["4. gs-fortress: audit report, change plan and kickoff prompts"]
-  step5{{"5. Human decides: adopt or defer"}}
-  deferred["Deferred: recorded in the ledger, nothing built"]
-  step6{{"6. Human posts the kickoff to the plugin repo as a work item"}}
-  featureRequest(["A feature request (kickoffs from handoff-plan)"])
-  step7["7. Builder session makes the change"]
-  step8["8. dev-utils: hands the build over with a token"]
-  step9["9. Tester session verifies that exact build"]
-  step10{{"10. Human merges the PR, then the release PR, or has a session do it"}}
-  step11["11. dev-utils: tags the release, only after the merge"]
-  step12["12. gs-fortress: close-out records the PR and tag in the ledger"]
-
-  step1 --> step2 --> step3 --> step4 --> step5
-  step5 -->|defer| deferred
-  step5 -->|adopt| step6 --> step7
-  featureRequest -.-> step7
-  step7 --> step8 --> step9
-  step9 -->|sent back| step7
-  step9 -->|verified| step10 --> step11 --> step12
-
-  classDef fortress fill:#dbeafe,stroke:#1d4ed8,color:#111;
-  classDef plugin fill:#dcfce7,stroke:#15803d,color:#111;
-  classDef devutils fill:#ede9fe,stroke:#6d28d9,color:#111;
-  classDef human fill:#fde68a,stroke:#b45309,color:#111;
-  classDef outside fill:#f3f4f6,stroke:#6b7280,color:#111;
-  class step2,step3,step4,step12,deferred fortress;
-  class step7,step9 plugin;
-  class step8,step11 devutils;
-  class step5,step6,step10 human;
-  class step1,featureRequest outside;
-```
-
-Blue is gs-fortress, green is the plugin repo, purple is dev-utils, yellow is a person deciding.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/toolchain-flow-dark.svg">
+  <img alt="Flow of one vendor CLI release through the gs-admin toolchain in 12 numbered steps. Machines: 1 the vendor publishes a release; 2 gs-fortress's weekly check spots it; 3 a mechanical diff, then one AI assessment; 4 an audit report, change plan and kickoff prompts. A person: 5 adopt or defer (a deferral is recorded, nothing built); 6 posts the kickoff to the plugin repo as a work item (a feature request can enter here too). Machines: 7 a builder session makes the change; 8 dev-utils hands the build over with a token; 9 a tester session verifies that exact build, or sends it back to step 7. A person: 10 merges the PR and the release PR, or has a session do it. Machines: 11 dev-utils tags the release only after the merge; 12 gs-fortress's close-out records the PR and tag in the ledger." src="../assets/toolchain-flow-light.svg">
+</picture>
 
 <details>
 <summary><b>How each hand-off works</b></summary>
@@ -101,14 +67,12 @@ Blue is gs-fortress, green is the plugin repo, purple is dev-utils, yellow is a 
 
 ## Worked example: CLI 1.0.10, from vendor release to shipped fix
 
-```mermaid
-timeline
-  title CLI 1.0.10: vendor release to shipped fix
-  Sep 17 : Vendor ships 1.0.10
-  Sep 21-22 : Audit recommends adopt : Audit fixes its own mistake : Human decides to adopt
-  Sep 26 : Built and tested : One fix sent back, then verified : PR 27 merged, v0.43.0 released
-  Oct 4 : Watch fix ships : Close-out complete
-```
+**9 days from a vendor release to a safely shipped fix, with a person making the call and two mistakes caught before any user saw them.**
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/worked-example-dark.svg">
+  <img alt="Timeline of CLI 1.0.10. Sep 17: the vendor ships. Sep 21: the audit maps the impact and recommends adopting. Sep 22: the audit catches its own error and re-runs, and a person decides to adopt. Sep 26: AI sessions build and test it, a tester sends a fix back, and a person approves release v0.43.0. Oct 4: the root cause of the Sep 22 error is fixed. 9 days from vendor release to a safely shipped fix, with 2 errors caught before release." src="../assets/worked-example-light.svg">
+</picture>
 
 > [!TIP]
 > **The system caught its own mistake.** The first audit read a stale copy of the plugin repo.

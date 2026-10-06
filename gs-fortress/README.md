@@ -30,23 +30,10 @@ Private repository · in use (weekly scheduled run) · measured 2026-10-05.
 
 ## How it works
 
-```mermaid
-flowchart TD
-  weekly["Step 1: weekly check of the vendor's releases"] --> gate{"New version?"}
-  gate -->|no| quietStop[Stop: nothing written]
-  gate -->|check failed| loudFail[Loud failure; notify after 3 in a row]
-  gate -->|yes| delta["Step 2: mechanical diff of the new version"]
-  delta -->|catalog diff + file-tree diff| assess["Step 3: one AI assessment"]
-  assess -->|report, change plan, kickoffs| checks["Step 4: mechanical checks"]
-  checks -->|any check fails| unsoundStop[Stop: nothing recorded]
-  checks -->|pass| ledger[("Ledger: decision pending")]
-  ledger --> decide{{"Human: adopt or defer"}}
-  decide -->|kickoff prompts| build["Step 5: plugin repo builds it (builder + tester sessions)"]
-  build -->|merged PR + release tag| closeout["Step 6: close-out script records what shipped"]
-  closeout --> ledger
-  classDef human fill:#fde68a,stroke:#b45309,color:#111;
-  class decide human;
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/fortress-flow-dark.svg">
+  <img alt="gs-fortress flow. 1 a weekly check of the vendor's releases asks: new version? If not, it stops quietly and writes nothing; if the check fails, a loud alert fires after 3 failures in a row. If yes: 2 a mechanical diff of the new version; 3 one AI assessment against the impact checklist; 4 mechanical checks on the assessment, and if any fails it stops and records nothing. If they pass, the ledger records decision pending, and a person decides adopt or defer. On adopt, 5 the plugin repo builds it with builder and tester sessions, and 6 a close-out script records what shipped back in the ledger." src="../assets/fortress-flow-light.svg">
+</picture>
 
 Every stage before the assessment is deterministic and cheap. The one judgment step is
 checked mechanically before it counts. gs-fortress never writes to the plugin repo:
