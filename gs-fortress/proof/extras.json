@@ -1,0 +1,92 @@
+[
+  {
+    "repo": "gs-fortress",
+    "label": "Impact-checklist items",
+    "command": "git -C gs-fortress show ff5ff42:plugins/gs-fortress/skills/gs-admin-cli-watch/reference/impact-checklist.md | grep -cE '^[0-9]+\\. \\*\\*'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Impact-checklist items at the first audit (b9b6d3a, 2026-07-27)",
+    "command": "git -C gs-fortress show b9b6d3a:plugins/gs-fortress/skills/gs-admin-cli-watch/reference/impact-checklist.md | grep -cE '^[0-9]+\\. \\*\\*'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Upstream releases audited (audit reports)",
+    "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/reports/ | grep -cE '/audit-[0-9.]+\\.md$'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Build-kickoff files (change plans handed to build sessions)",
+    "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/reports/ | grep -cE '/build-kickoffs-[0-9.]+\\.md$'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Adopt/defer decisions recorded",
+    "command": "git -C gs-fortress show ff5ff42:ledger/state.json | grep -c '\"decision\":'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Decisions that were adopt",
+    "command": "git -C gs-fortress show ff5ff42:ledger/state.json | grep -c '\"decision\": \"adopt\"'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Tracked upstream defects (known-issues entries)",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"id\": \"KI-[0-9]+\"'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Tracked defects resolved upstream",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -c '\"status\": \"resolved\"'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Vendor-ready defect reports on file",
+    "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/upstream-feedback/reports/ | grep -c '\\.md$'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Defect reports recorded as sent",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"sent\": \"[0-9]{4}-'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Defect reports recorded as acknowledged",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]{4}-' || true"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Resolved defects that had a report on file",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>e.report&&e.status==='resolved').length)\""
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Tracked defects carrying the 2026-07-30 vendor reply",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"upstreamResponse\": \"2026-07-30'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Of those, resolved in 1.0.8",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>String(e.upstreamResponse||'').startsWith('2026-07-30')&&e.resolvedOn==='1.0.8').length)\""
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Bus findings reopened by a tester at least once",
+    "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' | sort -u | wc -l"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Test suites (*.test.mjs)",
+    "command": "git -C gs-fortress ls-tree -r --name-only ff5ff42 plugins/gs-fortress/test | grep -cE '\\.test\\.mjs$'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Watcher invariants restated to every agent",
+    "command": "git -C gs-fortress show ff5ff42:plugins/gs-fortress/skills/gs-admin-cli-watch/SKILL.md | sed -n '/^## Invariants/,/^## Stage 0/p' | grep -cE '^[0-9]+\\. '"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "dev-loop findings on this repo's own bus",
+    "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l"
+  }
+]

@@ -1,0 +1,143 @@
+{
+  "mode": "stats",
+  "repos": [
+    {
+      "repo": "dev-utils",
+      "slug": "BradleyDB/dev-utils",
+      "ref": "origin/main",
+      "sha": "c2ebd66",
+      "measuredOn": "2026-10-05",
+      "metrics": [
+        {
+          "label": "Commits",
+          "value": 237,
+          "command": "git -C dev-utils rev-list --count c2ebd66"
+        },
+        {
+          "label": "Non-merge commits",
+          "value": 207,
+          "command": "git -C dev-utils rev-list --count --no-merges c2ebd66"
+        },
+        {
+          "label": "First commit",
+          "value": "2026-07-22",
+          "command": "git -C dev-utils log --reverse --format=%as c2ebd66 | head -1"
+        },
+        {
+          "label": "Latest commit",
+          "value": "2026-10-04",
+          "command": "git -C dev-utils log -1 --format=%as c2ebd66"
+        },
+        {
+          "label": "Active days",
+          "value": 12,
+          "command": "git -C dev-utils log --format=%as c2ebd66 | sort -u | wc -l"
+        },
+        {
+          "label": "Commits on origin/dev at 84caf0b (integration branch)",
+          "value": 225,
+          "command": "git -C dev-utils rev-list --count 84caf0b"
+        },
+        {
+          "label": "Tags reachable from the ref",
+          "value": 6,
+          "command": "git -C dev-utils tag --merged c2ebd66 | wc -l",
+          "note": "latest: v0.5.1, v0.5.0, v0.4.0"
+        },
+        {
+          "label": "Test-tree files (tests, harness and fixtures)",
+          "value": 20,
+          "command": "git -C dev-utils ls-tree -r --name-only c2ebd66 | grep -cE '(^|/)(tests?|__tests__)/|\\.test\\.[a-z]+$|_test\\.[a-z]+$|(^|/)test_[^/]*\\.py$|(^|/)test-[^/]*\\.(mjs|js|sh)$'"
+        },
+        {
+          "label": "Python test cases (def test_…)",
+          "value": 240,
+          "command": "git -C dev-utils grep -I -c -E '^\\s*(async\\s+)?def test_' c2ebd66 -- '*.py' | awk -F: '{s+=$NF} END {print s+0}'"
+        },
+        {
+          "label": "CI workflows",
+          "value": 0,
+          "command": "git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows | wc -l"
+        },
+        {
+          "label": "Lines of Python, excluding tests",
+          "value": 5351,
+          "command": "git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' | awk -F: '$2 !~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "13 files"
+        },
+        {
+          "label": "Lines of Python in test files",
+          "value": 5199,
+          "command": "git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' | awk -F: '$2 ~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "19 files"
+        },
+        {
+          "label": "Lines of Markdown (docs, skills, ledgers)",
+          "value": 1127,
+          "command": "git -C dev-utils grep -I -c '' c2ebd66 -- '*.md' | awk -F: '{s+=$NF} END {print s+0}'"
+        },
+        {
+          "label": "Commit authors other than the owner (count only)",
+          "value": 0,
+          "command": "git -C dev-utils log --format=%aN c2ebd66 | sort -u | grep -vixF -e 'bradleydb' -e 'bradley' | wc -l"
+        },
+        {
+          "label": "dev-loop findings on the bus, live + archive",
+          "value": 31,
+          "command": "git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l",
+          "note": "28 VERIFIED"
+        },
+        {
+          "label": "Fixes carrying an independent `Judge:` line",
+          "value": 26,
+          "command": "git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md | grep -c '^Judge:'"
+        },
+        {
+          "label": "Fixes that name the design they replace (`Redesign:`)",
+          "value": 4,
+          "command": "git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md | grep -c '^Redesign:'"
+        },
+        {
+          "label": "Release tags",
+          "value": 6,
+          "command": "git -C dev-utils tag --merged c2ebd66 | wc -l"
+        },
+        {
+          "label": "Deliberate re-pins to the skill spec",
+          "value": 13,
+          "command": "git -C dev-utils log c2ebd66 --format=%s | grep -ci 're-pin'"
+        },
+        {
+          "label": "Python source",
+          "value": 5351,
+          "command": "git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' ':!tests/' | awk -F: '{s+=$NF} END {print s}'"
+        },
+        {
+          "label": "Commits",
+          "value": 237,
+          "command": "git -C dev-utils rev-list --count c2ebd66"
+        },
+        {
+          "label": "CI workflows",
+          "value": 0,
+          "command": "git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows | wc -l"
+        },
+        {
+          "label": "Merged pull requests",
+          "value": 30,
+          "command": "gh pr list -R BradleyDB/dev-utils --state merged --limit 2000 --json number --jq length"
+        },
+        {
+          "label": "Merged PRs by someone other than the owner (count only)",
+          "value": 0,
+          "command": "gh pr list -R BradleyDB/dev-utils --state merged --limit 2000 --json author --jq '[.[] | select(.author.login != \"BradleyDB\")] | length'"
+        }
+      ],
+      "integration": {
+        "ref": "origin/dev",
+        "sha": "84caf0b"
+      },
+      "visibility": "private"
+    }
+  ]
+}

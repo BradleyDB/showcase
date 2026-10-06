@@ -1,0 +1,37 @@
+[
+  {
+    "repo": "dev-utils",
+    "label": "Fixes carrying an independent `Judge:` line",
+    "command": "git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md | grep -c '^Judge:'"
+  },
+  {
+    "repo": "dev-utils",
+    "label": "Fixes that name the design they replace (`Redesign:`)",
+    "command": "git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md | grep -c '^Redesign:'"
+  },
+  {
+    "repo": "dev-utils",
+    "label": "Release tags",
+    "command": "git -C dev-utils tag --merged c2ebd66 | wc -l"
+  },
+  {
+    "repo": "dev-utils",
+    "label": "Deliberate re-pins to the skill spec",
+    "command": "git -C dev-utils log c2ebd66 --format=%s | grep -ci 're-pin'"
+  },
+  {
+    "repo": "dev-utils",
+    "label": "Python source",
+    "command": "git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' ':!tests/' | awk -F: '{s+=$NF} END {print s}'"
+  },
+  {
+    "repo": "dev-utils",
+    "label": "Commits",
+    "command": "git -C dev-utils rev-list --count c2ebd66"
+  },
+  {
+    "repo": "dev-utils",
+    "label": "CI workflows",
+    "command": "git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows | wc -l"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "repo": "gs-fortress",
+    "label": "Audit reports",
+    "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/reports/ | grep -c 'audit-'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Adopt decisions recorded",
+    "command": "git -C gs-fortress show ff5ff42:ledger/state.json | grep -c '\"decision\": \"adopt\"'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Upstream known issues tracked",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -oE '\"id\": *\"KI-[0-9]+\"' | sort -u | wc -l"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "… since resolved upstream",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -c '\"status\": \"resolved\"'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Vendor-ready reports sent",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"sent\": \"[0-9]'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "Reports with a vendor acknowledgement stamped",
+    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]'"
+  },
+  {
+    "repo": "gs-fortress",
+    "label": "gs-fortress files citing /dev-loop or handoff-plan",
+    "command": "git -C gs-fortress grep -l -i -e /dev-loop -e handoff-plan ff5ff42 -- . | wc -l"
+  },
+  {
+    "repo": "gs-admin-cli-docs",
+    "label": "gs-admin-cli-docs files naming dev-utils on dev",
+    "command": "git -C gs-admin-cli-docs grep -l -i dev-utils 0543ff0 -- . | wc -l"
+  }
+]

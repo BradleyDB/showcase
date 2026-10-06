@@ -1,0 +1,124 @@
+{
+  "mode": "stats",
+  "repos": [
+    {
+      "repo": "Admin_CLI_Explore",
+      "slug": "BradleyDB/gs-admin-cli-docs-private-archive",
+      "ref": "origin/main",
+      "sha": "188ffc4",
+      "measuredOn": "2026-10-05",
+      "metrics": [
+        {
+          "label": "Commits",
+          "value": 1311,
+          "command": "git -C Admin_CLI_Explore rev-list --count 188ffc4"
+        },
+        {
+          "label": "Non-merge commits",
+          "value": 1133,
+          "command": "git -C Admin_CLI_Explore rev-list --count --no-merges 188ffc4"
+        },
+        {
+          "label": "First commit",
+          "value": "2026-06-27",
+          "command": "git -C Admin_CLI_Explore log --reverse --format=%as 188ffc4 | head -1"
+        },
+        {
+          "label": "Latest commit",
+          "value": "2026-09-08",
+          "command": "git -C Admin_CLI_Explore log -1 --format=%as 188ffc4"
+        },
+        {
+          "label": "Active days",
+          "value": 47,
+          "command": "git -C Admin_CLI_Explore log --format=%as 188ffc4 | sort -u | wc -l"
+        },
+        {
+          "label": "Commits on origin/dev at 4ad79e4 (integration branch)",
+          "value": 1260,
+          "command": "git -C Admin_CLI_Explore rev-list --count 4ad79e4"
+        },
+        {
+          "label": "Tags reachable from the ref",
+          "value": 23,
+          "command": "git -C Admin_CLI_Explore tag --merged 188ffc4 | wc -l",
+          "note": "latest: v0.37.0, v0.36.3, v0.36.2"
+        },
+        {
+          "label": "Version in package.json",
+          "value": "1.0.0",
+          "command": "git -C Admin_CLI_Explore show 188ffc4:package.json | grep -m1 -E '\"?version\"?\\s*[:=]'"
+        },
+        {
+          "label": "Version in plugins/gs-superadmin/.claude-plugin/plugin.json",
+          "value": "0.37.0",
+          "command": "git -C Admin_CLI_Explore show 188ffc4:plugins/gs-superadmin/.claude-plugin/plugin.json | grep -m1 -E '\"?version\"?\\s*[:=]'"
+        },
+        {
+          "label": "Versions recorded in plugins/gs-superadmin/CHANGELOG.md",
+          "value": 93,
+          "command": "git -C Admin_CLI_Explore show 188ffc4:plugins/gs-superadmin/CHANGELOG.md | grep -cE '^##\\s+\\[?v?[0-9]+\\.[0-9]+'",
+          "note": "more than this repo's tags: the changelog may predate its history"
+        },
+        {
+          "label": "Skills (SKILL.md files)",
+          "value": 8,
+          "command": "git -C Admin_CLI_Explore ls-tree -r --name-only 188ffc4 | grep -cE '(^|/)skills/[^/]+/SKILL\\.md$'"
+        },
+        {
+          "label": "Test-tree files (tests, harness and fixtures)",
+          "value": 73,
+          "command": "git -C Admin_CLI_Explore ls-tree -r --name-only 188ffc4 | grep -cE '(^|/)(tests?|__tests__)/|\\.test\\.[a-z]+$|_test\\.[a-z]+$|(^|/)test_[^/]*\\.py$|(^|/)test-[^/]*\\.(mjs|js|sh)$'"
+        },
+        {
+          "label": "CI workflows",
+          "value": 3,
+          "command": "git -C Admin_CLI_Explore ls-tree -r --name-only 188ffc4 -- .github/workflows | wc -l"
+        },
+        {
+          "label": "Lines of JavaScript/TypeScript, excluding tests",
+          "value": 25731,
+          "command": "git -C Admin_CLI_Explore grep -I -c '' 188ffc4 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' | awk -F: '$2 !~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "42 files"
+        },
+        {
+          "label": "Lines of JavaScript/TypeScript in test files",
+          "value": 25314,
+          "command": "git -C Admin_CLI_Explore grep -I -c '' 188ffc4 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' | awk -F: '$2 ~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "42 files"
+        },
+        {
+          "label": "Lines of Markdown (docs, skills, ledgers)",
+          "value": 17316,
+          "command": "git -C Admin_CLI_Explore grep -I -c '' 188ffc4 -- '*.md' | awk -F: '{s+=$NF} END {print s+0}'"
+        },
+        {
+          "label": "Commit authors other than the owner (count only)",
+          "value": 1,
+          "command": "git -C Admin_CLI_Explore log --format=%aN 188ffc4 | sort -u | grep -vixF -e 'bradleydb' -e 'bradley' | wc -l"
+        },
+        {
+          "label": "dev-loop findings on the bus, live + archive (at origin/dev 4ad79e4: the release strips dev/)",
+          "value": 446,
+          "command": "git -C Admin_CLI_Explore show 4ad79e4:dev/FEEDBACK.md 4ad79e4:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l",
+          "note": "434 VERIFIED"
+        },
+        {
+          "label": "Merged pull requests",
+          "value": 154,
+          "command": "gh pr list -R BradleyDB/gs-admin-cli-docs-private-archive --state merged --limit 2000 --json number --jq length"
+        },
+        {
+          "label": "Merged PRs by someone other than the owner (count only)",
+          "value": 1,
+          "command": "gh pr list -R BradleyDB/gs-admin-cli-docs-private-archive --state merged --limit 2000 --json author --jq '[.[] | select(.author.login != \"BradleyDB\")] | length'"
+        }
+      ],
+      "integration": {
+        "ref": "origin/dev",
+        "sha": "4ad79e4"
+      },
+      "visibility": "private"
+    }
+  ]
+}

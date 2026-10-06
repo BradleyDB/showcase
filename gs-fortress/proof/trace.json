@@ -1,0 +1,38 @@
+{
+  "mode": "trace",
+  "trace": [
+    {
+      "pr": "BradleyDB/gs-admin-cli-docs#27",
+      "title": "Adopt CLI 1.0.10 + README beginner path — CP-1, CP-2, CP-3, CP-4, CP-5, CP-6, CP-7 (plugin 0.43.0)",
+      "base": "dev",
+      "opened": "2026-09-26",
+      "merged": "2026-09-26",
+      "mergeCommit": "6acd1e4",
+      "commits": 6,
+      "changedFiles": 39,
+      "lines": "+645/-135",
+      "firstReleaseTag": "gs-admin-cli-docs@v0.43.0",
+      "command": "gh pr view 27 -R BradleyDB/gs-admin-cli-docs --json mergedAt,mergeCommit,commits,changedFiles,additions,deletions ; git -C gs-admin-cli-docs tag --contains 6acd1e4 --sort=creatordate | head -1"
+    },
+    {
+      "pr": "BradleyDB/gs-fortress#13",
+      "title": "0.6.0: the watch fetches the explorer itself (F-022), audit-1.0.10 CP-8 checklist items (F-025), F-018",
+      "base": "dev",
+      "opened": "2026-10-04",
+      "merged": "2026-10-04",
+      "mergeCommit": "78e2f1b",
+      "commits": 6,
+      "changedFiles": 16,
+      "lines": "+620/-735",
+      "firstReleaseTag": "gs-fortress@v0.6.0",
+      "command": "gh pr view 13 -R BradleyDB/gs-fortress --json mergedAt,mergeCommit,commits,changedFiles,additions,deletions ; git -C gs-fortress tag --contains 78e2f1b --sort=creatordate | head -1"
+    },
+    {
+      "sha": "BradleyDB/gs-fortress@b109854",
+      "subject": "ledger: audit 1.0.9 -> 1.0.10 (A:5 affected, B:2 resolved, C:2 new; recommend adopt)",
+      "date": "2026-09-21",
+      "firstReleaseTag": "gs-fortress@v0.5.1",
+      "command": "git -C gs-fortress log -1 --format='%as %s' b109854 ; git -C gs-fortress tag --contains b109854 --sort=creatordate | head -1"
+    }
+  ]
+}

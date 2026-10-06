@@ -1,0 +1,209 @@
+{
+  "mode": "stats",
+  "repos": [
+    {
+      "repo": "gs-fortress",
+      "slug": "BradleyDB/gs-fortress",
+      "ref": "origin/main",
+      "sha": "ff5ff42",
+      "measuredOn": "2026-10-05",
+      "metrics": [
+        {
+          "label": "Commits",
+          "value": 165,
+          "command": "git -C gs-fortress rev-list --count ff5ff42"
+        },
+        {
+          "label": "Non-merge commits",
+          "value": 150,
+          "command": "git -C gs-fortress rev-list --count --no-merges ff5ff42"
+        },
+        {
+          "label": "First commit",
+          "value": "2026-07-27",
+          "command": "git -C gs-fortress log --reverse --format=%as ff5ff42 | head -1"
+        },
+        {
+          "label": "Latest commit",
+          "value": "2026-10-04",
+          "command": "git -C gs-fortress log -1 --format=%as ff5ff42"
+        },
+        {
+          "label": "Active days",
+          "value": 16,
+          "command": "git -C gs-fortress log --format=%as ff5ff42 | sort -u | wc -l"
+        },
+        {
+          "label": "Commits on origin/dev at b0f0b94 (integration branch)",
+          "value": 151,
+          "command": "git -C gs-fortress rev-list --count b0f0b94"
+        },
+        {
+          "label": "Tags reachable from the ref",
+          "value": 8,
+          "command": "git -C gs-fortress tag --merged ff5ff42 | wc -l",
+          "note": "latest: v0.6.0, v0.5.1, v0.5.0"
+        },
+        {
+          "label": "Version in plugins/gs-fortress/.claude-plugin/plugin.json",
+          "value": "0.6.0",
+          "command": "git -C gs-fortress show ff5ff42:plugins/gs-fortress/.claude-plugin/plugin.json | grep -m1 -E '\"?version\"?\\s*[:=]'"
+        },
+        {
+          "label": "Versions recorded in plugins/gs-fortress/CHANGELOG.md",
+          "value": 9,
+          "command": "git -C gs-fortress show ff5ff42:plugins/gs-fortress/CHANGELOG.md | grep -cE '^##\\s+\\[?v?[0-9]+\\.[0-9]+'",
+          "note": "more than this repo's tags: the changelog may predate its history"
+        },
+        {
+          "label": "Skills (SKILL.md files)",
+          "value": 1,
+          "command": "git -C gs-fortress ls-tree -r --name-only ff5ff42 | grep -cE '(^|/)skills/[^/]+/SKILL\\.md$'"
+        },
+        {
+          "label": "Test-tree files (tests, harness and fixtures)",
+          "value": 10,
+          "command": "git -C gs-fortress ls-tree -r --name-only ff5ff42 | grep -cE '(^|/)(tests?|__tests__)/|\\.test\\.[a-z]+$|_test\\.[a-z]+$|(^|/)test_[^/]*\\.py$|(^|/)test-[^/]*\\.(mjs|js|sh)$'"
+        },
+        {
+          "label": "CI workflows",
+          "value": 0,
+          "command": "git -C gs-fortress ls-tree -r --name-only ff5ff42 -- .github/workflows | wc -l"
+        },
+        {
+          "label": "Lines of JavaScript/TypeScript, excluding tests",
+          "value": 1861,
+          "command": "git -C gs-fortress grep -I -c '' ff5ff42 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' | awk -F: '$2 !~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "5 files"
+        },
+        {
+          "label": "Lines of JavaScript/TypeScript in test files",
+          "value": 2157,
+          "command": "git -C gs-fortress grep -I -c '' ff5ff42 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' | awk -F: '$2 ~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "8 files"
+        },
+        {
+          "label": "Lines of Markdown (docs, skills, ledgers)",
+          "value": 8953,
+          "command": "git -C gs-fortress grep -I -c '' ff5ff42 -- '*.md' | awk -F: '{s+=$NF} END {print s+0}'"
+        },
+        {
+          "label": "Commit authors other than the owner (count only)",
+          "value": 0,
+          "command": "git -C gs-fortress log --format=%aN ff5ff42 | sort -u | grep -vixF -e 'bradleydb' -e 'bradley' | wc -l"
+        },
+        {
+          "label": "dev-loop findings on the bus, live + archive",
+          "value": 25,
+          "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l",
+          "note": "24 VERIFIED"
+        },
+        {
+          "label": "Impact-checklist items",
+          "value": 13,
+          "command": "git -C gs-fortress show ff5ff42:plugins/gs-fortress/skills/gs-admin-cli-watch/reference/impact-checklist.md | grep -cE '^[0-9]+\\. \\*\\*'"
+        },
+        {
+          "label": "Impact-checklist items at the first audit (b9b6d3a, 2026-07-27)",
+          "value": 8,
+          "command": "git -C gs-fortress show b9b6d3a:plugins/gs-fortress/skills/gs-admin-cli-watch/reference/impact-checklist.md | grep -cE '^[0-9]+\\. \\*\\*'"
+        },
+        {
+          "label": "Upstream releases audited (audit reports)",
+          "value": 5,
+          "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/reports/ | grep -cE '/audit-[0-9.]+\\.md$'"
+        },
+        {
+          "label": "Build-kickoff files (change plans handed to build sessions)",
+          "value": 5,
+          "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/reports/ | grep -cE '/build-kickoffs-[0-9.]+\\.md$'"
+        },
+        {
+          "label": "Adopt/defer decisions recorded",
+          "value": 5,
+          "command": "git -C gs-fortress show ff5ff42:ledger/state.json | grep -c '\"decision\":'"
+        },
+        {
+          "label": "Decisions that were adopt",
+          "value": 5,
+          "command": "git -C gs-fortress show ff5ff42:ledger/state.json | grep -c '\"decision\": \"adopt\"'"
+        },
+        {
+          "label": "Tracked upstream defects (known-issues entries)",
+          "value": 20,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"id\": \"KI-[0-9]+\"'"
+        },
+        {
+          "label": "Tracked defects resolved upstream",
+          "value": 7,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -c '\"status\": \"resolved\"'"
+        },
+        {
+          "label": "Vendor-ready defect reports on file",
+          "value": 8,
+          "command": "git -C gs-fortress ls-tree --name-only ff5ff42 ledger/upstream-feedback/reports/ | grep -c '\\.md$'"
+        },
+        {
+          "label": "Defect reports recorded as sent",
+          "value": 8,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"sent\": \"[0-9]{4}-'"
+        },
+        {
+          "label": "Defect reports recorded as acknowledged",
+          "value": 0,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]{4}-' || true"
+        },
+        {
+          "label": "Resolved defects that had a report on file",
+          "value": 2,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>e.report&&e.status==='resolved').length)\""
+        },
+        {
+          "label": "Tracked defects carrying the 2026-07-30 vendor reply",
+          "value": 5,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"upstreamResponse\": \"2026-07-30'"
+        },
+        {
+          "label": "Of those, resolved in 1.0.8",
+          "value": 4,
+          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>String(e.upstreamResponse||'').startsWith('2026-07-30')&&e.resolvedOn==='1.0.8').length)\""
+        },
+        {
+          "label": "Bus findings reopened by a tester at least once",
+          "value": 8,
+          "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' | sort -u | wc -l"
+        },
+        {
+          "label": "Test suites (*.test.mjs)",
+          "value": 6,
+          "command": "git -C gs-fortress ls-tree -r --name-only ff5ff42 plugins/gs-fortress/test | grep -cE '\\.test\\.mjs$'"
+        },
+        {
+          "label": "Watcher invariants restated to every agent",
+          "value": 8,
+          "command": "git -C gs-fortress show ff5ff42:plugins/gs-fortress/skills/gs-admin-cli-watch/SKILL.md | sed -n '/^## Invariants/,/^## Stage 0/p' | grep -cE '^[0-9]+\\. '"
+        },
+        {
+          "label": "dev-loop findings on this repo's own bus",
+          "value": 25,
+          "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l"
+        },
+        {
+          "label": "Merged pull requests",
+          "value": 14,
+          "command": "gh pr list -R BradleyDB/gs-fortress --state merged --limit 2000 --json number --jq length"
+        },
+        {
+          "label": "Merged PRs by someone other than the owner (count only)",
+          "value": 0,
+          "command": "gh pr list -R BradleyDB/gs-fortress --state merged --limit 2000 --json author --jq '[.[] | select(.author.login != \"BradleyDB\")] | length'"
+        }
+      ],
+      "integration": {
+        "ref": "origin/dev",
+        "sha": "b0f0b94"
+      },
+      "visibility": "private"
+    }
+  ]
+}
