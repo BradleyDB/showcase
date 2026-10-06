@@ -32,7 +32,7 @@ Private repository · in use (weekly scheduled run) · measured 2026-10-05.
 
 ```mermaid
 flowchart TD
-  weekly[Weekly scheduled run] --> gate{"Step 1: is there a new CLI version?"}
+  weekly["Step 1: weekly check of the vendor's releases"] --> gate{"New version?"}
   gate -->|no| quietStop[Stop: nothing written]
   gate -->|check failed| loudFail[Loud failure; notify after 3 in a row]
   gate -->|yes| delta["Step 2: mechanical diff of the new version"]
