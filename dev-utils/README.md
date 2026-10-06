@@ -166,7 +166,7 @@ clone; the full table is in [proof/stats.md](proof/stats.md).
 | Python source | 5,351 lines in 13 files | `git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' ':!tests/' \| awk -F: '{s+=$NF} END {print s}'` |
 | Tests | 5,199 lines in 20 files (15 test modules plus the runner, a fake `gh` and fixtures); 240 test cases | `git -C dev-utils grep -I -c '' c2ebd66 -- 'tests/*.py' \| awk -F: '{s+=$NF} END {print s}'` for lines; `git -C dev-utils grep -c 'def test_' c2ebd66 -- tests \| awk -F: '{s+=$NF} END {print s}'` for cases |
 | Commits | 237 over 12 active days, 2026-07-22 to 2026-10-04 | `git -C dev-utils rev-list --count c2ebd66` |
-| CI workflows | 0: the suite runs locally, as the release's validation step | `git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows \| wc -l` |
+| CI workflows | 0, by choice: the suite runs locally as the release's validation step | `git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows \| wc -l` |
 
 Line counts are physical lines, blanks and comments included. It is solo work: no merged PR
 is from anyone else. The suite is fully offline: the GitHub side is tested against a fake
@@ -183,7 +183,10 @@ is from anyone else. The suite is fully offline: the GitHub side is tested again
 | Agent evaluation | A tester session verifies each fix against a minted token; a fix needs a judge independent of the fixer | 28 verified findings, 26 `Judge:` lines |
 | Agent escalation | The tool stops and hands the call to a person: refusals name the ruling needed, the release stops at the PR, the review gate asks | F-029's two deferrals were the owner's, not the tool's |
 
-Not yet: the multi-user half is tested only against the fake `gh`, and there is no CI. The
+Trade-offs: the multi-user half is tested only against the fake `gh`. There is no CI by
+choice: this is a one-maintainer private repo, the suite runs locally as a required step
+of every release, and its skill-pin tests read a second private repo that CI would need
+access to. The
 CLI-backed versions of the loop skills are still under evaluation; the hand-run skills remain
 the default.
 

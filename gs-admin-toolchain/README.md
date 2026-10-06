@@ -215,9 +215,17 @@ on a small scale.
 | Agent evaluation | A, AI-agent design | a separate tester session judges every fix, with a token proving which build it ran; a fix must name a judge independent of its author; a finding reopened twice forces a redesign | F-462 reopened, then verified; 32 of 35 findings verified on the public bus |
 | Agent escalation | A | the agent stops and a human acts at: tenant writes (approval prompt), adopt/defer, pasting kickoffs, every merge, a frozen-contract change, failed verification before a ledger write | the three yellow steps (5, 6, 10) in the diagram; the **Human** rows in the worked example |
 
-Honest gaps: the three private repos run no CI. Their gates are local hooks and test
-suites that sessions run. The `main` guard on the superfriends repo is a local hook, and
-GitHub doesn't enforce it. A decision is recorded as a commit, not a signed approval.
+Known trade-offs:
+- **CI only where others contribute.** The public plugin repo runs 3 CI workflows on
+  pull requests, and GitHub rulesets on its `main` and `dev` branches require the checks
+  to pass and block force-pushes. The three private repos have one maintainer, so by
+  choice their tests and gates run locally, as a required step of every release, rather
+  than in CI. CI there would add setup (one suite reads a second private repo) and
+  notification noise for little gain.
+- **Branch guards are local.** Server-enforced branch protection on private repos needs a
+  paid GitHub plan, so `main` in each private repo is guarded by a local pre-push hook,
+  not by GitHub. On the public repo, where rulesets are free, GitHub enforces it.
+- **A decision is a commit,** not a signed approval.
 
 ## What's private and why
 
