@@ -14,7 +14,7 @@
 > stops. Neither the watcher nor the close-out script will write the decision.
 
 Part of the [gs-admin toolchain](../gs-admin-toolchain/README.md): its upstream watch.
-Private repository · in use (weekly scheduled run) · measured 2026-10-05.
+Private repository · in use (weekly scheduled run) · measured 2026-10-06.
 
 ## In 30 seconds
 
@@ -160,7 +160,7 @@ Sizes, merge commits and first containing tags: [proof/trace.md](proof/trace.md)
 <details>
 <summary><b>Every number with the command that reproduces it</b></summary>
 
-Measured 2026-10-05 at `origin/main` (`ff5ff42`), run from the folder that holds the clone.
+Measured 2026-10-06 at `origin/main` (`ff5ff42`), run from the folder that holds the clone.
 The full table is in [proof/stats.md](proof/stats.md).
 
 | Measure | Value | How to check |
