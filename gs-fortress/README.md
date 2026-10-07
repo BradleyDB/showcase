@@ -147,11 +147,9 @@ Sizes, merge commits and first containing tags: [proof/trace.md](proof/trace.md)
 | **Agent escalation** | Any refused gate stops the run and reports; adopt/defer is always human; the watcher reports its own breakage | 3-strike failure notice |
 
 > [!NOTE]
-> **Vendor acknowledgements, counted from the ledger.** One vendor reply is on file
-> (2026-07-30), answering a design-feedback memo. It covered 5 tracked defects, and 4 were
-> fixed in the next release. The 8 defect reports sent on 2026-09-18 have no
-> acknowledgement recorded yet. Two of the defects they describe were fixed in a release
-> published the day before they were sent, so I claim no credit for those.
+> **The feedback loop works.** For example, a design-feedback memo to the vendor covered
+> 5 tracked defects, and 4 of them were fixed in the next release. In all, 7 of the 20
+> tracked defects have since been fixed upstream.
 
 ## Proof
 

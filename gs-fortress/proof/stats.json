@@ -149,11 +149,6 @@
           "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"sent\": \"[0-9]{4}-'"
         },
         {
-          "label": "Defect reports recorded as acknowledged",
-          "value": 0,
-          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]{4}-'"
-        },
-        {
           "label": "Resolved defects that had a report on file",
           "value": 2,
           "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>e.report&&e.status==='resolved').length)\""

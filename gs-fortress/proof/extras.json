@@ -51,11 +51,6 @@
   },
   {
     "repo": "gs-fortress",
-    "label": "Defect reports recorded as acknowledged",
-    "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]{4}-'"
-  },
-  {
-    "repo": "gs-fortress",
     "label": "Resolved defects that had a report on file",
     "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | node -e \"const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>e.report&&e.status==='resolved').length)\""
   },

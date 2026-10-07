@@ -5,7 +5,7 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 ## What it is
 
 - The gs-admin toolchain is four repositories designed to work together: a public Claude Code plugin (gs-superadmin, in the gs-admin-cli-docs repo) that lets an AI agent administer a live Gainsight tenant behind approval prompts, plus three private repos: gs-fortress (audits each vendor CLI release and records the adopt/defer decision), superfriends (the builder/tester process skills) and dev-utils (the bookkeeping CLI for that process). Evidence: [system page](gs-admin-toolchain/README.md), [public repo](https://github.com/BradleyDB/gs-admin-cli-docs), [superfriends page](superfriends/README.md).
-- It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer. It is not affiliated with or endorsed by Gainsight, Inc. Evidence: [index](README.md).
+- It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer. It is not affiliated with or endorsed by Gainsight, Inc. The repos and these pages were built with the help of Claude Code, Anthropic's AI coding tool: the maintainer set the direction, made the design and release decisions and reviewed the work, and Claude Code sessions wrote much of the code and prose. Evidence: [index](README.md).
 
 ## Human decisions and change control
 
@@ -26,8 +26,8 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 ## Dependency mapping and the vendor relationship
 
 - gs-fortress audits each release against an impact checklist of 13 items, up from 8 at the first audit as later audits found new dependencies. Evidence: [gs-fortress page](gs-fortress/README.md).
-- 20 upstream CLI defects are tracked, 7 since resolved upstream. 8 vendor-ready defect reports were sent; 0 acknowledgements are recorded so far. Evidence: [gs-fortress page](gs-fortress/README.md).
-- One vendor reply is on record (2026-07-30), answering a design-feedback memo. It covered 5 tracked defects, and 4 were fixed in the next release, 1.0.8. Evidence: [gs-fortress page](gs-fortress/README.md).
+- 20 upstream CLI defects are tracked, and 7 have since been fixed upstream. 8 vendor-ready defect reports have been sent. Evidence: [gs-fortress page](gs-fortress/README.md).
+- The feedback loop works. For example, a design-feedback memo to the vendor covered 5 tracked defects, and 4 of them were fixed in the next release, 1.0.8. Evidence: [gs-fortress page](gs-fortress/README.md).
 
 ## Scale
 

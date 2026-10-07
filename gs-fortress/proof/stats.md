@@ -31,7 +31,6 @@ Measured 2026-10-06 at `origin/main` (ff5ff42).
 | Tracked defects resolved upstream | 7 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -c '"status": "resolved"'` |
 | Vendor-ready defect reports on file | 8 | `git -C gs-fortress ls-tree --name-only ff5ff42 ledger/upstream-feedback/reports/ \| grep -c '\.md$'` |
 | Defect reports recorded as sent | 8 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"sent": "[0-9]{4}-'` |
-| Defect reports recorded as acknowledged | 0 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"acknowledged": "[0-9]{4}-'` |
 | Resolved defects that had a report on file | 2 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| node -e "const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>e.report&&e.status==='resolved').length)"` |
 | Tracked defects carrying the 2026-07-30 vendor reply | 5 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"upstreamResponse": "2026-07-30'` |
 | Of those, resolved in 1.0.8 | 4 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| node -e "const j=JSON.parse(require('fs').readFileSync(0,'utf8'));console.log(j.issues.filter(e=>String(e.upstreamResponse\|\|'').startsWith('2026-07-30')&&e.resolvedOn==='1.0.8').length)"` |

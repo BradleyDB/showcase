@@ -33,6 +33,13 @@ The fourth repo, the plugin itself, is public:
 [gs-admin-cli-docs](https://github.com/BradleyDB/gs-admin-cli-docs). That's the place to
 read the code.
 
+## How these were built
+
+These repos, and these pages, were built with the help of Claude Code, Anthropic's AI
+coding tool. I set the direction, made the design and release decisions and reviewed the
+work; Claude Code sessions wrote much of the code and prose, inside the builder/tester
+process these pages describe.
+
 ## Checking the numbers
 
 Numbers last updated 2026-10-06. Each page says when its numbers were measured; counts such

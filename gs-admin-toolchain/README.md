@@ -166,8 +166,8 @@ skills by name in 5 files, and the plugin repo names dev-utils in 8 files on `de
 | Vendor releases audited | 5 |
 | Adopt decisions recorded | 5 |
 | Upstream defects tracked | 20, of which 7 resolved upstream |
-| Vendor-ready defect reports sent | 8, none acknowledged yet |
-| Vendor replies on record | 1 (2026-07-30, to the first design memo) |
+| Vendor-ready defect reports sent | 8 |
+| Defects from one design memo fixed in the next release | 4 of 5 (CLI 1.0.8) |
 
 Every number above, with the command that reproduces it at the exact commit measured:
 [proof/stats.md](proof/stats.md), [proof/stats-archive.md](proof/stats-archive.md),

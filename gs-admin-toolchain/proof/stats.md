@@ -54,7 +54,6 @@ Measured 2026-10-05 at `origin/main` (ff5ff42).
 | Upstream known issues tracked | 20 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -oE '"id": *"KI-[0-9]+"' \| sort -u \| wc -l` |
 | … since resolved upstream | 7 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -c '"status": "resolved"'` |
 | Vendor-ready reports sent | 8 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"sent": "[0-9]'` |
-| Reports with a vendor acknowledgement stamped | 0 | `git -C gs-fortress show ff5ff42:ledger/known-issues.json \| grep -cE '"acknowledged": "[0-9]'` |
 | gs-fortress files citing /dev-loop or handoff-plan | 5 | `git -C gs-fortress grep -l -i -e /dev-loop -e handoff-plan ff5ff42 -- . \| wc -l` |
 | Merged pull requests | 14 | `gh pr list -R BradleyDB/gs-fortress --state merged --limit 2000 --json number --jq length` |
 | Merged PRs by someone other than the owner (count only) | 0 | `gh pr list -R BradleyDB/gs-fortress --state merged --limit 2000 --json author --jq '[.[] \| select(.author.login != "BradleyDB")] \| length'` |

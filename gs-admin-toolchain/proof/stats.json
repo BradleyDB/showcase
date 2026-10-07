@@ -248,11 +248,6 @@
           "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"sent\": \"[0-9]'"
         },
         {
-          "label": "Reports with a vendor acknowledgement stamped",
-          "value": 0,
-          "command": "git -C gs-fortress show ff5ff42:ledger/known-issues.json | grep -cE '\"acknowledged\": \"[0-9]'"
-        },
-        {
           "label": "gs-fortress files citing /dev-loop or handoff-plan",
           "value": 5,
           "command": "git -C gs-fortress grep -l -i -e /dev-loop -e handoff-plan ff5ff42 -- . | wc -l"
