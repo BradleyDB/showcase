@@ -1,0 +1,32 @@
+[
+  {
+    "repo": "gs-admin-superfriends",
+    "label": "Release tags",
+    "command": "git -C gs-admin-superfriends tag --merged 235ff26 | wc -l"
+  },
+  {
+    "repo": "gs-admin-superfriends",
+    "label": "Commits that name the finding that drove them",
+    "command": "git -C gs-admin-superfriends log 235ff26 --format=%s | grep -cE 'F-[0-9]+'"
+  },
+  {
+    "repo": "gs-admin-superfriends",
+    "label": "Past findings the dev-loop skill cites as precedent for its rules",
+    "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md | grep -oE 'F-[0-9]+' | sort -u | wc -l"
+  },
+  {
+    "repo": "gs-admin-superfriends",
+    "label": "Lines in the four process skills (SKILL.md and README.md)",
+    "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md 235ff26:plugins/superfriends/skills/dev-loop/README.md 235ff26:plugins/superfriends/skills/team-loop/SKILL.md 235ff26:plugins/superfriends/skills/team-loop/README.md 235ff26:plugins/superfriends/skills/handoff-plan/SKILL.md 235ff26:plugins/superfriends/skills/external-pr-intake/SKILL.md | wc -l"
+  },
+  {
+    "repo": "gs-admin-superfriends",
+    "label": "Design questions asked of every outside PR",
+    "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/external-pr-intake/SKILL.md | grep -cE '^- [*][*]D[0-9]+ '"
+  },
+  {
+    "repo": "gs-admin-superfriends",
+    "label": "Handoff-home resolver test cases",
+    "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/handoff-plan/scripts/test-handoff-home.sh | grep -cE '^ *run \"'"
+  }
+]

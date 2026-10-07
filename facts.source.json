@@ -7,7 +7,7 @@
       "facts": [
         {
           "text": "The gs-admin toolchain is four repositories designed to work together: a public Claude Code plugin (gs-superadmin, in the gs-admin-cli-docs repo) that lets an AI agent administer a live Gainsight tenant behind approval prompts, plus three private repos: gs-fortress (audits each vendor CLI release and records the adopt/defer decision), superfriends (the builder/tester process skills) and dev-utils (the bookkeeping CLI for that process).",
-          "evidence": ["[system page](gs-admin-toolchain/README.md)", "[public repo](https://github.com/BradleyDB/gs-admin-cli-docs)"]
+          "evidence": ["[system page](gs-admin-toolchain/README.md)", "[public repo](https://github.com/BradleyDB/gs-admin-cli-docs)", "[superfriends page](superfriends/README.md)"]
         },
         {
           "text": "It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer.",
@@ -81,6 +81,22 @@
             "fortressFindings": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive" }
           },
           "evidence": ["[gs-fortress page](gs-fortress/README.md)"]
+        },
+        {
+          "text": "The process skills live in superfriends: handoff-plan (plans that fresh sessions on any model can execute), dev-loop (same-machine builder/tester sessions), team-loop (the multi-machine version, designed but not yet run by any repo) and external-pr-intake (a fixed opening review for outside pull requests). The dev-loop rules cite {cited} past findings as the incidents behind them, and {commits} superfriends commits name the finding that drove the change.",
+          "values": {
+            "cited": { "proof": "superfriends/proof/stats.json", "repo": "gs-admin-superfriends", "label": "Past findings the dev-loop skill cites as precedent for its rules" },
+            "commits": { "proof": "superfriends/proof/stats.json", "repo": "gs-admin-superfriends", "label": "Commits that name the finding that drove them" }
+          },
+          "evidence": ["[superfriends page](superfriends/README.md)"]
+        },
+        {
+          "text": "The last {kickoffs} gs-fortress build kickoffs were written as handoff-plan sets with a session map and frozen contracts; the CLI 1.0.10 plan froze {contracts} contracts.",
+          "values": {
+            "kickoffs": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Build kickoffs written as handoff-plan sets (session map, frozen contracts)" },
+            "contracts": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Frozen contracts in the 1.0.10 build plan" }
+          },
+          "evidence": ["[superfriends page](superfriends/README.md)", "[gs-fortress proof](gs-fortress/proof/stats.md)"]
         }
       ]
     },

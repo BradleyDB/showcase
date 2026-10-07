@@ -61,28 +61,29 @@ Measured 2026-10-05 at `origin/main` (ff5ff42).
 
 ### gs-admin-superfriends (private)
 
-Measured 2026-10-05 at `origin/main` (1452475).
+Measured 2026-10-06 at `origin/main` (235ff26).
 
 | Measure | Value | Reproduce with |
 |---|---|---|
-| Commits | 58 | `git -C gs-admin-superfriends rev-list --count 1452475` |
-| Non-merge commits | 40 | `git -C gs-admin-superfriends rev-list --count --no-merges 1452475` |
-| First commit | 2026-06-27 | `git -C gs-admin-superfriends log --reverse --format=%as 1452475 \| head -1` |
-| Latest commit | 2026-09-29 | `git -C gs-admin-superfriends log -1 --format=%as 1452475` |
-| Active days | 16 | `git -C gs-admin-superfriends log --format=%as 1452475 \| sort -u \| wc -l` |
-| Commits on origin/dev at 398e187 (integration branch) | 53 | `git -C gs-admin-superfriends rev-list --count 398e187` |
-| Tags reachable from the ref | 7 (latest: release-2026-09-29.2, release-2026-09-29, release-2026-09-28) | `git -C gs-admin-superfriends tag --merged 1452475 \| wc -l` |
-| Version in plugins/superfriends/.claude-plugin/plugin.json | 1.3.0 | `git -C gs-admin-superfriends show 1452475:plugins/superfriends/.claude-plugin/plugin.json \| grep -m1 -E '"?version"?\s*[:=]'` |
-| Skills (SKILL.md files) | 9 | `git -C gs-admin-superfriends ls-tree -r --name-only 1452475 \| grep -cE '(^\|/)skills/[^/]+/SKILL\.md$'` |
-| Test-tree files (tests, harness and fixtures) | 1 | `git -C gs-admin-superfriends ls-tree -r --name-only 1452475 \| grep -cE '(^\|/)(tests?\|__tests__)/\|\.test\.[a-z]+$\|_test\.[a-z]+$\|(^\|/)test_[^/]*\.py$\|(^\|/)test-[^/]*\.(mjs\|js\|sh)$'` |
-| CI workflows | 0 | `git -C gs-admin-superfriends ls-tree -r --name-only 1452475 -- .github/workflows \| wc -l` |
-| Lines of Python, excluding tests | 467 (4 files) | `git -C gs-admin-superfriends grep -I -c '' 1452475 -- '*.py' \| awk -F: '$2 !~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
-| Lines of JavaScript/TypeScript, excluding tests | 951 (5 files) | `git -C gs-admin-superfriends grep -I -c '' 1452475 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' \| awk -F: '$2 !~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
-| Lines of Shell, excluding tests | 276 (3 files) | `git -C gs-admin-superfriends grep -I -c '' 1452475 -- '*.sh' '*.bash' '*.ps1' '*.cmd' \| awk -F: '$2 !~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
-| Lines of Shell in test files | 128 (1 files) | `git -C gs-admin-superfriends grep -I -c '' 1452475 -- '*.sh' '*.bash' '*.ps1' '*.cmd' \| awk -F: '$2 ~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
-| Lines of Markdown (docs, skills, ledgers) | 5734 | `git -C gs-admin-superfriends grep -I -c '' 1452475 -- '*.md' \| awk -F: '{s+=$NF} END {print s+0}'` |
-| Commit authors other than the owner (count only) | 0 | `git -C gs-admin-superfriends log --format=%aN 1452475 \| sort -u \| grep -vixF -e 'bradleydb' -e 'bradley' \| wc -l` |
-| Merged pull requests | 19 | `gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json number --jq length` |
+| Commits | 72 | `git -C gs-admin-superfriends rev-list --count 235ff26` |
+| Non-merge commits | 51 | `git -C gs-admin-superfriends rev-list --count --no-merges 235ff26` |
+| First commit | 2026-06-27 | `git -C gs-admin-superfriends log --reverse --format=%as 235ff26 \| head -1` |
+| Latest commit | 2026-10-05 | `git -C gs-admin-superfriends log -1 --format=%as 235ff26` |
+| Active days | 18 | `git -C gs-admin-superfriends log --format=%as 235ff26 \| sort -u \| wc -l` |
+| Commits on origin/dev at f5b062d (integration branch) | 64 | `git -C gs-admin-superfriends rev-list --count f5b062d` |
+| Tags reachable from the ref | 8 (latest: release-2026-10-05, release-2026-09-29.2, release-2026-09-29) | `git -C gs-admin-superfriends tag --merged 235ff26 \| wc -l` |
+| Version in plugins/superfriends/.claude-plugin/plugin.json | 1.4.0 | `git -C gs-admin-superfriends show 235ff26:plugins/superfriends/.claude-plugin/plugin.json \| grep -m1 -E '"?version"?\s*[:=]'` |
+| Skills (SKILL.md files) | 10 | `git -C gs-admin-superfriends ls-tree -r --name-only 235ff26 \| grep -cE '(^\|/)skills/[^/]+/SKILL\.md$'` |
+| Test-tree files (tests, harness and fixtures) | 2 | `git -C gs-admin-superfriends ls-tree -r --name-only 235ff26 \| grep -cE '(^\|/)(tests?\|__tests__)/\|\.test\.[a-z]+$\|_test\.[a-z]+$\|(^\|/)test_[^/]*\.py$\|(^\|/)test-[^/]*\.(mjs\|js\|sh)$'` |
+| CI workflows | 0 | `git -C gs-admin-superfriends ls-tree -r --name-only 235ff26 -- .github/workflows \| wc -l` |
+| Lines of Python, excluding tests | 467 (4 files) | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.py' \| awk -F: '$2 !~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
+| Lines of JavaScript/TypeScript, excluding tests | 2267 (10 files) | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' \| awk -F: '$2 !~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
+| Lines of JavaScript/TypeScript in test files | 294 (1 files) | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' \| awk -F: '$2 ~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
+| Lines of Shell, excluding tests | 276 (3 files) | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.sh' '*.bash' '*.ps1' '*.cmd' \| awk -F: '$2 !~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
+| Lines of Shell in test files | 128 (1 files) | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.sh' '*.bash' '*.ps1' '*.cmd' \| awk -F: '$2 ~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
+| Lines of Markdown (docs, skills, ledgers) | 6390 | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.md' \| awk -F: '{s+=$NF} END {print s+0}'` |
+| Commit authors other than the owner (count only) | 0 | `git -C gs-admin-superfriends log --format=%aN 235ff26 \| sort -u \| grep -vixF -e 'bradleydb' -e 'bradley' \| wc -l` |
+| Merged pull requests | 21 | `gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json number --jq length` |
 | Merged PRs by someone other than the owner (count only) | 0 | `gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json author --jq '[.[] \| select(.author.login != "BradleyDB")] \| length'` |
 
 ### dev-utils (private)
@@ -119,9 +120,9 @@ Measured 2026-10-05 at `origin/main` (c2ebd66).
 | gs-fortress | gs-admin-cli-docs | 27 | `git -C gs-fortress grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-admin-cli-docs\|gs-superadmin)($\|[^A-Za-z0-9_-])' ff5ff42 -- . \| wc -l` |
 | gs-fortress | gs-admin-superfriends | 0 | `git -C gs-fortress grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-admin-superfriends\|superfriends)($\|[^A-Za-z0-9_-])' ff5ff42 -- . \| wc -l` |
 | gs-fortress | dev-utils | 2 | `git -C gs-fortress grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(dev-utils)($\|[^A-Za-z0-9_-])' ff5ff42 -- . \| wc -l` |
-| gs-admin-superfriends | gs-admin-cli-docs | 5 | `git -C gs-admin-superfriends grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-admin-cli-docs\|gs-superadmin)($\|[^A-Za-z0-9_-])' 1452475 -- . \| wc -l` |
-| gs-admin-superfriends | gs-fortress | 0 | `git -C gs-admin-superfriends grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-fortress)($\|[^A-Za-z0-9_-])' 1452475 -- . \| wc -l` |
-| gs-admin-superfriends | dev-utils | 6 | `git -C gs-admin-superfriends grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(dev-utils)($\|[^A-Za-z0-9_-])' 1452475 -- . \| wc -l` |
+| gs-admin-superfriends | gs-admin-cli-docs | 8 | `git -C gs-admin-superfriends grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-admin-cli-docs\|gs-superadmin)($\|[^A-Za-z0-9_-])' 235ff26 -- . \| wc -l` |
+| gs-admin-superfriends | gs-fortress | 1 | `git -C gs-admin-superfriends grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-fortress)($\|[^A-Za-z0-9_-])' 235ff26 -- . \| wc -l` |
+| gs-admin-superfriends | dev-utils | 6 | `git -C gs-admin-superfriends grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(dev-utils)($\|[^A-Za-z0-9_-])' 235ff26 -- . \| wc -l` |
 | dev-utils | gs-admin-cli-docs | 8 | `git -C dev-utils grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-admin-cli-docs\|gs-superadmin)($\|[^A-Za-z0-9_-])' c2ebd66 -- . \| wc -l` |
 | dev-utils | gs-fortress | 2 | `git -C dev-utils grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-fortress)($\|[^A-Za-z0-9_-])' c2ebd66 -- . \| wc -l` |
 | dev-utils | gs-admin-superfriends | 6 | `git -C dev-utils grep -I -l -i -E '(^\|[^A-Za-z0-9_-])(gs-admin-superfriends\|superfriends)($\|[^A-Za-z0-9_-])' c2ebd66 -- . \| wc -l` |

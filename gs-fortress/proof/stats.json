@@ -6,7 +6,7 @@
       "slug": "BradleyDB/gs-fortress",
       "ref": "origin/main",
       "sha": "ff5ff42",
-      "measuredOn": "2026-10-05",
+      "measuredOn": "2026-10-06",
       "metrics": [
         {
           "label": "Commits",
@@ -187,6 +187,16 @@
           "label": "dev-loop findings on this repo's own bus",
           "value": 25,
           "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l"
+        },
+        {
+          "label": "Build kickoffs written as handoff-plan sets (session map, frozen contracts)",
+          "value": 2,
+          "command": "git -C gs-fortress grep -l '^## Session map' ff5ff42 -- ledger/reports/ | wc -l"
+        },
+        {
+          "label": "Frozen contracts in the 1.0.10 build plan",
+          "value": 4,
+          "command": "git -C gs-fortress show ff5ff42:ledger/reports/build-kickoffs-1.0.10.md | awk '/^## Frozen contracts/{f=1;next} /^## /{f=0} f && /^- /' | wc -l"
         },
         {
           "label": "Merged pull requests",

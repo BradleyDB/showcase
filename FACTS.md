@@ -4,7 +4,7 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 
 ## What it is
 
-- The gs-admin toolchain is four repositories designed to work together: a public Claude Code plugin (gs-superadmin, in the gs-admin-cli-docs repo) that lets an AI agent administer a live Gainsight tenant behind approval prompts, plus three private repos: gs-fortress (audits each vendor CLI release and records the adopt/defer decision), superfriends (the builder/tester process skills) and dev-utils (the bookkeeping CLI for that process). Evidence: [system page](gs-admin-toolchain/README.md), [public repo](https://github.com/BradleyDB/gs-admin-cli-docs).
+- The gs-admin toolchain is four repositories designed to work together: a public Claude Code plugin (gs-superadmin, in the gs-admin-cli-docs repo) that lets an AI agent administer a live Gainsight tenant behind approval prompts, plus three private repos: gs-fortress (audits each vendor CLI release and records the adopt/defer decision), superfriends (the builder/tester process skills) and dev-utils (the bookkeeping CLI for that process). Evidence: [system page](gs-admin-toolchain/README.md), [public repo](https://github.com/BradleyDB/gs-admin-cli-docs), [superfriends page](superfriends/README.md).
 - It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer. Evidence: [index](README.md).
 
 ## Human decisions and change control
@@ -20,6 +20,8 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 - AI-written fixes are verified by a different AI session from the one that wrote them, against a build proven by a handoff token. Across the three repos' findings logs: 91 findings, 84 verified. Evidence: [system page](gs-admin-toolchain/README.md), [stats](gs-admin-toolchain/proof/stats.md).
 - In dev-utils, 26 fixes named an independent judge of their correctness, and 4 named the design they replaced. Evidence: [dev-utils page](dev-utils/README.md).
 - In gs-fortress, 8 of 25 findings were reopened at least once before passing. Evidence: [gs-fortress page](gs-fortress/README.md).
+- The process skills live in superfriends: handoff-plan (plans that fresh sessions on any model can execute), dev-loop (same-machine builder/tester sessions), team-loop (the multi-machine version, designed but not yet run by any repo) and external-pr-intake (a fixed opening review for outside pull requests). The dev-loop rules cite 14 past findings as the incidents behind them, and 11 superfriends commits name the finding that drove the change. Evidence: [superfriends page](superfriends/README.md).
+- The last 2 gs-fortress build kickoffs were written as handoff-plan sets with a session map and frozen contracts; the CLI 1.0.10 plan froze 4 contracts. Evidence: [superfriends page](superfriends/README.md), [gs-fortress proof](gs-fortress/proof/stats.md).
 
 ## Dependency mapping and the vendor relationship
 
@@ -46,4 +48,5 @@ Every number above is read by the build script from these proof files, where eac
 - gs-admin-toolchain/proof/stats.json: dev-utils, measured 2026-10-05 at origin/main (c2ebd66)
 - gs-admin-toolchain/proof/stats.json: gs-admin-cli-docs, measured 2026-10-05 at origin/main (5353b7f)
 - gs-admin-toolchain/proof/stats.json: gs-fortress, measured 2026-10-05 at origin/main (ff5ff42)
-- gs-fortress/proof/stats.json: gs-fortress, measured 2026-10-05 at origin/main (ff5ff42)
+- gs-fortress/proof/stats.json: gs-fortress, measured 2026-10-06 at origin/main (ff5ff42)
+- superfriends/proof/stats.json: gs-admin-superfriends, measured 2026-10-06 at origin/main (235ff26)

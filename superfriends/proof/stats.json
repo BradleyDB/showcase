@@ -1,0 +1,155 @@
+{
+  "mode": "stats",
+  "repos": [
+    {
+      "repo": "gs-admin-superfriends",
+      "slug": "BradleyDB/gs-admin-superfriends",
+      "ref": "origin/main",
+      "sha": "235ff26",
+      "measuredOn": "2026-10-06",
+      "metrics": [
+        {
+          "label": "Commits",
+          "value": 72,
+          "command": "git -C gs-admin-superfriends rev-list --count 235ff26"
+        },
+        {
+          "label": "Non-merge commits",
+          "value": 51,
+          "command": "git -C gs-admin-superfriends rev-list --count --no-merges 235ff26"
+        },
+        {
+          "label": "First commit",
+          "value": "2026-06-27",
+          "command": "git -C gs-admin-superfriends log --reverse --format=%as 235ff26 | head -1"
+        },
+        {
+          "label": "Latest commit",
+          "value": "2026-10-05",
+          "command": "git -C gs-admin-superfriends log -1 --format=%as 235ff26"
+        },
+        {
+          "label": "Active days",
+          "value": 18,
+          "command": "git -C gs-admin-superfriends log --format=%as 235ff26 | sort -u | wc -l"
+        },
+        {
+          "label": "Commits on origin/dev at f5b062d (integration branch)",
+          "value": 64,
+          "command": "git -C gs-admin-superfriends rev-list --count f5b062d"
+        },
+        {
+          "label": "Tags reachable from the ref",
+          "value": 8,
+          "command": "git -C gs-admin-superfriends tag --merged 235ff26 | wc -l",
+          "note": "latest: release-2026-10-05, release-2026-09-29.2, release-2026-09-29"
+        },
+        {
+          "label": "Version in plugins/superfriends/.claude-plugin/plugin.json",
+          "value": "1.4.0",
+          "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/.claude-plugin/plugin.json | grep -m1 -E '\"?version\"?\\s*[:=]'"
+        },
+        {
+          "label": "Skills (SKILL.md files)",
+          "value": 10,
+          "command": "git -C gs-admin-superfriends ls-tree -r --name-only 235ff26 | grep -cE '(^|/)skills/[^/]+/SKILL\\.md$'"
+        },
+        {
+          "label": "Test-tree files (tests, harness and fixtures)",
+          "value": 2,
+          "command": "git -C gs-admin-superfriends ls-tree -r --name-only 235ff26 | grep -cE '(^|/)(tests?|__tests__)/|\\.test\\.[a-z]+$|_test\\.[a-z]+$|(^|/)test_[^/]*\\.py$|(^|/)test-[^/]*\\.(mjs|js|sh)$'"
+        },
+        {
+          "label": "CI workflows",
+          "value": 0,
+          "command": "git -C gs-admin-superfriends ls-tree -r --name-only 235ff26 -- .github/workflows | wc -l"
+        },
+        {
+          "label": "Lines of Python, excluding tests",
+          "value": 467,
+          "command": "git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.py' | awk -F: '$2 !~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "4 files"
+        },
+        {
+          "label": "Lines of JavaScript/TypeScript, excluding tests",
+          "value": 2267,
+          "command": "git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' | awk -F: '$2 !~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "10 files"
+        },
+        {
+          "label": "Lines of JavaScript/TypeScript in test files",
+          "value": 294,
+          "command": "git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.mjs' '*.cjs' '*.js' '*.ts' '*.tsx' | awk -F: '$2 ~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "1 files"
+        },
+        {
+          "label": "Lines of Shell, excluding tests",
+          "value": 276,
+          "command": "git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.sh' '*.bash' '*.ps1' '*.cmd' | awk -F: '$2 !~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "3 files"
+        },
+        {
+          "label": "Lines of Shell in test files",
+          "value": 128,
+          "command": "git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.sh' '*.bash' '*.ps1' '*.cmd' | awk -F: '$2 ~ \"(^|/)(tests?|__tests__)/|\\\\.test\\\\.[a-z]+$|_test\\\\.[a-z]+$|(^|/)test_[^/]*\\\\.py$|(^|/)test-[^/]*\\\\.(mjs|js|sh)$\" {s+=$NF} END {print s+0}'",
+          "note": "1 files"
+        },
+        {
+          "label": "Lines of Markdown (docs, skills, ledgers)",
+          "value": 6390,
+          "command": "git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.md' | awk -F: '{s+=$NF} END {print s+0}'"
+        },
+        {
+          "label": "Commit authors other than the owner (count only)",
+          "value": 0,
+          "command": "git -C gs-admin-superfriends log --format=%aN 235ff26 | sort -u | grep -vixF -e 'bradleydb' -e 'bradley' | wc -l"
+        },
+        {
+          "label": "Release tags",
+          "value": 8,
+          "command": "git -C gs-admin-superfriends tag --merged 235ff26 | wc -l"
+        },
+        {
+          "label": "Commits that name the finding that drove them",
+          "value": 11,
+          "command": "git -C gs-admin-superfriends log 235ff26 --format=%s | grep -cE 'F-[0-9]+'"
+        },
+        {
+          "label": "Past findings the dev-loop skill cites as precedent for its rules",
+          "value": 14,
+          "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md | grep -oE 'F-[0-9]+' | sort -u | wc -l"
+        },
+        {
+          "label": "Lines in the four process skills (SKILL.md and README.md)",
+          "value": 1877,
+          "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md 235ff26:plugins/superfriends/skills/dev-loop/README.md 235ff26:plugins/superfriends/skills/team-loop/SKILL.md 235ff26:plugins/superfriends/skills/team-loop/README.md 235ff26:plugins/superfriends/skills/handoff-plan/SKILL.md 235ff26:plugins/superfriends/skills/external-pr-intake/SKILL.md | wc -l"
+        },
+        {
+          "label": "Design questions asked of every outside PR",
+          "value": 10,
+          "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/external-pr-intake/SKILL.md | grep -cE '^- [*][*]D[0-9]+ '"
+        },
+        {
+          "label": "Handoff-home resolver test cases",
+          "value": 6,
+          "command": "git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/handoff-plan/scripts/test-handoff-home.sh | grep -cE '^ *run \"'"
+        },
+        {
+          "label": "Merged pull requests",
+          "value": 21,
+          "command": "gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json number --jq length"
+        },
+        {
+          "label": "Merged PRs by someone other than the owner (count only)",
+          "value": 0,
+          "command": "gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json author --jq '[.[] | select(.author.login != \"BradleyDB\")] | length'"
+        }
+      ],
+      "integration": {
+        "ref": "origin/dev",
+        "sha": "f5b062d"
+      },
+      "visibility": "private"
+    }
+  ]
+}

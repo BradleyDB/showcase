@@ -153,6 +153,40 @@
         { "from": "merge", "to": "tag" }
       ],
       "legend": { "green": "AI session", "purple": "dev-utils", "amber": "a person" }
+    },
+    {
+      "id": "superfriends-flow",
+      "type": "flow",
+      "title": "How one piece of work moves through the process skills",
+      "subtitle": "superfriends",
+      "aria": "superfriends process in 7 numbered steps. 1 handoff-plan writes the plan: stable work-item IDs, frozen contracts and a session map. 2 a person reviews the plan and starts each session with its kickoff prompt. 3 a builder session builds only its assigned items and names a judge for each fix; if a frozen contract must change, it stops and reports to a person, who decides on a version bump. 4 a tester session proves which build it loaded, then verifies each fix or sends it back to step 3; a person steps in when needed to set a severity tier, defer a finding or rule it WONTFIX. 5 the session records what shipped: a ledger line and as-shipped notes, the next session’s only memory. 6 the release re-decides deferrals, runs code review, strips dev-only files in one commit and opens the PR, then stops. 7 a person merges the PR, or has a session merge it.",
+      "columns": [
+        { "x": 400, "w": 340, "header": "MACHINES PROPOSE" },
+        { "x": 745, "w": 250, "header": "A PERSON DECIDES" }
+      ],
+      "nodes": [
+        { "id": "plan", "col": 0, "row": 0, "color": "blue", "num": 1, "lines": ["handoff-plan writes the plan: IDs,", "frozen contracts, session map"] },
+        { "id": "review", "col": 1, "row": 1, "color": "amber", "num": 2, "lines": ["Reviews the plan, starts", "each session"] },
+        { "id": "build", "col": 0, "row": 2, "color": "green", "num": 3, "lines": ["Builder session builds only its", "items, names a judge per fix"] },
+        { "id": "contract", "col": 1, "row": 2, "color": "stop", "lines": ["Frozen contract must change:", "stop, report to a person"] },
+        { "id": "test", "col": 0, "row": 3, "color": "green", "num": 4, "lines": ["Tester session proves the build,", "then verifies or sends it back"] },
+        { "id": "steer", "col": 1, "row": 3, "color": "amber", "lines": ["Steps in when needed:", "tier, defer, WONTFIX"] },
+        { "id": "record", "col": 0, "row": 4, "color": "blue", "num": 5, "lines": ["Session records what shipped:", "ledger line, as-shipped notes"] },
+        { "id": "release", "col": 0, "row": 5, "color": "green", "num": 6, "lines": ["Release: re-decide deferrals,", "review, strip, open the PR"] },
+        { "id": "merge", "col": 1, "row": 6, "color": "amber", "num": 7, "lines": ["Merges the PR, or has", "a session merge it"] }
+      ],
+      "edges": [
+        { "from": "plan", "to": "review" },
+        { "from": "review", "to": "build" },
+        { "from": "build", "to": "contract", "route": "side", "dashed": true },
+        { "from": "build", "to": "test" },
+        { "from": "test", "to": "build", "route": "loop", "x": 195, "label": "sent back" },
+        { "from": "test", "to": "steer", "route": "side", "dashed": true, "color": "amber" },
+        { "from": "test", "to": "record", "label": "verified" },
+        { "from": "record", "to": "release" },
+        { "from": "release", "to": "merge" }
+      ],
+      "legend": { "blue": "handoff-plan", "green": "dev-loop / team-loop session", "amber": "a person", "stop": "stop and report" }
     }
   ]
 }

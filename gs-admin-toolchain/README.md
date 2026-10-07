@@ -1,6 +1,6 @@
 # gs-admin toolchain
 
-**An AI agent can now change a live SaaS tenant. This system keeps that agent safe and correct while the vendor's tools change underneath it.**
+**gs-superadmin, a public Claude Code plugin, puts every admin change to a live tenant behind an approval prompt. This system keeps the plugin correct as the vendor's CLI changes underneath it.**
 
 <table><tr>
 <td align="center" width="25%"><h2>4 repos</h2>designed to work together</td>
@@ -62,7 +62,7 @@
 |---|---|---|
 | **[gs-admin-cli-docs](https://github.com/BradleyDB/gs-admin-cli-docs)** (public), the gs-superadmin plugin | An AI admin workspace for a live tenant: guarded writes, a change journal, dependency reports, plus a knowledge base generated from the CLI's own manifests | Block a write (the guard *asks*), or hardcode command lists |
 | **[gs-fortress](../gs-fortress/README.md)** | Audits every vendor CLI release and keeps the adopt/defer ledger and the upstream-defect tracker | Upgrade anything, write to the plugin repo, or fill in a decision |
-| **superfriends** (private skills) | The process: the `/dev-loop` builder/tester loop, `handoff-plan` with frozen contracts and session ledgers | Merge. "Merging is the user's call, always" |
+| **[superfriends](../superfriends/README.md)** (private skills) | The process: the `/dev-loop` builder/tester loop, `handoff-plan` with frozen contracts and session ledgers | Merge. "Merging is the user's call, always" |
 | **[dev-utils](../dev-utils/README.md)** | The loop's bookkeeping as a tested CLI: bus edits, handoff tokens, the release ceremony. Still marked *under evaluation*: the hand-run skills remain the default | Merge, or store credentials |
 
 ## Worked example: CLI 1.0.10, from vendor release to shipped fix
@@ -148,7 +148,7 @@ Each row is reproduced by a command in [proof/trace.md](proof/trace.md).
 | gs-admin-cli-docs (public) | 163 | 28 (3 from outside contributors) | 4 | 35 (32) | 27,083 of 54,341 JS/TS lines |
 | gs-fortress | 165 | 14 | 8 | 25 (24) | 2,157 of 4,018 JS lines |
 | dev-utils | 237 | 30 | 6 | 31 (28) | 5,199 of 10,550 Python lines |
-| superfriends | 58 | 19 | 7 | — | 9 skills |
+| superfriends | 72 | 21 | 8 | — (logged where they surface) | 10 skills |
 
 Plus the plugin's private pre-launch history: 1,311 commits, 154 merged PRs, 23 tags, 446
 findings (434 verified).

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 638" width="880" height="638" role="img" aria-label="superfriends process in 7 numbered steps. 1 handoff-plan writes the plan: stable work-item IDs, frozen contracts and a session map. 2 a person reviews the plan and starts each session with its kickoff prompt. 3 a builder session builds only its assigned items and names a judge for each fix; if a frozen contract must change, it stops and reports to a person, who decides on a version bump. 4 a tester session proves which build it loaded, then verifies each fix or sends it back to step 3; a person steps in when needed to set a severity tier, defer a finding or rule it WONTFIX. 5 the session records what shipped: a ledger line and as-shipped notes, the next session’s only memory. 6 the release re-decides deferrals, runs code review, strips dev-only files in one commit and opens the PR, then stops. 7 a person merges the PR, or has a session merge it." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>superfriends process in 7 numbered steps. 1 handoff-plan writes the plan: stable work-item IDs, frozen contracts and a session map. 2 a person reviews the plan and starts each session with its kickoff prompt. 3 a builder session builds only its assigned items and names a judge for each fix; if a frozen contract must change, it stops and reports to a person, who decides on a version bump. 4 a tester session proves which build it loaded, then verifies each fix or sends it back to step 3; a person steps in when needed to set a severity tier, defer a finding or rule it WONTFIX. 5 the session records what shipped: a ledger line and as-shipped notes, the next session’s only memory. 6 the release re-decides deferrals, runs code review, strips dev-only files in one commit and opens the PR, then stops. 7 a person merges the PR, or has a session merge it.</title>
+  <rect width="880" height="638" rx="14" fill="#0d1117"/>
+  <text x="30" y="30" font-size="17" font-weight="700" fill="#e6edf3" text-anchor="start">How one piece of work moves through the process skills</text>
+  <text x="850" y="30" font-size="13" font-weight="400" fill="#9198a1" text-anchor="end">superfriends</text>
+  <text x="230" y="66" font-size="11" font-weight="700" fill="#9198a1" text-anchor="start" letter-spacing="1.5">MACHINES PROPOSE</text>
+  <text x="620" y="66" font-size="11" font-weight="700" fill="#9198a1" text-anchor="start" letter-spacing="1.5">A PERSON DECIDES</text>
+  <path d="M400 142 L400 147.5 Q400 153 405.5 153 L739.5 153 Q745 153 745 158.5 L745 164" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="745,164 740,155 750,155" fill="#6e7681"/>
+  <path d="M745 214 L745 219.5 Q745 225 739.5 225 L405.5 225 Q400 225 400 230.5 L400 236" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="400,236 395,227 405,227" fill="#6e7681"/>
+  <path d="M570 261 L620 261" fill="none" stroke="#6e7681" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="620,261 611,266 611,256" fill="#6e7681"/>
+  <path d="M400 286 L400 308" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="400,308 395,299 405,299" fill="#6e7681"/>
+  <path d="M230 349 L203 349 Q195 349 195 341 L195 285 Q195 277 203 277 L230 277" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="230,277 221,282 221,272" fill="#6e7681"/>
+  <path d="M570 333 L620 333" fill="none" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polygon points="620,333 611,338 611,328" fill="#fbbf24"/>
+  <path d="M400 358 L400 380" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="400,380 395,371 405,371" fill="#6e7681"/>
+  <path d="M400 430 L400 452" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="400,452 395,443 405,443" fill="#6e7681"/>
+  <path d="M400 502 L400 507.5 Q400 513 405.5 513 L739.5 513 Q745 513 745 518.5 L745 524" fill="none" stroke="#6e7681" stroke-width="1.6"/>
+  <polygon points="745,524 740,515 750,515" fill="#6e7681"/>
+  <rect x="230" y="92" width="340" height="50" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="400" y="113.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">handoff-plan writes the plan: IDs,</text>
+  <text x="400" y="130.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">frozen contracts, session map</text>
+  <circle cx="230" cy="117" r="12" fill="#60a5fa"/>
+  <text x="230" y="121.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">1</text>
+  <rect x="620" y="164" width="250" height="50" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="745" y="185.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Reviews the plan, starts</text>
+  <text x="745" y="202.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">each session</text>
+  <circle cx="620" cy="189" r="12" fill="#fbbf24"/>
+  <text x="620" y="193.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">2</text>
+  <rect x="230" y="236" width="340" height="50" rx="10" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="400" y="257.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Builder session builds only its</text>
+  <text x="400" y="274.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">items, names a judge per fix</text>
+  <circle cx="230" cy="261" r="12" fill="#4ade80"/>
+  <text x="230" y="265.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">3</text>
+  <rect x="620" y="236" width="250" height="50" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="745" y="257.5" font-size="13.5" font-weight="600" fill="#9198a1" text-anchor="middle">Frozen contract must change:</text>
+  <text x="745" y="274.5" font-size="13.5" font-weight="400" fill="#9198a1" text-anchor="middle">stop, report to a person</text>
+  <rect x="230" y="308" width="340" height="50" rx="10" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="400" y="329.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Tester session proves the build,</text>
+  <text x="400" y="346.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">then verifies or sends it back</text>
+  <circle cx="230" cy="333" r="12" fill="#4ade80"/>
+  <text x="230" y="337.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">4</text>
+  <rect x="620" y="308" width="250" height="50" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="745" y="329.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Steps in when needed:</text>
+  <text x="745" y="346.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">tier, defer, WONTFIX</text>
+  <rect x="230" y="380" width="340" height="50" rx="10" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="400" y="401.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Session records what shipped:</text>
+  <text x="400" y="418.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">ledger line, as-shipped notes</text>
+  <circle cx="230" cy="405" r="12" fill="#60a5fa"/>
+  <text x="230" y="409.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">5</text>
+  <rect x="230" y="452" width="340" height="50" rx="10" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="400" y="473.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Release: re-decide deferrals,</text>
+  <text x="400" y="490.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">review, strip, open the PR</text>
+  <circle cx="230" cy="477" r="12" fill="#4ade80"/>
+  <text x="230" y="481.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">6</text>
+  <rect x="620" y="524" width="250" height="50" rx="10" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="745" y="545.5" font-size="13.5" font-weight="600" fill="#e6edf3" text-anchor="middle">Merges the PR, or has</text>
+  <text x="745" y="562.5" font-size="13.5" font-weight="400" fill="#e6edf3" text-anchor="middle">a session merge it</text>
+  <circle cx="620" cy="549" r="12" fill="#fbbf24"/>
+  <text x="620" y="553.5" font-size="12" font-weight="700" fill="#0d1117" text-anchor="middle">7</text>
+  <rect x="157.3" y="303" width="75.4" height="20" rx="10" fill="#0d1117"/><text x="195" y="317" font-size="12" font-weight="600" fill="#9198a1" text-anchor="middle">sent back</text>
+  <rect x="365.6" y="359" width="68.8" height="20" rx="10" fill="#0d1117"/><text x="400" y="373" font-size="12" font-weight="600" fill="#9198a1" text-anchor="middle">verified</text>
+  <rect x="30" y="605" width="14" height="14" rx="4" fill="#0c1d3d" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="51" y="616.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">handoff-plan</text>
+  <rect x="157.8" y="605" width="14" height="14" rx="4" fill="#072a17" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="178.8" y="616.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">dev-loop / team-loop session</text>
+  <rect x="396" y="605" width="14" height="14" rx="4" fill="#2e1d05" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="417" y="616.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">a person</text>
+  <rect x="496.2" y="605" width="14" height="14" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <text x="517.2" y="616.5" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="start">stop and report</text>
+</svg>
