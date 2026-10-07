@@ -98,11 +98,6 @@
           "command": "git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md | grep -c '^Redesign:'"
         },
         {
-          "label": "Release tags",
-          "value": 6,
-          "command": "git -C dev-utils tag --merged c2ebd66 | wc -l"
-        },
-        {
           "label": "Deliberate re-pins to the skill spec",
           "value": 13,
           "command": "git -C dev-utils log c2ebd66 --format=%s | grep -ci 're-pin'"
@@ -111,16 +106,6 @@
           "label": "Python source",
           "value": 5351,
           "command": "git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' ':!tests/' | awk -F: '{s+=$NF} END {print s}'"
-        },
-        {
-          "label": "Commits",
-          "value": 237,
-          "command": "git -C dev-utils rev-list --count c2ebd66"
-        },
-        {
-          "label": "CI workflows",
-          "value": 0,
-          "command": "git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows | wc -l"
         },
         {
           "label": "Merged pull requests",

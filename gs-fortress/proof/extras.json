@@ -86,11 +86,6 @@
   },
   {
     "repo": "gs-fortress",
-    "label": "dev-loop findings on this repo's own bus",
-    "command": "git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md | grep -oE '^## F-[0-9]+' | sort -u | wc -l"
-  },
-  {
-    "repo": "gs-fortress",
     "label": "Build kickoffs written as handoff-plan sets (session map, frozen contracts)",
     "command": "git -C gs-fortress grep -l '^## Session map' ff5ff42 -- ledger/reports/ | wc -l"
   },

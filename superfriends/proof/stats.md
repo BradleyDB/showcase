@@ -22,7 +22,6 @@ Measured 2026-10-06 at `origin/main` (235ff26).
 | Lines of Shell in test files | 128 (1 files) | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.sh' '*.bash' '*.ps1' '*.cmd' \| awk -F: '$2 ~ "(^\|/)(tests?\|__tests__)/\|\\.test\\.[a-z]+$\|_test\\.[a-z]+$\|(^\|/)test_[^/]*\\.py$\|(^\|/)test-[^/]*\\.(mjs\|js\|sh)$" {s+=$NF} END {print s+0}'` |
 | Lines of Markdown (docs, skills, ledgers) | 6390 | `git -C gs-admin-superfriends grep -I -c '' 235ff26 -- '*.md' \| awk -F: '{s+=$NF} END {print s+0}'` |
 | Commit authors other than the owner (count only) | 0 | `git -C gs-admin-superfriends log --format=%aN 235ff26 \| sort -u \| grep -vixF -e 'bradleydb' -e 'bradley' \| wc -l` |
-| Release tags | 8 | `git -C gs-admin-superfriends tag --merged 235ff26 \| wc -l` |
 | Commits that name the finding that drove them | 11 | `git -C gs-admin-superfriends log 235ff26 --format=%s \| grep -cE 'F-[0-9]+'` |
 | Past findings the dev-loop skill cites as precedent for its rules | 14 | `git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md \| grep -oE 'F-[0-9]+' \| sort -u \| wc -l` |
 | Lines in the four process skills (SKILL.md and README.md) | 1877 | `git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md 235ff26:plugins/superfriends/skills/dev-loop/README.md 235ff26:plugins/superfriends/skills/team-loop/SKILL.md 235ff26:plugins/superfriends/skills/team-loop/README.md 235ff26:plugins/superfriends/skills/handoff-plan/SKILL.md 235ff26:plugins/superfriends/skills/external-pr-intake/SKILL.md \| wc -l` |

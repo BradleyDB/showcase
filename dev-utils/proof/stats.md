@@ -21,11 +21,8 @@ Measured 2026-10-05 at `origin/main` (c2ebd66).
 | dev-loop findings on the bus, live + archive | 31 (28 VERIFIED) | `git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md \| grep -oE '^## F-[0-9]+' \| sort -u \| wc -l` |
 | Fixes carrying an independent `Judge:` line | 26 | `git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md \| grep -c '^Judge:'` |
 | Fixes that name the design they replace (`Redesign:`) | 4 | `git -C dev-utils show c2ebd66:dev/FEEDBACK.md c2ebd66:dev/FEEDBACK-archive.md \| grep -c '^Redesign:'` |
-| Release tags | 6 | `git -C dev-utils tag --merged c2ebd66 \| wc -l` |
 | Deliberate re-pins to the skill spec | 13 | `git -C dev-utils log c2ebd66 --format=%s \| grep -ci 're-pin'` |
 | Python source | 5351 | `git -C dev-utils grep -I -c '' c2ebd66 -- '*.py' ':!tests/' \| awk -F: '{s+=$NF} END {print s}'` |
-| Commits | 237 | `git -C dev-utils rev-list --count c2ebd66` |
-| CI workflows | 0 | `git -C dev-utils ls-tree -r --name-only c2ebd66 -- .github/workflows \| wc -l` |
 | Merged pull requests | 30 | `gh pr list -R BradleyDB/dev-utils --state merged --limit 2000 --json number --jq length` |
 | Merged PRs by someone other than the owner (count only) | 0 | `gh pr list -R BradleyDB/dev-utils --state merged --limit 2000 --json author --jq '[.[] \| select(.author.login != "BradleyDB")] \| length'` |
 

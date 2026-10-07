@@ -1,11 +1,6 @@
 [
   {
     "repo": "gs-admin-superfriends",
-    "label": "Release tags",
-    "command": "git -C gs-admin-superfriends tag --merged 235ff26 | wc -l"
-  },
-  {
-    "repo": "gs-admin-superfriends",
     "label": "Commits that name the finding that drove them",
     "command": "git -C gs-admin-superfriends log 235ff26 --format=%s | grep -cE 'F-[0-9]+'"
   },

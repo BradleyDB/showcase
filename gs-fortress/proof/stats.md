@@ -38,7 +38,6 @@ Measured 2026-10-06 at `origin/main` (ff5ff42).
 | Bus findings reopened at least once (by a tester or the owner) | 8 | `git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md \| awk '/^## F-[0-9]+/{f=$2} /^Reopened/{print f}' \| sort -u \| wc -l` |
 | Test suites (*.test.mjs) | 6 | `git -C gs-fortress ls-tree -r --name-only ff5ff42 plugins/gs-fortress/test \| grep -cE '\.test\.mjs$'` |
 | Watcher invariants restated to every agent | 8 | `git -C gs-fortress show ff5ff42:plugins/gs-fortress/skills/gs-admin-cli-watch/SKILL.md \| sed -n '/^## Invariants/,/^## Stage 0/p' \| grep -cE '^[0-9]+\. '` |
-| dev-loop findings on this repo's own bus | 25 | `git -C gs-fortress show ff5ff42:dev/FEEDBACK.md ff5ff42:dev/FEEDBACK-archive.md \| grep -oE '^## F-[0-9]+' \| sort -u \| wc -l` |
 | Build kickoffs written as handoff-plan sets (session map, frozen contracts) | 2 | `git -C gs-fortress grep -l '^## Session map' ff5ff42 -- ledger/reports/ \| wc -l` |
 | Frozen contracts in the 1.0.10 build plan | 4 | `git -C gs-fortress show ff5ff42:ledger/reports/build-kickoffs-1.0.10.md \| awk '/^## Frozen contracts/{f=1;next} /^## /{f=0} f && /^- /' \| wc -l` |
 | Merged pull requests | 14 | `gh pr list -R BradleyDB/gs-fortress --state merged --limit 2000 --json number --jq length` |

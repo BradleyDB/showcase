@@ -5,7 +5,7 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 ## What it is
 
 - The gs-admin toolchain is four repositories designed to work together: a public Claude Code plugin (gs-superadmin, in the gs-admin-cli-docs repo) that lets an AI agent administer a live Gainsight tenant behind approval prompts, plus three private repos: gs-fortress (audits each vendor CLI release and records the adopt/defer decision), superfriends (the builder/tester process skills) and dev-utils (the bookkeeping CLI for that process). Evidence: [system page](gs-admin-toolchain/README.md), [public repo](https://github.com/BradleyDB/gs-admin-cli-docs), [superfriends page](superfriends/README.md).
-- It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer. Evidence: [index](README.md).
+- It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer. It is not affiliated with or endorsed by Gainsight, Inc. Evidence: [index](README.md).
 
 ## Human decisions and change control
 

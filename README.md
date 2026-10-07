@@ -46,3 +46,5 @@ the private ones, I'm happy to rerun any of them live in a walkthrough.
 ---
 
 © 2026 Bradley Bazhaw. All rights reserved; see [LICENSE](LICENSE). You are welcome to read and link to these pages.
+
+Gainsight is a trademark of Gainsight, Inc. This is independent work, not affiliated with or endorsed by Gainsight, Inc.

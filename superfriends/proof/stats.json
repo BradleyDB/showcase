@@ -105,11 +105,6 @@
           "command": "git -C gs-admin-superfriends log --format=%aN 235ff26 | sort -u | grep -vixF -e 'bradleydb' -e 'bradley' | wc -l"
         },
         {
-          "label": "Release tags",
-          "value": 8,
-          "command": "git -C gs-admin-superfriends tag --merged 235ff26 | wc -l"
-        },
-        {
           "label": "Commits that name the finding that drove them",
           "value": 11,
           "command": "git -C gs-admin-superfriends log 235ff26 --format=%s | grep -cE 'F-[0-9]+'"

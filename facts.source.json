@@ -10,7 +10,7 @@
           "evidence": ["[system page](gs-admin-toolchain/README.md)", "[public repo](https://github.com/BradleyDB/gs-admin-cli-docs)", "[superfriends page](superfriends/README.md)"]
         },
         {
-          "text": "It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer.",
+          "text": "It is independent work by one maintainer, BradleyDB, built on personal time and not for an employer. It is not affiliated with or endorsed by Gainsight, Inc.",
           "evidence": ["[index](README.md)"]
         }
       ]
