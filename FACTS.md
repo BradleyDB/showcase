@@ -31,7 +31,7 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 
 ## Scale
 
-- The public plugin repo has 163 commits and 28 merged pull requests, 3 of them from outside contributors. Its changelog records 105 versions, including the history before it went public. Evidence: [public repo](https://github.com/BradleyDB/gs-admin-cli-docs).
+- The public plugin repo has 163 commits and 29 merged pull requests, 3 of them from outside contributors. Its changelog records 105 versions, including the history before it went public. Evidence: [public repo](https://github.com/BradleyDB/gs-admin-cli-docs).
 - Its pre-public history, kept in a private archive, has 1,311 commits and 154 merged pull requests. Evidence: [archive stats](gs-admin-toolchain/proof/stats-archive.md).
 - dev-utils is 5,351 lines of Python source with 5,199 lines of tests and 240 test cases. Evidence: [dev-utils page](dev-utils/README.md).
 
@@ -49,4 +49,4 @@ Every number above is read by the build script from these proof files, where eac
 - gs-admin-toolchain/proof/stats.json: gs-admin-cli-docs, measured 2026-10-05 at origin/main (5353b7f)
 - gs-admin-toolchain/proof/stats.json: gs-fortress, measured 2026-10-05 at origin/main (ff5ff42)
 - gs-fortress/proof/stats.json: gs-fortress, measured 2026-10-06 at origin/main (ff5ff42)
-- superfriends/proof/stats.json: gs-admin-superfriends, measured 2026-10-06 at origin/main (235ff26)
+- superfriends/proof/stats.json: gs-admin-superfriends, measured 2026-10-06 at origin/main (1bd3309)

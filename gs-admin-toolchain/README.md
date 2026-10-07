@@ -145,10 +145,10 @@ Each row is reproduced by a command in [proof/trace.md](proof/trace.md).
 
 | Repo | Commits | Merged PRs | Release tags | Findings reviewed (verified) | Test code |
 |---|---:|---:|---:|---:|---|
-| gs-admin-cli-docs (public) | 163 | 28 (3 from outside contributors) | 4 | 35 (32) | 27,083 of 54,341 JS/TS lines |
+| gs-admin-cli-docs (public) | 163 | 29 (3 from outside contributors) | 4 | 35 (32) | 27,083 of 54,341 JS/TS lines |
 | gs-fortress | 165 | 14 | 8 | 25 (24) | 2,157 of 4,018 JS lines |
 | dev-utils | 237 | 30 | 6 | 31 (28) | 5,199 of 10,550 Python lines |
-| superfriends | 72 | 21 | 8 | — (logged where they surface) | 10 skills |
+| superfriends | 76 | 23 | 9 | — (logged where they surface) | 10 skills |
 
 Plus the plugin's private pre-launch history: 1,311 commits, 154 merged PRs, 23 tags, 446
 findings (434 verified).

@@ -6,7 +6,7 @@
 <td align="center" width="25%"><h2>91</h2>findings through these rules in the system's other three repos</td>
 <td align="center" width="25%"><h2>14</h2>past findings the dev-loop rules cite as the incident behind them</td>
 <td align="center" width="25%"><h2>11</h2>commits that name the finding behind the change</td>
-<td align="center" width="25%"><h2>8</h2>releases from 21 merged pull requests</td>
+<td align="center" width="25%"><h2>9</h2>releases from 23 merged pull requests</td>
 </tr></table>
 
 > [!IMPORTANT]
@@ -150,7 +150,7 @@ The plan froze four contracts, among them the plugin's measured read surface.
 | **Decision log** | Dated rulings in each plan; a dated line for every tier, deferral and verdict; a session ledger per plan | 91 findings; 2 handoff sets |
 | **Architecture principles** | Eight rules, each tied to a mechanism, most to the incident behind them | 14 cited findings |
 | **Dependency map** | A frozen-contracts section in every plan: each shared interface, its version, and what may not change | 4 contracts in the 1.0.10 plan |
-| **Change control** | One-way flow from feature to `dev` to `main`, a one-commit release strip, tags only after a person's merge | 8 releases, 21 merged PRs |
+| **Change control** | One-way flow from feature to `dev` to `main`, a one-commit release strip, tags only after a person's merge | 9 releases, 23 merged PRs |
 | **Agent evaluation** | The other role verifies against a proven build, with the pass bar stated before measuring | 84 of 91 findings verified |
 | **Agent escalation** | Sessions stop on a contract change or an unmerged dependency; intake reports and never acts | the dashed steps above |
 
@@ -158,27 +158,27 @@ The plan froze four contracts, among them the plugin's measured read surface.
 
 | Commits | Release tags | Merged PRs | Skills (covered here) | Lines in the four skills | Resolver tests |
 |---:|---:|---:|---:|---:|---:|
-| 72 | 8 | 21 | 10 (4) | 1,877 | 6 cases |
+| 76 | 9 | 23 | 10 (4) | 1,877 | 6 cases |
 
 <details>
 <summary><b>Every number with the command that reproduces it</b></summary>
 
-Measured 2026-10-06 at `origin/main` (`235ff26`), run from the folder holding the clone.
+Measured 2026-10-06 at `origin/main` (`1bd3309`), run from the folder holding the clone.
 The full table is in [proof/stats.md](proof/stats.md).
 
 | Measure | Value | How to check |
 |---|---|---|
 | Findings through dev-loop in the system's three repos | 91 (35 + 25 + 31) | per repo in [the system page's proof](../gs-admin-toolchain/proof/stats.md) |
-| Past findings the dev-loop rules cite | 14 | `git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/dev-loop/SKILL.md \| grep -oE 'F-[0-9]+' \| sort -u \| wc -l` |
-| Commits that name the finding that drove them | 11 | `git -C gs-admin-superfriends log 235ff26 --format=%s \| grep -cE 'F-[0-9]+'` |
+| Past findings the dev-loop rules cite | 14 | `git -C gs-admin-superfriends show 1bd3309:plugins/superfriends/skills/dev-loop/SKILL.md \| grep -oE 'F-[0-9]+' \| sort -u \| wc -l` |
+| Commits that name the finding that drove them | 11 | `git -C gs-admin-superfriends log 1bd3309 --format=%s \| grep -cE 'F-[0-9]+'` |
 | gs-fortress build kickoffs written as handoff-plan sets | 2 | `git -C gs-fortress grep -l '^## Session map' ff5ff42 -- ledger/reports/ \| wc -l` |
 | Frozen contracts in the 1.0.10 build plan | 4 | see [gs-fortress's proof](../gs-fortress/proof/stats.md) |
-| Release tags | 8 | `git -C gs-admin-superfriends tag --merged 235ff26 \| wc -l` |
-| Merged pull requests | 21, none from anyone else | `gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json number --jq length` |
+| Release tags | 9 | `git -C gs-admin-superfriends tag --merged 1bd3309 \| wc -l` |
+| Merged pull requests | 23, none from anyone else | `gh pr list -R BradleyDB/gs-admin-superfriends --state merged --limit 2000 --json number --jq length` |
 | Lines in the four skills (SKILL.md and README.md) | 1,877 | see [proof/stats.md](proof/stats.md) |
-| Design questions asked of every outside PR | 10 | `git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/external-pr-intake/SKILL.md \| grep -cE '^- [*][*]D[0-9]+ '` |
-| Handoff-home resolver test cases | 6 | `git -C gs-admin-superfriends show 235ff26:plugins/superfriends/skills/handoff-plan/scripts/test-handoff-home.sh \| grep -cE '^ *run "'` |
-| Commits | 72, 2026-06-27 to 2026-10-05, 18 active days | `git -C gs-admin-superfriends rev-list --count 235ff26` |
+| Design questions asked of every outside PR | 10 | `git -C gs-admin-superfriends show 1bd3309:plugins/superfriends/skills/external-pr-intake/SKILL.md \| grep -cE '^- [*][*]D[0-9]+ '` |
+| Handoff-home resolver test cases | 6 | `git -C gs-admin-superfriends show 1bd3309:plugins/superfriends/skills/handoff-plan/scripts/test-handoff-home.sh \| grep -cE '^ *run "'` |
+| Commits | 76, 2026-06-27 to 2026-10-06, 19 active days | `git -C gs-admin-superfriends rev-list --count 1bd3309` |
 
 </details>
 
