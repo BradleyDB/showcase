@@ -110,6 +110,8 @@ permanent checklist items, 12 and 13.
 }
 ```
 
+"explorer" is the plugin repo's internal name.
+
 The impact checklist (item titles, paraphrased, ordered by risk). Items 1–6 and 11–13
 cover changes the plugin's own CI can't catch:
 

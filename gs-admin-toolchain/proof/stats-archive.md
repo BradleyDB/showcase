@@ -1,5 +1,7 @@
 ### Admin_CLI_Explore (private)
 
+`Admin_CLI_Explore` is the local clone of the plugin's pre-launch history (`gs-admin-cli-docs-private-archive`).
+
 Measured 2026-10-05 at `origin/main` (188ffc4).
 
 | Measure | Value | Reproduce with |
