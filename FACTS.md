@@ -43,10 +43,10 @@ A plain fact sheet for anyone, or any AI assistant, summarizing these pages. Eac
 
 Every number above is read by the build script from these proof files, where each one sits beside the command that reproduces it at the exact commit measured:
 
-- dev-utils/proof/stats.json: dev-utils, measured 2026-10-05 at origin/main (c2ebd66)
-- gs-admin-toolchain/proof/stats-archive.json: Admin_CLI_Explore, measured 2026-10-05 at origin/main (188ffc4)
-- gs-admin-toolchain/proof/stats.json: dev-utils, measured 2026-10-05 at origin/main (c2ebd66)
-- gs-admin-toolchain/proof/stats.json: gs-admin-cli-docs, measured 2026-10-05 at origin/main (5353b7f)
-- gs-admin-toolchain/proof/stats.json: gs-fortress, measured 2026-10-05 at origin/main (ff5ff42)
-- gs-fortress/proof/stats.json: gs-fortress, measured 2026-10-06 at origin/main (ff5ff42)
-- superfriends/proof/stats.json: gs-admin-superfriends, measured 2026-10-06 at origin/main (235ff26)
+- ../dev-utils/proof/stats.json: dev-utils, measured 2026-10-05 at origin/main (c2ebd66)
+- ../gs-admin-toolchain/proof/stats-archive.json: Admin_CLI_Explore, measured 2026-10-05 at origin/main (188ffc4)
+- ../gs-admin-toolchain/proof/stats.json: dev-utils, measured 2026-10-05 at origin/main (c2ebd66)
+- ../gs-admin-toolchain/proof/stats.json: gs-admin-cli-docs, measured 2026-10-05 at origin/main (5353b7f)
+- ../gs-admin-toolchain/proof/stats.json: gs-fortress, measured 2026-10-05 at origin/main (ff5ff42)
+- ../gs-fortress/proof/stats.json: gs-fortress, measured 2026-10-06 at origin/main (ff5ff42)
+- ../superfriends/proof/stats.json: gs-admin-superfriends, measured 2026-10-06 at origin/main (235ff26)

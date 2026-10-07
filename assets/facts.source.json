@@ -21,8 +21,8 @@
         {
           "text": "Every vendor CLI release that reaches an audit gets a recorded human adopt/defer decision: {audits} releases audited, {decisions} decisions recorded, all adopt so far.",
           "values": {
-            "audits": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Upstream releases audited (audit reports)" },
-            "decisions": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Adopt/defer decisions recorded" }
+            "audits": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Upstream releases audited (audit reports)" },
+            "decisions": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Adopt/defer decisions recorded" }
           },
           "evidence": ["[gs-fortress page](gs-fortress/README.md)"]
         },
@@ -41,7 +41,7 @@
         {
           "text": "The public repo runs {ci} CI workflows, and GitHub rulesets on its main and dev branches require passing checks. The private repos run their tests locally as a required release step, by choice.",
           "values": {
-            "ci": { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "CI workflows" }
+            "ci": { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "CI workflows" }
           },
           "evidence": ["[system page, trade-offs](gs-admin-toolchain/README.md)"]
         }
@@ -54,14 +54,14 @@
           "text": "AI-written fixes are verified by a different AI session from the one that wrote them, against a build proven by a handoff token. Across the three repos' findings logs: {findings} findings, {verified} verified.",
           "values": {
             "findings": { "sum": [
-              { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "dev-loop findings on the bus, live + archive (at origin/dev 0543ff0: the release strips dev/)" },
-              { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive" },
-              { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "dev-utils", "label": "dev-loop findings on the bus, live + archive" }
+              { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "dev-loop findings on the bus, live + archive (at origin/dev 0543ff0: the release strips dev/)" },
+              { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive" },
+              { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "dev-utils", "label": "dev-loop findings on the bus, live + archive" }
             ] },
             "verified": { "sum": [
-              { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "dev-loop findings on the bus, live + archive (at origin/dev 0543ff0: the release strips dev/)", "from": "note" },
-              { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive", "from": "note" },
-              { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "dev-utils", "label": "dev-loop findings on the bus, live + archive", "from": "note" }
+              { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "dev-loop findings on the bus, live + archive (at origin/dev 0543ff0: the release strips dev/)", "from": "note" },
+              { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive", "from": "note" },
+              { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "dev-utils", "label": "dev-loop findings on the bus, live + archive", "from": "note" }
             ] }
           },
           "evidence": ["[system page](gs-admin-toolchain/README.md)", "[stats](gs-admin-toolchain/proof/stats.md)"]
@@ -69,32 +69,32 @@
         {
           "text": "In dev-utils, {judge} fixes named an independent judge of their correctness, and {redesign} named the design they replaced.",
           "values": {
-            "judge": { "proof": "dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Fixes carrying an independent `Judge:` line" },
-            "redesign": { "proof": "dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Fixes that name the design they replace (`Redesign:`)" }
+            "judge": { "proof": "../dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Fixes carrying an independent `Judge:` line" },
+            "redesign": { "proof": "../dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Fixes that name the design they replace (`Redesign:`)" }
           },
           "evidence": ["[dev-utils page](dev-utils/README.md)"]
         },
         {
           "text": "In gs-fortress, {reopened} of {fortressFindings} findings were reopened at least once before passing.",
           "values": {
-            "reopened": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Bus findings reopened at least once (by a tester or the owner)" },
-            "fortressFindings": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive" }
+            "reopened": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Bus findings reopened at least once (by a tester or the owner)" },
+            "fortressFindings": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "dev-loop findings on the bus, live + archive" }
           },
           "evidence": ["[gs-fortress page](gs-fortress/README.md)"]
         },
         {
           "text": "The process skills live in superfriends: handoff-plan (plans that fresh sessions on any model can execute), dev-loop (same-machine builder/tester sessions), team-loop (the multi-machine version, designed but not yet run by any repo) and external-pr-intake (a fixed opening review for outside pull requests). The dev-loop rules cite {cited} past findings as the incidents behind them, and {commits} superfriends commits name the finding that drove the change.",
           "values": {
-            "cited": { "proof": "superfriends/proof/stats.json", "repo": "gs-admin-superfriends", "label": "Past findings the dev-loop skill cites as precedent for its rules" },
-            "commits": { "proof": "superfriends/proof/stats.json", "repo": "gs-admin-superfriends", "label": "Commits that name the finding that drove them" }
+            "cited": { "proof": "../superfriends/proof/stats.json", "repo": "gs-admin-superfriends", "label": "Past findings the dev-loop skill cites as precedent for its rules" },
+            "commits": { "proof": "../superfriends/proof/stats.json", "repo": "gs-admin-superfriends", "label": "Commits that name the finding that drove them" }
           },
           "evidence": ["[superfriends page](superfriends/README.md)"]
         },
         {
           "text": "The last {kickoffs} gs-fortress build kickoffs were written as handoff-plan sets with a session map and frozen contracts; the CLI 1.0.10 plan froze {contracts} contracts.",
           "values": {
-            "kickoffs": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Build kickoffs written as handoff-plan sets (session map, frozen contracts)" },
-            "contracts": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Frozen contracts in the 1.0.10 build plan" }
+            "kickoffs": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Build kickoffs written as handoff-plan sets (session map, frozen contracts)" },
+            "contracts": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Frozen contracts in the 1.0.10 build plan" }
           },
           "evidence": ["[superfriends page](superfriends/README.md)", "[gs-fortress proof](gs-fortress/proof/stats.md)"]
         }
@@ -106,26 +106,26 @@
         {
           "text": "gs-fortress audits each release against an impact checklist of {items} items, up from {items0} at the first audit as later audits found new dependencies.",
           "values": {
-            "items": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Impact-checklist items" },
-            "items0": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Impact-checklist items at the first audit (b9b6d3a, 2026-07-27)" }
+            "items": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Impact-checklist items" },
+            "items0": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Impact-checklist items at the first audit (b9b6d3a, 2026-07-27)" }
           },
           "evidence": ["[gs-fortress page](gs-fortress/README.md)"]
         },
         {
           "text": "{tracked} upstream CLI defects are tracked, {resolved} since resolved upstream. {sent} vendor-ready defect reports were sent; {ack} acknowledgements are recorded so far.",
           "values": {
-            "tracked": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Tracked upstream defects (known-issues entries)" },
-            "resolved": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Tracked defects resolved upstream" },
-            "sent": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Defect reports recorded as sent" },
-            "ack": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Defect reports recorded as acknowledged" }
+            "tracked": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Tracked upstream defects (known-issues entries)" },
+            "resolved": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Tracked defects resolved upstream" },
+            "sent": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Defect reports recorded as sent" },
+            "ack": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Defect reports recorded as acknowledged" }
           },
           "evidence": ["[gs-fortress page](gs-fortress/README.md)"]
         },
         {
           "text": "One vendor reply is on record (2026-07-30), answering a design-feedback memo. It covered {replied} tracked defects, and {fixed} were fixed in the next release, 1.0.8.",
           "values": {
-            "replied": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Tracked defects carrying the 2026-07-30 vendor reply" },
-            "fixed": { "proof": "gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Of those, resolved in 1.0.8" }
+            "replied": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Tracked defects carrying the 2026-07-30 vendor reply" },
+            "fixed": { "proof": "../gs-fortress/proof/stats.json", "repo": "gs-fortress", "label": "Of those, resolved in 1.0.8" }
           },
           "evidence": ["[gs-fortress page](gs-fortress/README.md)"]
         }
@@ -137,27 +137,27 @@
         {
           "text": "The public plugin repo has {commits} commits and {prs} merged pull requests, {outside} of them from outside contributors. Its changelog records {versions} versions, including the history before it went public.",
           "values": {
-            "commits": { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Commits" },
-            "prs": { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Merged pull requests" },
-            "outside": { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Merged PRs by someone other than the owner (count only)" },
-            "versions": { "proof": "gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Versions recorded in plugins/gs-superadmin/CHANGELOG.md" }
+            "commits": { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Commits" },
+            "prs": { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Merged pull requests" },
+            "outside": { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Merged PRs by someone other than the owner (count only)" },
+            "versions": { "proof": "../gs-admin-toolchain/proof/stats.json", "repo": "gs-admin-cli-docs", "label": "Versions recorded in plugins/gs-superadmin/CHANGELOG.md" }
           },
           "evidence": ["[public repo](https://github.com/BradleyDB/gs-admin-cli-docs)"]
         },
         {
           "text": "Its pre-public history, kept in a private archive, has {commits} commits and {prs} merged pull requests.",
           "values": {
-            "commits": { "proof": "gs-admin-toolchain/proof/stats-archive.json", "repo": "Admin_CLI_Explore", "label": "Commits" },
-            "prs": { "proof": "gs-admin-toolchain/proof/stats-archive.json", "repo": "Admin_CLI_Explore", "label": "Merged pull requests" }
+            "commits": { "proof": "../gs-admin-toolchain/proof/stats-archive.json", "repo": "Admin_CLI_Explore", "label": "Commits" },
+            "prs": { "proof": "../gs-admin-toolchain/proof/stats-archive.json", "repo": "Admin_CLI_Explore", "label": "Merged pull requests" }
           },
           "evidence": ["[archive stats](gs-admin-toolchain/proof/stats-archive.md)"]
         },
         {
           "text": "dev-utils is {src} lines of Python source with {tests} lines of tests and {cases} test cases.",
           "values": {
-            "src": { "proof": "dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Lines of Python, excluding tests" },
-            "tests": { "proof": "dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Lines of Python in test files" },
-            "cases": { "proof": "dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Python test cases (def test_…)" }
+            "src": { "proof": "../dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Lines of Python, excluding tests" },
+            "tests": { "proof": "../dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Lines of Python in test files" },
+            "cases": { "proof": "../dev-utils/proof/stats.json", "repo": "dev-utils", "label": "Python test cases (def test_…)" }
           },
           "evidence": ["[dev-utils page](dev-utils/README.md)"]
         }
