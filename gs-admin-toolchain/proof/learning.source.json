@@ -1,0 +1,424 @@
+{
+  "title": "How this system learns",
+  "hook": "Every problem I hit becomes a new capability or a lasting safeguard, and every result is measured. Here is what changed since the last publish.",
+  "baselineDate": "2026-10-06",
+  "baselineSnapshot": "baseline-2026-10",
+  "showcaseRepo": "showcase",
+  "busRepos": [
+    "gs-admin-cli-docs",
+    "gs-fortress",
+    "dev-utils"
+  ],
+  "ledger": {
+    "repo": "gs-fortress",
+    "product": "gs-superadmin",
+    "vendorLabel": "CLI",
+    "shipRepos": [
+      "gs-admin-cli-docs",
+      "Admin_CLI_Explore"
+    ]
+  },
+  "gaps": [
+    {
+      "id": "G-1",
+      "text": "team-loop is unproven: no repo runs it yet",
+      "where": "superfriends · Trade-offs",
+      "page": "superfriends/README.md",
+      "quote": "team-loop is unproven.** No repo runs it yet",
+      "status": "Still open",
+      "evidence": "no repo has moved onto team-loop since the baseline"
+    },
+    {
+      "id": "G-2",
+      "text": "dev-utils is still under evaluation: the hand-run loop skills remain the default",
+      "where": "dev-utils · Trade-offs",
+      "page": "dev-utils/README.md",
+      "quote": "**Still under evaluation:** the CLI-backed versions of the loop skills are opt-in",
+      "status": "Still open",
+      "evidence": "the CLI-backed skill variants are still opt-in"
+    },
+    {
+      "id": "G-3",
+      "text": "Prose can't be unit-tested, so every changed skill is walked for real",
+      "where": "superfriends · Trade-offs",
+      "page": "superfriends/README.md",
+      "quote": "be unit-tested.** So a tester runs every changed skill for real",
+      "status": "Still open",
+      "evidence": "no scenario harness yet"
+    },
+    {
+      "id": "G-4",
+      "text": "No CI on the private repos: their tests run locally as a required release step",
+      "where": "toolchain · Trade-offs",
+      "page": "gs-admin-toolchain/README.md",
+      "quote": "**CI only where others contribute.**",
+      "status": "Open on purpose",
+      "evidence": "one maintainer; the local gate stays a required release step"
+    },
+    {
+      "id": "G-5",
+      "text": "Branch guards on the private repos are local hooks",
+      "where": "toolchain · Trade-offs",
+      "page": "gs-admin-toolchain/README.md",
+      "quote": "**Branch guards are local** on the private repos",
+      "status": "Still open",
+      "evidence": "server-side protection needs a paid plan for private repos"
+    },
+    {
+      "id": "G-6",
+      "text": "A decision is a commit, not a signed approval",
+      "where": "toolchain · Trade-offs",
+      "page": "gs-admin-toolchain/README.md",
+      "quote": "**A decision is a commit,** not a signed approval.",
+      "status": "Open on purpose",
+      "evidence": "one maintainer: a signature would add ceremony, not assurance"
+    }
+  ],
+  "changelog": [
+    {
+      "kind": "Added",
+      "title": "repo-showcase refresh mode: this page",
+      "date": "2026-10-18",
+      "answers": [
+        "the 2026-10-06 pages showed what the system does, not whether it gets better: their trend measures had no baseline value"
+      ],
+      "what": "Freezes a before (every repo at a commit id, plus the retro run and the transcripts it read), re-runs the same commands at each refresh, appends the results to proof/metrics.csv and renders this page from them.",
+      "effect": {
+        "text": "{{rows:baseline-2026-10}} numbers back-filled at the 2026-10-06 commits from history the repos already held, each beside its command; the first-pass rate at baseline is {{value:first-pass-rate.v1|system|baseline-2026-10}}%."
+      },
+      "solved": "The pages showed what the system does, not whether it gets better",
+      "result": "{{rows:baseline-2026-10}} numbers back-filled at the last publish, each with its command",
+      "built": "This page: every number re-runs from its command"
+    },
+    {
+      "kind": "Added",
+      "title": "project-introspect: a retro across every session of a project",
+      "date": "2026-10-17",
+      "releases": [
+        "gs-admin-superfriends release-2026-10-17.2",
+        "gs-admin-superfriends release-2026-10-17.3"
+      ],
+      "answers": [
+        "superfriends issue #31: a multi-session project lost the most at the gaps between sessions (context missing, decisions re-argued, facts re-derived), which a one-session retro cannot see"
+      ],
+      "what": "Reads every session of a project in a date window, finds the problems that recur and the gaps at each handoff with session and turn citations. The second release added a fix plan with typed dependencies, a triage mode (one question per problem) and a session map, after the first real run's output said nothing about what changes where or in what order.",
+      "effect": {
+        "series": "recurring-problems.v1",
+        "label": "recurring problems it surfaced in its first run, each with a fix plan"
+      },
+      "caused": {
+        "run": "2026-10-17",
+        "labels": {
+          "superfriends": "superfriends skills",
+          "bus:gs-admin-cli-docs": "plugin repo",
+          "gs-admin-cli-docs": "plugin repo",
+          "memory": "memory",
+          "global-claude-md": "global instructions",
+          "user-settings": "user settings"
+        }
+      },
+      "solved": "Lessons were lost between one session and the next, where a one-session retro can't see",
+      "result": "{{value:recurring-problems.v1|sessions 2026-09-29..2026-10-16|pre-retro-2026-10-18}} recurring problems found in its first run, each with a fix plan",
+      "built": "project-introspect: a retro across every session"
+    },
+    {
+      "kind": "Added",
+      "title": "Email engagement dashboards that catch silent failures",
+      "date": "2026-10-15",
+      "releases": [
+        "gs-admin-cli-docs v0.54.0",
+        "gs-admin-cli-docs v0.56.2",
+        "gs-admin-cli-docs v0.56.3"
+      ],
+      "answers": [
+        "a program that takes in participants but sends nothing looks like it is working, and the vendor's own analytics show one email program at a time, so nobody compares them"
+      ],
+      "what": "A read-only skill that compares every email program at once. Health signals flag a program that is running but not doing anything, such as bringing in participants with no emails going out, a failure that is hard to spot otherwise. A dashboard is a self-contained page, not a pile of CSVs: it refreshes with one command and publishes a leaders' copy to a shared folder, so the numbers stay current and shareable. It was on the dev branch at the baseline and reached main in v0.54.0. v0.56.2 made customer lists current on every refresh (F-548) and hardened locks and resume after the release-gate review; v0.56.3 is polish from its verdict round.",
+      "solved": "A journey program can look healthy while doing nothing: it takes in participants and sends nothing, and the vendor's analytics show one program at a time",
+      "built": "Engagement dashboards with health signals; they caught a live program failing silently",
+      "result": "Caught a live program doing exactly that while the dashboards were being built",
+      "effect": {
+        "text": "while it was being built, the health view caught a live program that took in participants and sent nothing"
+      }
+    },
+    {
+      "kind": "Added",
+      "title": "Dependency reports follow Power List journeys",
+      "date": "2026-10-07",
+      "releases": [
+        "gs-admin-cli-docs v0.43.4"
+      ],
+      "answers": [
+        "F-487: the reports returned no journeys for an object most programs read through a Power List, and wrongly said Power Lists had no CLI surface"
+      ],
+      "what": "deps-report and email-report now resolve journey programs whose participants come from a Power List, naming the objects, connection and fields each list reads. Shipped as a hotfix from main, ahead of the unreleased dashboard work on dev.",
+      "solved": "The reports missed journeys whose participants come from a Power List",
+      "built": "Reports follow Power List journeys (v0.43.4)"
+    },
+    {
+      "kind": "Added",
+      "title": "The CLI audit finds by itself what the last two audits found by hand",
+      "date": "2026-10-15",
+      "releases": [
+        "gs-fortress v0.7.0"
+      ],
+      "answers": [
+        "audit-1.0.12, change-plan item CP-8 (F-026): four things the 1.0.11 and 1.0.12 audits found by hand"
+      ],
+      "what": "A new impact-checklist item for commands with per-version facts, a report of description-only catalog changes, a walk comparing the issue ledger with the plugin's recorded verdicts, and a comparison against the last audited CLI version. The plugin side of the 1.0.12 adoption shipped inside gs-admin-cli-docs v0.56.2.",
+      "solved": "Two audits in a row found the same four things by hand",
+      "built": "An audit that finds those four things itself"
+    },
+    {
+      "kind": "Added",
+      "title": "A handoff records the round's checks as states, not prose",
+      "date": "2026-10-11",
+      "releases": [
+        "dev-utils v0.6.0",
+        "gs-admin-superfriends release-2026-10-11"
+      ],
+      "answers": [
+        "a round's checks lived only in the builder's free-prose handoff comment, worded differently each round, so nothing could read them (dev-utils IDEAS, 2026-10-10)"
+      ],
+      "what": "dev-utils writes a token-keyed Checks line (battery, CI, review, walk) at every handoff, declared per repo in the bus header; the dev-loop skill documents it.",
+      "solved": "A round's checks lived in free prose that nothing could read",
+      "built": "Checks recorded as states at every handoff"
+    },
+    {
+      "kind": "Added",
+      "title": "Long-lived feature branches beside main and dev",
+      "date": "2026-10-12",
+      "releases": [
+        "dev-utils v0.7.0",
+        "dev-utils v0.7.1",
+        "gs-admin-superfriends release-2026-10-17"
+      ],
+      "answers": [
+        "the gs-admin-cli-docs 0.43.4 hotfix had to be cherry-picked around a multi-session program sitting on dev"
+      ],
+      "what": "Finding numbers unique across branches, a catch-up verb that merges dev in and resolves the bus by rule, and a landing check before the branch merges; dev stays shippable. dev-utils v0.7.1 only re-pins a test; the dev-loop skill documents the branches in release-2026-10-17.",
+      "solved": "An urgent fix had to be cherry-picked around work parked on dev",
+      "built": "Long-lived branches; dev stays shippable"
+    },
+    {
+      "kind": "Simplified",
+      "title": "dev-loop: one code review per release, one home per rule",
+      "date": "2026-10-12",
+      "releases": [
+        "gs-admin-superfriends release-2026-10-12"
+      ],
+      "answers": [
+        "the dev-utils 0.7.0 retro over rounds 17 to 25 (F-034 to F-059)"
+      ],
+      "what": "A later fix batch is judged by its tester round, not another code review; each rule lives in one place with a judge before a new mechanism's first handoff; a repeat of a known defect class reopens its entry.",
+      "guard": {
+        "series": "first-pass-rate.v1",
+        "direction": "higher",
+        "label": "findings verified with no failed fix",
+        "before": "baseline-2026-10",
+        "after": "pre-retro-2026-10-18",
+        "text": "(all three buses; the window also holds work before this change)"
+      },
+      "solved": "Every fix batch triggered another full code review",
+      "result": "first-pass rate held: {{value:first-pass-rate.v1|system|baseline-2026-10}}% → {{value:first-pass-rate.v1|system|pre-retro-2026-10-18}}%",
+      "built": "One code review per release"
+    }
+  ],
+  "ladder": [
+    {
+      "text": "Fix the reported instance",
+      "state": "always"
+    },
+    {
+      "text": "A rule carries the incident behind it",
+      "state": "in use"
+    },
+    {
+      "text": "Judge the class, not the instance; two failed fixes force a redesign",
+      "state": "in use"
+    },
+    {
+      "text": "Single-session retro: /introspect fixes the instructions a session ran under",
+      "state": "in use"
+    },
+    {
+      "text": "Cross-session retro: /project-introspect finds what recurs and what's lost between sessions",
+      "state": "new · 2026-10",
+      "new": true
+    },
+    {
+      "text": "Retros feed a measured refresh of this page",
+      "state": "new · 2026-10",
+      "new": true
+    }
+  ],
+  "lessons": [
+    {
+      "id": "L-1",
+      "what": "An audit read a stale copy of the plugin repo (2026-09-22)",
+      "cause": "Inputs trusted without checking freshness",
+      "change": "The watcher fetches the repo from GitHub itself (gs-fortress 0.6.0)",
+      "level": 3,
+      "next": 4,
+      "cameBack": "No, in the two audits since",
+      "mistake": "An audit read a stale copy of the repo",
+      "prevented": "The watcher fetches the repo itself"
+    },
+    {
+      "id": "L-2",
+      "what": "A fix could be verified against a different build than the one that shipped",
+      "cause": "A verdict with no proof of what was tested",
+      "change": "Canary token: the tester proves which build it loaded, or gives no verdict; dev-utils refuses a stale token",
+      "level": 3,
+      "next": 4,
+      "mistake": "A fix could be verified on the wrong build",
+      "prevented": "A canary token proves which build was tested"
+    },
+    {
+      "id": "L-3",
+      "what": "One mechanism took five finding numbers and five rounds",
+      "cause": "Fixing instances, not the defect class",
+      "change": "Two failed fixes require a Redesign: line; dev-utils refuses the flip without one",
+      "level": 3,
+      "next": 4,
+      "cameBack": "Caught: {{value:reopened-2plus-redesigned.v1|system|pre-retro-2026-10-18}} of {{value:reopened-2plus.v1|system|pre-retro-2026-10-18}} twice-failed fixes carry the redesign",
+      "mistake": "One defect took five rounds of fixes",
+      "prevented": "Two failed fixes force a redesign"
+    },
+    {
+      "id": "L-4",
+      "what": "A handoff set reached a public dev branch",
+      "cause": "Treated the release strip as a privacy boundary",
+      "change": "A resolver script decides where a plan may live; tests cover every exit path",
+      "level": 3,
+      "mistake": "Private plans reached a public branch",
+      "prevented": "A script decides where a plan may live"
+    },
+    {
+      "id": "L-5",
+      "what": "One verifier per review finding used up over half a session's budget",
+      "cause": "Cost of a fan-out never measured",
+      "change": "Verifiers batched by file, finders on a cheaper model",
+      "level": 1,
+      "next": 3,
+      "mistake": "One code review used half a session's budget",
+      "prevented": "Verifiers batched by file"
+    },
+    {
+      "id": "L-6",
+      "what": "Seven decisions asked as one batched list, every option recommended",
+      "cause": "Asks shaped for the asker, not the decider",
+      "change": "One decision per question; a recommendation checked against the record first",
+      "level": 1,
+      "next": 2,
+      "since": "2026-09-29",
+      "recurredAs": [
+        {
+          "run": "2026-10-17",
+          "problem": "R7"
+        }
+      ],
+      "mistake": "Seven decisions asked in one batch",
+      "prevented": "One decision per question"
+    }
+  ],
+  "trends": [
+    {
+      "series": "first-pass-rate.v1",
+      "label": "Findings verified with no failed fix",
+      "why": "Builders get it right more often",
+      "window": [
+        "bus.first-pass.v1",
+        "bus.verified.v1"
+      ],
+      "tile": true
+    },
+    {
+      "series": "reopen-rate.v1",
+      "label": "Fixed findings reopened at least once",
+      "why": "Fewer fixes fail their verdict",
+      "window": [
+        "bus.reopened.v1",
+        "bus.fixed.v1"
+      ],
+      "tile": true
+    },
+    {
+      "series": "reopened-2plus.v1",
+      "label": "Findings with two or more failed fixes",
+      "why": "Instance-fixing dies out"
+    },
+    {
+      "series": "days-release-to-ship.v1",
+      "label": "Days from vendor release to first shipped fix (latest release)",
+      "why": "The loop gets faster without dropping a gate"
+    },
+    {
+      "series": "orientation-turns.median.v1",
+      "label": "Turns before a session's first edit (median)",
+      "why": "Sessions stop re-deriving what the last one knew"
+    },
+    {
+      "series": "tool-errors-per-100-calls.v1",
+      "label": "Tool errors per 100 tool calls",
+      "why": "Fewer avoidable mistakes"
+    }
+  ],
+  "traveled": [
+    {
+      "id": "T-1",
+      "title": "A verdict needs proof of what was tested (L-2)",
+      "hops": [
+        {
+          "stage": "Learned",
+          "repo": "gs-admin-superfriends",
+          "text": "dev-loop: a tester proves which build it loaded before any verdict",
+          "commit": "606811b"
+        },
+        {
+          "stage": "Became code",
+          "repo": "dev-utils",
+          "text": "handoff mints the canary token and refuses a stale one",
+          "commit": "ca9fb7b"
+        },
+        {
+          "stage": "Generalized",
+          "repo": "gs-fortress",
+          "text": "the close-out writes the execution record from the PR and tag; nobody types it",
+          "commit": "39afc24"
+        }
+      ],
+      "orderNote": "_The commit dates do not run in this order: dev-loop lived outside git until it moved into the superfriends repo on its first commit shown here, a month after dev-utils first shipped the token. Git cannot show which came first, so the order is the idea's, not the commits'._"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Agent evaluation",
+      "then": "A separate AI tester judges every fix against a token-proven build",
+      "now": "Same, and the first-pass rate is now measured: {{value:first-pass-rate.v1|system|pre-retro-2026-10-18}}%",
+      "why": "this refresh"
+    },
+    {
+      "name": "Learning across sessions",
+      "then": "One session's retro at a time",
+      "now": "A retro across a project's sessions, with problems tracked by fingerprint across runs",
+      "why": "project-introspect"
+    },
+    {
+      "name": "Decision log",
+      "then": "Adopt/defer decisions, recommendation kept apart from decision",
+      "now": "Same; the releases audited since wait on a decision",
+      "why": "vendor releases since"
+    }
+  ],
+  "callout": "**Every lesson gets built in.** When something goes wrong, I find the root cause and add a safeguard so it can't quietly happen again: a rule, a step every session performs, or code that refuses it.",
+  "thirtySeconds": [
+    "**Built:** email engagement dashboards whose health signals catch a program that runs but sends nothing (they caught a live one while being built), Power List coverage in the dependency reports, and a CLI audit that now finds by itself what two audits found by hand.",
+    "**Learned:** a retrospective across a project's sessions surfaced {{value:recurring-problems.v1|sessions 2026-09-29..2026-10-16|pre-retro-2026-10-18}} recurring problems in its first run, and each one now has a fix plan.",
+    "**Measured:** {{value:first-pass-rate.v1|system|pre-retro-2026-10-18}}% of verified fixes pass an independent tester the first time, and when a fix fails twice, the rule forces a redesign."
+  ],
+  "timeline": {
+    "title": "Since the last publish",
+    "subtitle": "Each problem, and what I built for it"
+  }
+}

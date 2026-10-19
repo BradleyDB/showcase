@@ -1,0 +1,55 @@
+{
+  "diagrams": [
+    {
+      "id": "gs-admin-toolchain-learning",
+      "type": "vtimeline",
+      "leftLabel": "THE PROBLEM",
+      "rightLabel": "WHAT I BUILT",
+      "aria": "Since the last publish, newest first. Oct 18: The pages showed what the system does, not whether it gets better; built: This page: every number re-runs from its command. Oct 17: Lessons were lost between one session and the next, where a one-session retro can't see; built: project-introspect: a retro across every session. Oct 15: A journey program can look healthy while doing nothing: it takes in participants and sends nothing, and the vendor's analytics show one program at a time; built: Engagement dashboards with health signals; they caught a live program failing silently. Oct 15: Two audits in a row found the same four things by hand; built: An audit that finds those four things itself. Oct 12: An urgent fix had to be cherry-picked around work parked on dev; built: Long-lived branches; dev stays shippable. Oct 12: Every fix batch triggered another full code review; built: One code review per release. Oct 11: A round's checks lived in free prose that nothing could read; built: Checks recorded as states at every handoff. Oct 7: The reports missed journeys whose participants come from a Power List; built: Reports follow Power List journeys (v0.43.4).",
+      "title": "Since the last publish",
+      "subtitle": "Each problem, and what I built for it",
+      "rows": [
+        {
+          "date": "Oct 18",
+          "left": "The pages showed what the system does, not whether it gets better",
+          "right": "This page: every number re-runs from its command"
+        },
+        {
+          "date": "Oct 17",
+          "left": "Lessons were lost between one session and the next, where a one-session retro can't see",
+          "right": "project-introspect: a retro across every session"
+        },
+        {
+          "date": "Oct 15",
+          "left": "A journey program can look healthy while doing nothing: it takes in participants and sends nothing, and the vendor's analytics show one program at a time",
+          "right": "Engagement dashboards with health signals; they caught a live program failing silently"
+        },
+        {
+          "date": "Oct 15",
+          "left": "Two audits in a row found the same four things by hand",
+          "right": "An audit that finds those four things itself"
+        },
+        {
+          "date": "Oct 12",
+          "left": "An urgent fix had to be cherry-picked around work parked on dev",
+          "right": "Long-lived branches; dev stays shippable"
+        },
+        {
+          "date": "Oct 12",
+          "left": "Every fix batch triggered another full code review",
+          "right": "One code review per release"
+        },
+        {
+          "date": "Oct 11",
+          "left": "A round's checks lived in free prose that nothing could read",
+          "right": "Checks recorded as states at every handoff"
+        },
+        {
+          "date": "Oct 7",
+          "left": "The reports missed journeys whose participants come from a Power List",
+          "right": "Reports follow Power List journeys (v0.43.4)"
+        }
+      ]
+    }
+  ]
+}

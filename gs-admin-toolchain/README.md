@@ -24,6 +24,11 @@
 - **The proof.** One real release traced end to end below, through public PRs and tags.
   Every number on this page has the command that reproduces it.
 
+> [!TIP]
+> **What has changed since this page was published:** [How this system learns](LEARNING.md)
+> covers what I built and the problem each change solved, the lessons learned and the
+> safeguards they added, and the measures that moved.
+
 ## How a vendor release flows through the system
 
 <picture>

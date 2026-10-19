@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 796" width="880" height="796" role="img" aria-label="Since the last publish, newest first. Oct 18: The pages showed what the system does, not whether it gets better; built: This page: every number re-runs from its command. Oct 17: Lessons were lost between one session and the next, where a one-session retro can't see; built: project-introspect: a retro across every session. Oct 15: A journey program can look healthy while doing nothing: it takes in participants and sends nothing, and the vendor's analytics show one program at a time; built: Engagement dashboards with health signals; they caught a live program failing silently. Oct 15: Two audits in a row found the same four things by hand; built: An audit that finds those four things itself. Oct 12: An urgent fix had to be cherry-picked around work parked on dev; built: Long-lived branches; dev stays shippable. Oct 12: Every fix batch triggered another full code review; built: One code review per release. Oct 11: A round's checks lived in free prose that nothing could read; built: Checks recorded as states at every handoff. Oct 7: The reports missed journeys whose participants come from a Power List; built: Reports follow Power List journeys (v0.43.4)." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Since the last publish, newest first. Oct 18: The pages showed what the system does, not whether it gets better; built: This page: every number re-runs from its command. Oct 17: Lessons were lost between one session and the next, where a one-session retro can't see; built: project-introspect: a retro across every session. Oct 15: A journey program can look healthy while doing nothing: it takes in participants and sends nothing, and the vendor's analytics show one program at a time; built: Engagement dashboards with health signals; they caught a live program failing silently. Oct 15: Two audits in a row found the same four things by hand; built: An audit that finds those four things itself. Oct 12: An urgent fix had to be cherry-picked around work parked on dev; built: Long-lived branches; dev stays shippable. Oct 12: Every fix batch triggered another full code review; built: One code review per release. Oct 11: A round's checks lived in free prose that nothing could read; built: Checks recorded as states at every handoff. Oct 7: The reports missed journeys whose participants come from a Power List; built: Reports follow Power List journeys (v0.43.4).</title>
+  <rect width="880" height="796" rx="14" fill="#ffffff"/>
+  <text x="30" y="30" font-size="17" font-weight="700" fill="#0f172a" text-anchor="start">Since the last publish</text>
+  <text x="850" y="30" font-size="13" font-weight="400" fill="#57606a" text-anchor="end">Each problem, and what I built for it</text>
+  <text x="120" y="78" font-size="11" font-weight="700" fill="#57606a" text-anchor="start" letter-spacing="1.5">THE PROBLEM</text>
+  <text x="504" y="78" font-size="11" font-weight="700" fill="#57606a" text-anchor="start" letter-spacing="1.5">WHAT I BUILT</text>
+  <line x1="66" y1="124" x2="66" y2="738" stroke="#8c959f" stroke-width="2"/>
+  <rect x="120" y="92" width="340" height="64" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="120" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">The pages showed what the system does, not</text>
+  <text x="290" y="138" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">whether it gets better</text>
+  <rect x="504" y="92" width="340" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="120" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">This page: every number re-runs from its</text>
+  <text x="674" y="138" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">command</text>
+  <path d="M460 124 L502 124" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,124 493,129 493,119" fill="#8c959f"/>
+  <line x1="100" y1="124" x2="120" y2="124" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="112" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="129" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 18</text>
+  <rect x="120" y="172" width="340" height="82" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="200" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">Lessons were lost between one session and</text>
+  <text x="290" y="218" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">the next, where a one-session retro can't</text>
+  <text x="290" y="236" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">see</text>
+  <rect x="504" y="172" width="340" height="82" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="209" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">project-introspect: a retro across every</text>
+  <text x="674" y="227" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">session</text>
+  <path d="M460 213 L502 213" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,213 493,218 493,208" fill="#8c959f"/>
+  <line x1="100" y1="213" x2="120" y2="213" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="201" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="218" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 17</text>
+  <rect x="120" y="270" width="340" height="100" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="298" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">A journey program can look healthy while</text>
+  <text x="290" y="316" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">doing nothing: it takes in participants and</text>
+  <text x="290" y="334" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">sends nothing, and the vendor's analytics</text>
+  <text x="290" y="352" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">show one program at a time</text>
+  <rect x="504" y="270" width="340" height="100" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="316" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Engagement dashboards with health signals;</text>
+  <text x="674" y="334" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">they caught a live program failing silently</text>
+  <path d="M460 320 L502 320" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,320 493,325 493,315" fill="#8c959f"/>
+  <line x1="100" y1="320" x2="120" y2="320" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="308" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="325" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 15</text>
+  <rect x="120" y="386" width="340" height="64" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="414" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">Two audits in a row found the same four</text>
+  <text x="290" y="432" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">things by hand</text>
+  <rect x="504" y="386" width="340" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="423" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">An audit that finds those four things itself</text>
+  <path d="M460 418 L502 418" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,418 493,423 493,413" fill="#8c959f"/>
+  <line x1="100" y1="418" x2="120" y2="418" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="406" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="423" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 15</text>
+  <rect x="120" y="466" width="340" height="64" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="494" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">An urgent fix had to be cherry-picked around</text>
+  <text x="290" y="512" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">work parked on dev</text>
+  <rect x="504" y="466" width="340" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="503" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Long-lived branches; dev stays shippable</text>
+  <path d="M460 498 L502 498" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,498 493,503 493,493" fill="#8c959f"/>
+  <line x1="100" y1="498" x2="120" y2="498" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="486" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="503" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 12</text>
+  <rect x="120" y="546" width="340" height="64" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="574" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">Every fix batch triggered another full code</text>
+  <text x="290" y="592" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">review</text>
+  <rect x="504" y="546" width="340" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="583" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">One code review per release</text>
+  <path d="M460 578 L502 578" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,578 493,583 493,573" fill="#8c959f"/>
+  <line x1="100" y1="578" x2="120" y2="578" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="566" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="583" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 12</text>
+  <rect x="120" y="626" width="340" height="64" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="654" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">A round's checks lived in free prose that</text>
+  <text x="290" y="672" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">nothing could read</text>
+  <rect x="504" y="626" width="340" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="663" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Checks recorded as states at every handoff</text>
+  <path d="M460 658 L502 658" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,658 493,663 493,653" fill="#8c959f"/>
+  <line x1="100" y1="658" x2="120" y2="658" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="646" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="663" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 11</text>
+  <rect x="120" y="706" width="340" height="64" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="290" y="734" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">The reports missed journeys whose</text>
+  <text x="290" y="752" font-size="13.5" font-weight="400" fill="#0f172a" text-anchor="middle">participants come from a Power List</text>
+  <rect x="504" y="706" width="340" height="64" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="674" y="743" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">Reports follow Power List journeys (v0.43.4)</text>
+  <path d="M460 738 L502 738" fill="none" stroke="#8c959f" stroke-width="1.6"/>
+  <polygon points="502,738 493,743 493,733" fill="#8c959f"/>
+  <line x1="100" y1="738" x2="120" y2="738" stroke="#8c959f" stroke-width="1.5"/>
+  <rect x="32" y="726" width="68" height="24" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="66" y="743" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Oct 7</text>
+</svg>

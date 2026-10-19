@@ -21,6 +21,12 @@ audits every new vendor version, a builder/tester loop builds each change, and a
 keeps the loop's books. The page traces one vendor release through all four repos in 12
 steps, with a person deciding at three of them.
 
+### [How it learns →](gs-admin-toolchain/LEARNING.md)
+
+What I've built since the 2026-10-06 publish and the problem each change solved, the
+lessons learned and the safeguards they added, and the measures that moved. Every number is
+re-measured with the same commands at each refresh.
+
 ## Deep dives
 
 | Page | In one line | Its steps in the system |
@@ -42,8 +48,9 @@ process these pages describe.
 
 ## Checking the numbers
 
-Numbers last updated 2026-10-06. Each page says when its numbers were measured; counts such
-as commits and pull requests keep growing after that.
+Numbers last updated 2026-10-06; the learning page was measured on 2026-10-18. Each page
+says when its numbers were measured; counts such as commits and pull requests keep growing
+after that.
 
 Every figure sits beside the command that produced it, pinned to the exact commit it
 measured, in each page's `proof/` folder. [FACTS.md](FACTS.md) lists the key claims in one
