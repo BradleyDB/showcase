@@ -5,7 +5,7 @@
 <table><tr>
 <td align="center" width="25%"><h2>8</h2>capabilities shipped since the 2026-10-06 publish</td>
 <td align="center" width="25%"><h2>6</h2>lessons learned, each traced to its root cause</td>
-<td align="center" width="25%"><h2>4 of 6</h2>of those lessons are built into code, not just written down</td>
+<td align="center" width="25%"><h2>4 of 6</h2>lessons are built into code, not just written down</td>
 <td align="center" width="25%"><h2>85.9%</h2>of verified fixes passed an independent tester the first time</td>
 </tr></table>
 
@@ -102,10 +102,10 @@ When something went wrong, I traced it to its root cause and added a safeguard s
 | What went wrong | The safeguard | Came back? |
 |---|---|---|
 | An audit read a stale copy of the repo | The watcher fetches the repo itself | No, in the two audits since |
-| A fix could be verified on the wrong build | A canary token proves which build was tested |  |
+| A fix could be verified on the wrong build | A canary token proves which build was tested | Not measured yet |
 | One defect took five rounds of fixes | Two failed fixes force a redesign | Caught: 5 of 6 twice-failed fixes carry the redesign |
-| Private plans reached a public branch | A script decides where a plan may live |  |
-| One code review used half a session's budget | Verifiers batched by file |  |
+| Private plans reached a public branch | A script decides where a plan may live | Not measured yet |
+| One code review used half a session's budget | Verifiers batched by file | Not measured yet |
 | Seven decisions asked in one batch | One decision per question | Yes, in 13 of 51 sessions (retro 2026-10-17) |
 
 <details>
@@ -140,7 +140,7 @@ Each column is one measurement, at the commits its snapshot names. Rates count a
 |---|---|---:|---:|
 | Findings verified with no failed fix | Builders get it right more often | 84.5% | 85.9%<br><sub>86.9% of 107 since</sub> |
 | Fixed findings reopened at least once | Fewer fixes fail their verdict | 15.5% | 14.1%<br><sub>13.0% of 108 since</sub> |
-| Findings with two or more failed fixes | Instance-fixing dies out | 2 | 6 |
+| Findings with two or more failed fixes (all history, so it only rises) | Each one now forces a redesign: the line under the count shows how many of the new ones got it | 2 | 6<br><sub>+4 since, 4 of them redesigned</sub> |
 | Days from vendor release to first shipped fix (latest release) | The loop gets faster without dropping a gate | 9 (CLI 1.0.10) | 9 (CLI 1.0.10) |
 | Turns before a session's first edit (median) | Sessions stop re-deriving what the last one knew | – | 49 |
 | Tool errors per 100 tool calls | Fewer avoidable mistakes | – | 2.6 |

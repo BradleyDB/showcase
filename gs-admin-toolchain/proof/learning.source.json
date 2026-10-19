@@ -272,7 +272,8 @@
       "level": 3,
       "next": 4,
       "mistake": "A fix could be verified on the wrong build",
-      "prevented": "A canary token proves which build was tested"
+      "prevented": "A canary token proves which build was tested",
+      "cameBack": "Not measured yet"
     },
     {
       "id": "L-3",
@@ -292,7 +293,8 @@
       "change": "A resolver script decides where a plan may live; tests cover every exit path",
       "level": 3,
       "mistake": "Private plans reached a public branch",
-      "prevented": "A script decides where a plan may live"
+      "prevented": "A script decides where a plan may live",
+      "cameBack": "Not measured yet"
     },
     {
       "id": "L-5",
@@ -302,7 +304,8 @@
       "level": 1,
       "next": 3,
       "mistake": "One code review used half a session's budget",
-      "prevented": "Verifiers batched by file"
+      "prevented": "Verifiers batched by file",
+      "cameBack": "Not measured yet"
     },
     {
       "id": "L-6",
@@ -345,8 +348,10 @@
     },
     {
       "series": "reopened-2plus.v1",
-      "label": "Findings with two or more failed fixes",
-      "why": "Instance-fixing dies out"
+      "label": "Findings with two or more failed fixes (all history, so it only rises)",
+      "why": "Each one now forces a redesign: the line under the count shows how many of the new ones got it",
+      "since": true,
+      "sinceOf": { "series": "reopened-2plus-redesigned.v1", "subject": "system", "label": "redesigned" }
     },
     {
       "series": "days-release-to-ship.v1",
